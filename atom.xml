@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-03T09:02:38.179Z</updated>
+  <updated>2017-07-03T15:32:01.645Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第二天的记录</title>
+    <link href="http://yoursite.com/2017/07/03/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E7%9A%84%E8%AE%B0%E5%BD%95/"/>
+    <id>http://yoursite.com/2017/07/03/第二天的记录/</id>
+    <published>2017-07-03T15:30:50.000Z</published>
+    <updated>2017-07-03T15:32:01.645Z</updated>
+    
+    <content type="html"><![CDATA[<p>###用GitHub+hexo搭建自己的blog<br>经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.<br>从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你<br>看到后面的成果后,还是很高兴的.<br>接下来要做的就是不断去完善里面的内容<br>需要做的还有:</p>
+<blockquote>
+<p>添加一个网易云评论<br>把关于自己的一块给补充了<br>过几天也要把整个搭建过程给写下来以供我这样的小小白参考下<br>更多的是让自己更清楚和明白.</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###用GitHub+hexo搭建自己的blog&lt;br&gt;经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.&lt;br&gt;从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你&lt;br&gt;看到后面的成果后,还是很高兴的.&lt;br&gt;接下来要做的就是不断去完善里面的内容&lt;br
+    
+    </summary>
+    
+      <category term="life" scheme="http://yoursite.com/categories/life/"/>
+    
+    
+      <category term="first" scheme="http://yoursite.com/tags/first/"/>
+    
+  </entry>
   
   <entry>
     <title>记在第一篇</title>

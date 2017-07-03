@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第二天的记录]]></title>
+    <url>%2F2017%2F07%2F03%2F%E7%AC%AC%E4%BA%8C%E5%A4%A9%E7%9A%84%E8%AE%B0%E5%BD%95%2F</url>
+    <content type="text"><![CDATA[###用GitHub+hexo搭建自己的blog经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你看到后面的成果后,还是很高兴的.接下来要做的就是不断去完善里面的内容需要做的还有: 添加一个网易云评论把关于自己的一块给补充了过几天也要把整个搭建过程给写下来以供我这样的小小白参考下更多的是让自己更清楚和明白.]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>first</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[记在第一篇]]></title>
     <url>%2F2017%2F07%2F02%2Fmark%E5%9C%A8%E7%AC%AC%E4%B8%80%E7%AF%87%2F</url>
     <content type="text"><![CDATA[事情还是因为前几天刷知乎的时候,看到了一个人的评论,就顺便进了ta的GitHub看了看,然后就没有然后了.只是突然被刺激了一下.从昨天晚上开始吧.百度看别人的博客,看经验到凌晨两点,一大早起来开始很有兴趣的去搭建一个属于自己的博客.之前不知道的时候觉得是真的很难,也许那是因为没有去尝试.去做了后,发现并没有想象的那么难…]]></content>
