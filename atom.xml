@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-03T15:32:01.645Z</updated>
+  <updated>2017-07-04T08:36:05.439Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,13 +16,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day03</title>
+    <link href="http://yoursite.com/2017/07/04/day03/"/>
+    <id>http://yoursite.com/2017/07/04/day03/</id>
+    <published>2017-07-04T08:26:51.000Z</published>
+    <updated>2017-07-04T08:36:05.439Z</updated>
+    
+    <content type="html"><![CDATA[<p>先来fark一下别人的图<br><a href="http://upload-images.jianshu.io/upload_images/3332049-e1bb096b598e13ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">你想要锦上添花，你得先变成锦(作品：小瓜记不住那些好)</a><br>所谓的迷茫，只是懒散，只是想要不劳而获。</p>
+<blockquote>
+<p>三分钟热度；对现状焦虑却不知道如何改变；喜欢幻想未来，却又不付出实际行动；<br>简而言之，就是间歇性的踌躇满志，持续性的混吃等死。<br>将自己的懒散包装成迷茫，让自己可以继续心安理得的不求上进，<br>然后将所有的不满足跟憎恶归结为迷茫。</p>
+</blockquote>
+<p>当懒散成为习惯，当迷茫成为常态，浑浑噩噩、煎熬焦虑也就变成了生活的主流。</p>
+<p>你可以迷茫，但不能懒散；你可以焦虑，但不能不思进取；你可以不励志，但不能不自律。</p>
+<p>不说那么多,以后就开始写一些学习上技术上的东西.这样也可以为日后留用……</p>
+<h3 id="END"><a href="#END" class="headerlink" title="-END-"></a>-END-</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先来fark一下别人的图&lt;br&gt;&lt;a href=&quot;http://upload-images.jianshu.io/upload_images/3332049-e1bb096b598e13ea.jpg?imageMogr2/auto-orient/strip%7CimageV
+    
+    </summary>
+    
+      <category term="life" scheme="http://yoursite.com/categories/life/"/>
+    
+    
+      <category term="first" scheme="http://yoursite.com/tags/first/"/>
+    
+      <category term="life" scheme="http://yoursite.com/tags/life/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>第二天的记录</title>
     <link href="http://yoursite.com/2017/07/03/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E7%9A%84%E8%AE%B0%E5%BD%95/"/>
     <id>http://yoursite.com/2017/07/03/第二天的记录/</id>
     <published>2017-07-03T15:30:50.000Z</published>
-    <updated>2017-07-03T15:32:01.645Z</updated>
+    <updated>2017-07-04T08:06:16.567Z</updated>
     
-    <content type="html"><![CDATA[<p>###用GitHub+hexo搭建自己的blog<br>经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.<br>从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你<br>看到后面的成果后,还是很高兴的.<br>接下来要做的就是不断去完善里面的内容<br>需要做的还有:</p>
+    <content type="html"><![CDATA[<p>用GitHub+hexo搭建自己的blog<br>经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.<br>从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你<br>看到后面的成果后,还是很高兴的.<br>接下来要做的就是不断去完善里面的内容<br>需要做的还有:</p>
 <blockquote>
 <p>添加一个网易云评论<br>把关于自己的一块给补充了<br>过几天也要把整个搭建过程给写下来以供我这样的小小白参考下<br>更多的是让自己更清楚和明白.</p>
 </blockquote>
@@ -30,7 +63,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;###用GitHub+hexo搭建自己的blog&lt;br&gt;经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.&lt;br&gt;从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你&lt;br&gt;看到后面的成果后,还是很高兴的.&lt;br&gt;接下来要做的就是不断去完善里面的内容&lt;br
+      &lt;p&gt;用GitHub+hexo搭建自己的blog&lt;br&gt;经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.&lt;br&gt;从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你&lt;br&gt;看到后面的成果后,还是很高兴的.&lt;br&gt;接下来要做的就是不断去完善里面的内容&lt;br&gt;需要
     
     </summary>
     
