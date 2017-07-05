@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-04T08:36:05.439Z</updated>
+  <updated>2017-07-05T07:43:11.439Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,95 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAVA进阶</title>
+    <link href="http://yoursite.com/2017/07/05/JAVA%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6/"/>
+    <id>http://yoursite.com/2017/07/05/JAVA高级进阶/</id>
+    <published>2017-07-05T04:50:30.000Z</published>
+    <updated>2017-07-05T07:43:11.439Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Java中的反射机制"><a href="#Java中的反射机制" class="headerlink" title="Java中的反射机制"></a>Java中的反射机制</h2><hr>
+<h3 id="1-反射"><a href="#1-反射" class="headerlink" title="1.反射"></a>1.反射</h3><p>反射主要是在spring框架体现的较多,用的较广,</p>
+<p>反射的作用:</p>
+<p>先说下类的概念<br>类对象概念： 所有的类，都存在一个类对象，这个类对象用于提供一类层面的信息，比如有几种构造方法， 有多少属性，有哪些普通方法。</p>
+<p>通过加载类的全限定类名来获取所需类的里面的所有属性和方法.<br>有如下三种方式来获得</p>
+<blockquote>
+<ul>
+<li>ClassName为所需类名<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.  Class c = Class.forName(ClassName);</div><div class="line">2.  Class c = ClassName.class();</div><div class="line">3.  Class c = new ClassName().getClass();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>在一个JVM中，一种类，只会有一个类对象存在。所以以上三种方式取出来的类对象，都是一样的。</p>
+<p>注： 准确的讲是一个ClassLoader下，一种类，只会有一个类对象存在。通常一个JVM下，只会有一个ClassLoader。<br>无论什么途径获取类对象，都会导致静态属性被初始化，而且只会执行一次。</p>
+<p>传统创建一个对象是new出来.</p>
+<blockquote>
+<ul>
+<li><p>现在通过反射创建一个对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> //类对象</div><div class="line">Class pClass=Class.forName(className);</div><div class="line">//构造器</div><div class="line">Constructor c= pClass.getConstructor();</div><div class="line">//通过构造器实例化</div><div class="line">Hero h2= (Hero) c.newInstance();</div><div class="line">h2.name = &quot;xxx&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>访问修改属性</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//获取类Hero的名字叫做name的字段</div><div class="line">               Field f1= h.getClass().getDeclaredField(&quot;name&quot;);</div><div class="line">               //修改这个字段的值</div><div class="line">               f1.set(h, &quot;xxx&quot;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>getField和getDeclaredField的区别<br>这两个方法都是用于获取字段<br>getField 只能获取public的，包括从父类继承来的字段。<br>getDeclaredField 可以获取本类所有的字段，包括private的，但是不能获取继承来的字段。 (注： 这里只能获取到private的字段，但并不能访问该private字段的值)</p>
+<blockquote>
+<ul>
+<li><strong>调用方法</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取这个类的名字叫做setName，参数类型是String的方法</span></div><div class="line"> Method m = h.getClass().getMethod(<span class="string">"setName"</span>, String.class);</div><div class="line">            <span class="comment">// 对h对象，调用这个方法</span></div><div class="line">            m.invoke(h, <span class="string">"xxx"</span>);</div><div class="line">            <span class="comment">// 使用传统的方式，调用getName方法</span></div><div class="line">            System.out.println(h.getName());</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="2-使用Log4j查看详细日志信息"><a href="#2-使用Log4j查看详细日志信息" class="headerlink" title="2.使用Log4j查看详细日志信息"></a>2.使用Log4j查看详细日志信息</h3><p>1.导jar包<br>2.添加配置文件properties或xml都可</p>
+<h3 id="3-json的使用"><a href="#3-json的使用" class="headerlink" title="3.json的使用"></a>3.json的使用</h3><blockquote>
+<ul>
+<li>JSON JavaScript 对象表示法（JavaScript Object Notation） 是一种存储数据的方式。</li>
+</ul>
+</blockquote>
+<p>1.创建一个JSON对象</p>
+<blockquote>
+<ul>
+<li>var people = {“name”:”tom”,”age”:16};<br>这样就创建了一个JSON 对象<br>JSON对象由 名称/值对组成 名称和值之间用冒号:隔开<br>名称必须用双引号” 包含起来<br>值可以是任意javascript数据类型，字符串，布尔，数字 ，数组甚至是对象<br>不同的名称/值对之间用 逗号 , 隔开</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">var people = &#123;&quot;name&quot;:&quot;tom&quot;,&quot;age&quot;:16&#125;;</div><div class="line">  </div><div class="line">document.write(&quot;这是一个JSON对象: &quot;people);</div><div class="line"> </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>输出的是一个object对象:<strong>这是一个JSON对象: [object Object]</strong></p>
+<p>可以通过点来访问对象的属性</p>
+<p>2.通过方括号[] 创建JSON 数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var xxx= [ &#123;&quot;aaa&quot;:&quot;1&quot;&#125;,&#123;&quot;bbb&quot;:&quot;2&quot;&#125;,&#123;&quot;ccc&quot;:&quot;3&quot;&#125;]</div></pre></td></tr></table></figure>
+<p>访问时和普通数组一样.通过下标访问</p>
+<blockquote>
+<ul>
+<li>字符串转换为json对象 要用eval()实现.<br>即 : var gareen = eval(“(“+s3+”)”);<br><strong><em>注意里面的括号()</em></strong></li>
+</ul>
+</blockquote>
+<h3 id="4-Ajax"><a href="#4-Ajax" class="headerlink" title="4.Ajax"></a>4.Ajax</h3><p><em>AJAX 是一种用于创建快速动态网页的技术。通过AJAX (Asynchronous JAvaScript and XML) 实现异步刷新</em><br><a href="http://www.runoob.com/ajax/ajax-tutorial.html" target="_blank" rel="external">Ajax详细教程</a><br>1.引入js文件写的Ajax引擎<br>即创建XHR<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var xmlhttp;</div><div class="line">	if (window.XMLHttpRequest)</div><div class="line">	&#123;</div><div class="line">		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码</div><div class="line">		xmlhttp=new XMLHttpRequest();</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		// IE6, IE5 浏览器执行代码</div><div class="line">		xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>4.处理响应结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">xmlhttp.onreadystatechange=function()&#123;</div><div class="line">if(xmlhttp.readyState==4)&#123;</div><div class="line">	if(xmlhttp.status==200)&#123;</div><div class="line">	//处理结果</div><div class="line">	//document.getElementById(&apos;checkResult&apos;).innerHTML=xmlhttp.responseText;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.建立一个连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(&quot;get&quot;,&quot;url&quot;,true);</div></pre></td></tr></table></figure></p>
+<p>3.发送请求<br>xmlhttp.send(null);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//处理业务内的代码</div><div class="line">//从jsp获得</div><div class="line"> String name = request.getParameter(&quot;name&quot;);</div><div class="line">     </div><div class="line">    if(&quot;abc&quot;.equals(name))</div><div class="line">        out.print(&quot;&lt;font color=&apos;red&apos;&gt;已经存在&lt;/font&gt;&quot;);</div><div class="line">    else </div><div class="line">        out.print(&quot;&lt;font color=&apos;green&apos;&gt;可以使用&lt;/font&gt;&quot;);</div></pre></td></tr></table></figure>
+<p>后续……</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Java中的反射机制&quot;&gt;&lt;a href=&quot;#Java中的反射机制&quot; class=&quot;headerlink&quot; title=&quot;Java中的反射机制&quot;&gt;&lt;/a&gt;Java中的反射机制&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id=&quot;1-反射&quot;&gt;&lt;a href=&quot;#1-反射&quot; class=
+    
+    </summary>
+    
+      <category term="technology" scheme="http://yoursite.com/categories/technology/"/>
+    
+    
+      <category term="technology" scheme="http://yoursite.com/tags/technology/"/>
+    
+      <category term="json" scheme="http://yoursite.com/tags/json/"/>
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="Ajax" scheme="http://yoursite.com/tags/Ajax/"/>
+    
+  </entry>
   
   <entry>
     <title>day03</title>
