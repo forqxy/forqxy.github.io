@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="first," />
+  <meta name="keywords" content="Spring,TransactionManager," />
 
 
 
@@ -95,17 +95,17 @@
 
 
 
-<meta name="description" content="用GitHub+hexo搭建自己的blog经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你看到后面的成果后,还是很高兴的.接下来要做的就是不断去完善里面的内容需要做的还有:  添加一个网易云评论把关于自己的一块给补充了过几天也要把整个搭建过程给写下来以供我这样的小小白参考下更多的是让自己更清楚和明白.">
-<meta name="keywords" content="first">
+<meta name="description" content="事务管理  事务:一组业务操作如ABCD,要么全部成功,要么全部不成功 事务特性:ACID原子性：整体一致性：完成隔离性：并发持久性：结果   spring要管理事务，必须使用事务管理器 PlatformTransactionManager  事务管理器常见的事务管理器DataSourceTransactionManager  ，jdbc开发时事务管理器，采用JdbcTemplateHiberna">
+<meta name="keywords" content="Spring,TransactionManager">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第二天的记录">
-<meta property="og:url" content="http://yoursite.com/2017/07/03/第二天的记录/index.html">
+<meta property="og:title" content="Spring学习(二)">
+<meta property="og:url" content="http://yoursite.com/2017/07/12/Spring学习2/index.html">
 <meta property="og:site_name" content="NEVERGET">
-<meta property="og:description" content="用GitHub+hexo搭建自己的blog经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你看到后面的成果后,还是很高兴的.接下来要做的就是不断去完善里面的内容需要做的还有:  添加一个网易云评论把关于自己的一块给补充了过几天也要把整个搭建过程给写下来以供我这样的小小白参考下更多的是让自己更清楚和明白.">
-<meta property="og:updated_time" content="2017-07-04T08:06:16.567Z">
+<meta property="og:description" content="事务管理  事务:一组业务操作如ABCD,要么全部成功,要么全部不成功 事务特性:ACID原子性：整体一致性：完成隔离性：并发持久性：结果   spring要管理事务，必须使用事务管理器 PlatformTransactionManager  事务管理器常见的事务管理器DataSourceTransactionManager  ，jdbc开发时事务管理器，采用JdbcTemplateHiberna">
+<meta property="og:updated_time" content="2017-07-12T09:35:56.986Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第二天的记录">
-<meta name="twitter:description" content="用GitHub+hexo搭建自己的blog经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你看到后面的成果后,还是很高兴的.接下来要做的就是不断去完善里面的内容需要做的还有:  添加一个网易云评论把关于自己的一块给补充了过几天也要把整个搭建过程给写下来以供我这样的小小白参考下更多的是让自己更清楚和明白.">
+<meta name="twitter:title" content="Spring学习(二)">
+<meta name="twitter:description" content="事务管理  事务:一组业务操作如ABCD,要么全部成功,要么全部不成功 事务特性:ACID原子性：整体一致性：完成隔离性：并发持久性：结果   spring要管理事务，必须使用事务管理器 PlatformTransactionManager  事务管理器常见的事务管理器DataSourceTransactionManager  ，jdbc开发时事务管理器，采用JdbcTemplateHiberna">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/03/第二天的记录/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/12/Spring学习2/"/>
 
 
 
 
 
-  <title>第二天的记录 | NEVERGET</title>
+  <title>Spring学习(二) | NEVERGET</title>
   
 
 
@@ -352,7 +352,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/03/第二天的记录/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/12/Spring学习2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hou Shuailong">
@@ -369,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第二天的记录</h1>
+          <h1 class="post-title" itemprop="name headline">Spring学习(二)</h1>
         
 
         <div class="post-meta">
@@ -381,8 +381,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-03T23:30:50+08:00">
-                2017-07-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-12T15:37:14+08:00">
+                2017-07-12
               </time>
             
 
@@ -404,8 +404,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index">
-                    <span itemprop="name">life</span>
+                  <a href="/categories/technology/" itemprop="url" rel="index">
+                    <span itemprop="name">technology</span>
                   </a>
                 </span>
 
@@ -422,7 +422,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/07/03/第二天的记录/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/07/12/Spring学习2/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -431,7 +431,7 @@
 
           
           
-             <span id="/2017/07/03/第二天的记录/" class="leancloud_visitors" data-flag-title="第二天的记录">
+             <span id="/2017/07/12/Spring学习2/" class="leancloud_visitors" data-flag-title="Spring学习(二)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -457,7 +457,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  164 字
+                  1,320 字
                 </span>
               
 
@@ -473,7 +473,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -491,10 +491,49 @@
       
 
       
-        <p>用GitHub+hexo搭建自己的blog<br>经过了两天的初步学习和百度方法,基本的框架已经算是搭建完成.<br>从一开始什么都不会到现在的基本成型,虽然过程是累了点,但当你<br>看到后面的成果后,还是很高兴的.<br>接下来要做的就是不断去完善里面的内容<br>需要做的还有:</p>
-<blockquote>
-<p>添加一个网易云评论<br>把关于自己的一块给补充了<br>过几天也要把整个搭建过程给写下来以供我这样的小小白参考下<br>更多的是让自己更清楚和明白.</p>
+        <h1 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h1><blockquote>
+<ul>
+<li>事务:一组业务操作如ABCD,要么全部成功,要么全部不成功</li>
+<li>事务特性:ACID<br>原子性：整体<br>一致性：完成<br>隔离性：并发<br>持久性：结果</li>
+</ul>
 </blockquote>
+<p><strong>spring要管理事务，必须使用事务管理器</strong></p>
+<h2 id="PlatformTransactionManager-事务管理器"><a href="#PlatformTransactionManager-事务管理器" class="headerlink" title="PlatformTransactionManager  事务管理器"></a>PlatformTransactionManager  事务管理器</h2><h3 id="常见的事务管理器"><a href="#常见的事务管理器" class="headerlink" title="常见的事务管理器"></a>常见的事务管理器</h3><p><code>DataSourceTransactionManager</code>  ，<code>jdbc</code>开发时事务管理器，采用<code>JdbcTemplate</code><br><code>HibernateTransactionManager</code>，<code>hibernate</code>开发时事务管理器，整合<code>hibernate</code></p>
+<h3 id="事务详情"><a href="#事务详情" class="headerlink" title="事务详情"></a>事务详情</h3><blockquote>
+<p><code>PROPAGATION_REQUIRED</code> , <code>required</code> , 必须  【默认值】<br>    支持当前事务，A如果有事务，B将使用该事务。<br>    如果A没有事务，B将创建一个新的事务。<br><code>PROPAGATION_REQUIRES_NEW</code> ， <code>requires_new</code> ，必须新的<br>    如果A有事务，将A的事务挂起，B创建一个新的事务<br>    如果A没有事务，B创建一个新的事务<br><code>PROPAGATION_NESTED</code> ，<code>nested</code> ，嵌套<br>    A和B底层采用保存点机制，形成嵌套事务。</p>
+</blockquote>
+<h3 id="AOP配置基于xml"><a href="#AOP配置基于xml" class="headerlink" title="AOP配置基于xml"></a>AOP配置基于xml</h3><p><em>在spring配置aop自动生成代理,进行事务的管理</em></p>
+<blockquote>
+<ul>
+<li>1.配置管理器</li>
+<li>2.配置事务详情</li>
+<li>3.配置aop<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 4 事务管理 --&gt;</div><div class="line">	&lt;!-- 4.1 事务管理器 --&gt;</div><div class="line">	&lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</div><div class="line">		&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">	&lt;!-- 4.2 事务详情（事务通知）  ， 在aop筛选基础上，对ABC三个确定使用什么样的事务。例如：AC读写、B只读 等</div><div class="line">		&lt;tx:attributes&gt; 用于配置事务详情（属性属性）</div><div class="line">			&lt;tx:method name=&quot;&quot;/&gt; 详情具体配置</div><div class="line">				propagation 传播行为 ， REQUIRED：必须；REQUIRES_NEW:必须是新的</div><div class="line">				isolation 隔离级别</div><div class="line">	--&gt;</div><div class="line">	&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot;&gt;</div><div class="line">		&lt;tx:attributes&gt;</div><div class="line">			&lt;tx:method name=&quot;transfer&quot; propagation=&quot;REQUIRED&quot; isolation=&quot;DEFAULT&quot;/&gt;</div><div class="line">		&lt;/tx:attributes&gt;</div><div class="line">	&lt;/tx:advice&gt;</div><div class="line">	&lt;!-- 4.3 AOP编程，目标类有ABCD（4个连接点），切入点表达式 确定增强的连接器，从而获得切入点：ABC --&gt;</div><div class="line">	&lt;aop:config&gt;</div><div class="line">		&lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut=&quot;execution(* com.itheima.service..*.*(..))&quot;/&gt;</div><div class="line">	&lt;/aop:config&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="AOP配置基于注解"><a href="#AOP配置基于注解" class="headerlink" title="AOP配置基于注解"></a>AOP配置基于注解</h3><blockquote>
+<p>1.配置事务管理器，将并事务管理器交予spring<br>2.在目标类或目标方法添加注解即可 @Transactional</p>
+</blockquote>
+<p><strong>spring配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 4 事务管理 --&gt;</div><div class="line">	&lt;!-- 4.1 事务管理器 --&gt;</div><div class="line">	&lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</div><div class="line">		&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">	&lt;!-- 4.2 将管理器交予spring </div><div class="line">		* transaction-manager 配置事务管理器</div><div class="line">		* proxy-target-class</div><div class="line">			true ： 底层强制使用cglib 代理</div><div class="line">	--&gt;</div><div class="line">	&lt;tx:annotation-driven transaction-manager=&quot;txManager&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>service层配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@Transactional</div><div class="line">public class AccountServiceImpl implements AccountService &#123;</div></pre></td></tr></table></figure></p>
+<p><strong>事务详情配置</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Transactional</span>(propagation=Propagation.REQUIRED , isolation = Isolation.DEFAULT)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountServiceImpl</span> <span class="keyword">implements</span> <span class="title">AccountService</span> </span>&#123;</div></pre></td></tr></table></figure></p>
+<h2 id="Spring整合Junit"><a href="#Spring整合Junit" class="headerlink" title="Spring整合Junit"></a>Spring整合Junit</h2><p>1.导入jar包spring-test…jar<br>2.注解修改测试类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@RunWith(SpringJUnit4ClassRunner.class)</div><div class="line">@ContextConfiguration(locations=&quot;classpath:applicationContext.xml&quot;)</div><div class="line">public class TestApp &#123;</div><div class="line">	</div><div class="line">	@Autowired  //与junit整合，不需要在spring xml配置扫描</div><div class="line">	private AccountService accountService;</div><div class="line">	</div><div class="line">	@Test</div><div class="line">	public void demo01()&#123;</div><div class="line">//		String xmlPath = &quot;applicationContext.xml&quot;;</div><div class="line">//		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(xmlPath);</div><div class="line">//		AccountService accountService =  (AccountService) applicationContext.getBean(&quot;accountService&quot;);</div><div class="line">		accountService.transfer(&quot;jack&quot;, &quot;rose&quot;, 1000);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Spring整合Web"><a href="#Spring整合Web" class="headerlink" title="Spring整合Web"></a>Spring整合Web</h2><p>1.tomcat启动加载配置文件<br>2.确定配置文件位置，通过系统初始化参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 确定配置文件位置 web.xml中配置--&gt;</div><div class="line">&lt;context-param&gt;</div><div class="line">	&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</div><div class="line">	&lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;</div><div class="line">&lt;/context-param&gt;</div><div class="line"></div><div class="line">&lt;!-- 配置spring 监听器，加载xml配置文件 --&gt;</div><div class="line">&lt;listener&gt;</div><div class="line">	&lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;</div><div class="line">&lt;/listener&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="SSH整合"><a href="#SSH整合" class="headerlink" title="SSH整合"></a>SSH整合</h2><h3 id="Spring-整合-Hibernate"><a href="#Spring-整合-Hibernate" class="headerlink" title="Spring 整合 Hibernate"></a>Spring 整合 Hibernate</h3><h4 id="有hibernate-cfg-xml时"><a href="#有hibernate-cfg-xml时" class="headerlink" title="有hibernate.cfg.xml时"></a>有<code>hibernate.cfg.xml</code>时</h4><p>1.Javabean,实体映射文件user.hbm.xml,hibernate.cfg.xml一样不变<br><strong>2.dao层:spring提供HibernateTemplete操作po对象</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class UserDaoImpl implements UserDao &#123;</div><div class="line">	</div><div class="line">	//需要spring注入模板</div><div class="line">	private HibernateTemplate hibernateTemplate;</div><div class="line">	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) &#123;</div><div class="line">		this.hibernateTemplate = hibernateTemplate;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void save(User user) &#123;</div><div class="line">		this.hibernateTemplate.save(user);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.<code>service</code> 层一样是set注入dao</p>
+<p>4.<code>ApplicationContext.xml</code>中添加约束文件—命名空间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;</div><div class="line">       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</div><div class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</div><div class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans </div><div class="line">       					   http://www.springframework.org/schema/beans/spring-beans.xsd</div><div class="line">       					   http://www.springframework.org/schema/tx </div><div class="line">       					   http://www.springframework.org/schema/tx/spring-tx.xsd</div><div class="line">       					   http://www.springframework.org/schema/aop </div><div class="line">       					   http://www.springframework.org/schema/aop/spring-aop.xsd</div><div class="line">       					   http://www.springframework.org/schema/context </div><div class="line">       					   http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>5.加载<code>hibernate.cfg.xml</code>配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 1 加载hibenrate.cfg.xml 获得SessionFactory </div><div class="line">		* configLocation确定配置文件位置</div><div class="line">	--&gt;</div><div class="line">	&lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate3.LocalSessionFactoryBean&quot;&gt;</div><div class="line">		&lt;property name=&quot;configLocation&quot; value=&quot;classpath:hibernate.cfg.xml&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">	</div><div class="line">	&lt;!-- 2创建模板 </div><div class="line">		* 底层使用session，session 有sessionFactory获得</div><div class="line">	--&gt;</div><div class="line">	&lt;bean id=&quot;hibernateTemplate&quot; class=&quot;org.springframework.orm.hibernate3.HibernateTemplate&quot;&gt;</div><div class="line">		&lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>6.反转注入dao,service.<br><strong>dao中要注入</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=&quot;userDao&quot; class=&quot;com.hsl.dao.impl.UserDaoImpl&quot;&gt;</div><div class="line">	&lt;property name=&quot;hibernateTemplate&quot; ref=&quot;hibernateTemplate&quot;&gt;&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>7.事务管理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 5 事务管理 --&gt;</div><div class="line">	&lt;!-- 5.1 事务管理器 ：HibernateTransactionManager --&gt;</div><div class="line">	&lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.orm.hibernate3.HibernateTransactionManager&quot; &gt;</div><div class="line">		&lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">	&lt;!-- 5.2 事务详情 ，给ABC进行具体事务设置 --&gt;</div><div class="line">	&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot;&gt;</div><div class="line">		&lt;tx:attributes&gt;</div><div class="line">			&lt;tx:method name=&quot;register&quot;/&gt;</div><div class="line">		&lt;/tx:attributes&gt;</div><div class="line">	&lt;/tx:advice&gt;</div><div class="line">	&lt;!-- 5.3 AOP编程，ABCD 筛选 ＡＢＣ  --&gt;</div><div class="line">	&lt;aop:config&gt;</div><div class="line">		&lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut=&quot;execution(* com.hsl.service..*.*(..))&quot;/&gt;</div><div class="line">	&lt;/aop:config&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="没有hibernate-cfg-xml文件时"><a href="#没有hibernate-cfg-xml文件时" class="headerlink" title="没有hibernate.cfg.xml文件时"></a>没有<code>hibernate.cfg.xml</code>文件时</h4><blockquote>
+<ul>
+<li>1.把hibernate.cfg.xml中的内容配置到spring中…<br>1.1配置<code>sessionFactory</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate3.LocalSessionFactoryBean&quot;&gt;</div><div class="line">		&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;</div><div class="line">		&lt;property name=&quot;hibernateProperties&quot;&gt;</div><div class="line">			&lt;props&gt;</div><div class="line">				&lt;prop key=&quot;hibernate.dialect&quot;&gt;org.hibernate.dialect.MySQL5Dialect&lt;/prop&gt;</div><div class="line">				&lt;prop key=&quot;hibernate.show_sql&quot;&gt;true&lt;/prop&gt;</div><div class="line">				&lt;prop key=&quot;hibernate.format_sql&quot;&gt;true&lt;/prop&gt;</div><div class="line">				&lt;prop key=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/prop&gt;</div><div class="line">				&lt;prop key=&quot;hibernate.current_session_context_class&quot;&gt;thread&lt;/prop&gt;</div><div class="line">			&lt;/props&gt;</div><div class="line">		&lt;/property&gt;</div><div class="line">		&lt;property name=&quot;mappingLocations&quot; value=&quot;classpath:com/hsl/domain/*.hbm.xml&quot;&gt;&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>2.修改dao层，继承<code>HibernateDaoSupport</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 底层需要SessionFactory，自动创建HibernateTemplate模板</div><div class="line">public class UserDaoImpl extends HibernateDaoSupport implements UserDao &#123;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void save(User user) &#123;</div><div class="line">		this.getHibernateTemplate().save(user);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.<code>spring</code> 删除模板，给<code>dao</code>注入<code>SessionFactory</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 3 dao --&gt;</div><div class="line">&lt;bean id=&quot;userDao&quot; class=&quot;com.hsl.dao.impl.UserDaoImpl&quot;&gt;</div><div class="line">	&lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot;&gt;&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="Struts2整合Spring两种方式"><a href="#Struts2整合Spring两种方式" class="headerlink" title="Struts2整合Spring两种方式"></a>Struts2整合Spring两种方式</h3><p>1.action由spring创建<br>2.action由Struts自己创建</p>
 
 
 	
@@ -547,7 +586,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2017/07/03/第二天的记录/" title="第二天的记录">http://yoursite.com/2017/07/03/第二天的记录/</a>
+      <a href="http://yoursite.com/2017/07/12/Spring学习2/" title="Spring学习(二)">http://yoursite.com/2017/07/12/Spring学习2/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -563,7 +602,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/first/" rel="tag"># first</a>
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/TransactionManager/" rel="tag"># TransactionManager</a>
           
         </div>
       
@@ -576,8 +617,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/02/mark在第一篇/" rel="next" title="记在第一篇">
-                <i class="fa fa-chevron-left"></i> 记在第一篇
+              <a href="/2017/07/07/Spring学习-一/" rel="next" title="Spring学习(一)">
+                <i class="fa fa-chevron-left"></i> Spring学习(一)
               </a>
             
           </div>
@@ -585,10 +626,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/04/day03/" rel="prev" title="day03">
-                day03 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -643,8 +680,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/QQ.jpg"
@@ -751,6 +797,22 @@ src="//music.163.com/outchain/player?type=2&id=33920425&auto=0&height=66"></ifra
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事务管理"><span class="nav-number">1.</span> <span class="nav-text">事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PlatformTransactionManager-事务管理器"><span class="nav-number">1.1.</span> <span class="nav-text">PlatformTransactionManager  事务管理器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的事务管理器"><span class="nav-number">1.1.1.</span> <span class="nav-text">常见的事务管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务详情"><span class="nav-number">1.1.2.</span> <span class="nav-text">事务详情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP配置基于xml"><span class="nav-number">1.1.3.</span> <span class="nav-text">AOP配置基于xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP配置基于注解"><span class="nav-number">1.1.4.</span> <span class="nav-text">AOP配置基于注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring整合Junit"><span class="nav-number">1.2.</span> <span class="nav-text">Spring整合Junit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring整合Web"><span class="nav-number">1.3.</span> <span class="nav-text">Spring整合Web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH整合"><span class="nav-number">1.4.</span> <span class="nav-text">SSH整合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-整合-Hibernate"><span class="nav-number">1.4.1.</span> <span class="nav-text">Spring 整合 Hibernate</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有hibernate-cfg-xml时"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">有hibernate.cfg.xml时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#没有hibernate-cfg-xml文件时"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">没有hibernate.cfg.xml文件时</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Struts2整合Spring两种方式"><span class="nav-number">1.4.2.</span> <span class="nav-text">Struts2整合Spring两种方式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
