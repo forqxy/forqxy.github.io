@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-12T09:35:56.986Z</updated>
+  <updated>2017-08-03T13:33:26.098Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Maven入门</title>
+    <link href="http://yoursite.com/2017/08/01/Maven%E5%85%A5%E9%97%A8/"/>
+    <id>http://yoursite.com/2017/08/01/Maven入门/</id>
+    <published>2017-08-01T07:39:39.000Z</published>
+    <updated>2017-08-03T13:33:26.098Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是Maven"><a href="#什么是Maven" class="headerlink" title="什么是Maven"></a>什么是Maven</h1><blockquote>
+<ul>
+<li>1.<code>Maven</code>是基于POM(工程对象模型)的项目管理工具.</li>
+<li>2.Maven是一个跨平台的项目管理工具，它是使用java开发的，它要依赖于jdk1.6及以上</li>
+<li>3.Maven主要有两大功能：管理依赖、项目构建。依赖指的就是jar包。</li>
+</ul>
+</blockquote>
+<p><strong>构建过程</strong><br><img src="http://7xt81u.com1.z0.glb.clouddn.com/maven%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt=""></p>
+<h1 id="没使用Maven前"><a href="#没使用Maven前" class="headerlink" title="没使用Maven前"></a>没使用Maven前</h1><p>没有使用Maven前写项目的问题.</p>
+<blockquote>
+<p>1、都是同样的代码，为什么在我的机器上可以编译执行，而在他的机器上就不行？<br>  2、为什么在我的机器上可以正常打包，而配置管理员却打不出来?<br>  3、项目组加入了新的人员，我要给他说明编译环境如何设置，但是让我挠头的是，有些细节我也记不清楚了。<br>  4、我的项目依赖一些jar包，我应该把他们放哪里？放源码库里？<br>  5、这是我开发的第二个项目，还是需要上面的那些jar包，再把它们复制到我当前项目的</p>
+</blockquote>
+<h1 id="Maven的安装配置"><a href="#Maven的安装配置" class="headerlink" title="Maven的安装配置"></a>Maven的安装配置</h1><h2 id="下载Maven"><a href="#下载Maven" class="headerlink" title="下载Maven"></a>下载Maven</h2><p>从 <a href="http://maven.apache.org" target="_blank" rel="external">Maven官网</a> 下载好压缩包.<br>Maven是使用Java开发的,需要安装jdk1.6以上,最好为1.7及以上.</p>
+<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>MAVEN_HOME        解压后路径<br>path中添加到解压后的bin路径</p>
+<h2 id="测试是否安装配置成功"><a href="#测试是否安装配置成功" class="headerlink" title="测试是否安装配置成功"></a>测试是否安装配置成功</h2><p>打开cmd命令行.输入 <code>mvn -v</code> 出现版本及各种提示证明安装成功.</p>
+<h1 id="配置Maven"><a href="#配置Maven" class="headerlink" title="配置Maven"></a>配置Maven</h1><p>在maven中有两个配置文件：用户配置、全局配置（默认）</p>
+<h2 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h2><p>在maven安装目录的conf里面有一个settings.xml文件，这个文件就是maven的全局配置文件。<br>该文件中配置来maven本地仓库的地址<br>默认在系统的用户目录下的m2/repository中，该目录是本地仓库的目录。</p>
+<h2 id="用户自定义仓库配置"><a href="#用户自定义仓库配置" class="headerlink" title="用户自定义仓库配置"></a>用户自定义仓库配置</h2><p>用户配置文件的地址：~/.m2/settings.xml，该文件默认是没有，需要将全局配置文件拷贝一份到该目录下。<br>重新指定本地仓库地址，如果不指定，则默认是~/.m2/repository目录，<br>如果用户配置文件不存在，则使用全局配置文件的配置。</p>
+<h1 id="Maven约定"><a href="#Maven约定" class="headerlink" title="Maven约定"></a>Maven约定</h1><blockquote>
+<p>Maven项目文件结构有一定的格式约定.</p>
+</blockquote>
+<p><code>Maven</code>工程结构<br>Project<br>    |–src（源码包）<br>        |–main（正常的源码包）<br>            |–java（.java文件的目录）<br>            |–resources（资源文件的目录）<br>        |–test（测试的源码包）<br>                        |–java<br>            |–resources<br>    |–target（class文件、报告等信息存储的地方）<br>    |–pom.xml（maven工程的描述文件）</p>
+<p>在<code>main</code>的<code>Java</code>文件中创建<code>HelloMaven.java</code>文件<br><code>test</code>中创建<code>TestHelloMaven.java</code>文件<br><code>pom.xml</code>文件中的坐标配置必不可少,即GAV</p>
+<h1 id="Maven命令的使用"><a href="#Maven命令的使用" class="headerlink" title="Maven命令的使用"></a>Maven命令的使用</h1><h2 id="mvn-compile"><a href="#mvn-compile" class="headerlink" title="mvn compile"></a>mvn compile</h2><p>编辑命令</p>
+<h2 id="mvn-clean"><a href="#mvn-clean" class="headerlink" title="mvn clean"></a>mvn clean</h2><p>清除命令，清除已经编译好的class文件，<br>具体说清除的是target目录中的文件</p>
+<h2 id="mvn-test"><a href="#mvn-test" class="headerlink" title="mvn test"></a>mvn test</h2><p>测试命令，该命令会将test目录中的源码进行编译</p>
+<h2 id="mvn-package"><a href="#mvn-package" class="headerlink" title="mvn package"></a>mvn package</h2><p>打包命令,把所需项目打包</p>
+<h2 id="mvn-install"><a href="#mvn-install" class="headerlink" title="mvn install"></a>mvn install</h2><p>安装命令，会将打好的包，安装到本地仓库.否则可能有依赖时本地仓库找不到<br>中央仓库也找不到.</p>
+<h1 id="用Eclipse创建Maven项目"><a href="#用Eclipse创建Maven项目" class="headerlink" title="用Eclipse创建Maven项目"></a>用Eclipse创建Maven项目</h1><p>Eclipse比较新的版本集成了Maven插件.没有可以自己安装插件.</p>
+<blockquote>
+<p>创建<code>Maven Project</code> 项目<br>Java项目Artifact Id选择quickstart<br>web项目的选择webapp</p>
+<h1 id="Maven核心概念"><a href="#Maven核心概念" class="headerlink" title="Maven核心概念"></a>Maven核心概念</h1><h2 id="Maven坐标"><a href="#Maven坐标" class="headerlink" title="Maven坐标"></a>Maven坐标</h2><h3 id="什么是坐标"><a href="#什么是坐标" class="headerlink" title="什么是坐标"></a>什么是坐标</h3><p>在平面几何中坐标（x,y）可以标识平面中唯一的一点。在maven中坐标就是为了定位一个唯一确定的jar包。<br>Maven世界拥有大量构建，我们需要找一个用来唯一标识一个构建的统一规范<br>拥有了统一规范，就可以把查找工作交给机器</p>
+<h3 id="Maven坐标组成"><a href="#Maven坐标组成" class="headerlink" title="Maven坐标组成"></a>Maven坐标组成</h3><p>groupId：定义当前Maven组织名称<br>  artifactId：定义实际项目名称<br>  version：定义当前项目的当前版本</p>
+</blockquote>
+<h2 id="Maven依赖管理"><a href="#Maven依赖管理" class="headerlink" title="Maven依赖管理"></a>Maven依赖管理</h2><h3 id="依赖范围"><a href="#依赖范围" class="headerlink" title="依赖范围"></a>依赖范围</h3><p>依赖范围scope 用来控制依赖和编译，测试，运行的classpath的关系. 主要的是三种依赖关系如下：</p>
+<blockquote>
+<ul>
+<li>1.compile： 默认编译依赖范围。对于编译，测试，运行三种classpath都有效</li>
+<li>2.test：测试依赖范围。只对于测试classpath有效</li>
+<li>3.provided：已提供依赖范围。对于编译，测试的classpath都有效，但对于运行无效。因为由容器已经提供，例如servlet-api</li>
+<li>4.runtime:运行时提供。例如:jdbc驱动<h3 id="依赖传递"><a href="#依赖传递" class="headerlink" title="依赖传递"></a>依赖传递</h3>A、B、C<br>B工程依赖A工程，C工程依赖B工程，那么B工程是C工程的直接依赖，A工程是C工程的间接依赖<h3 id="依赖范围传递"><a href="#依赖范围传递" class="headerlink" title="依赖范围传递"></a>依赖范围传递</h3></li>
+<li>当第二依赖的范围是compile的时候，传递性依赖的范围与第一直接依赖的范围一致。</li>
+<li>当第二直接依赖的范围是test的时候，依赖不会得以传递。</li>
+<li>当第二依赖的范围是provided的时候，只传递第一直接依赖范围也为provided的依赖，<br>  且传递性依赖的范围同样为 provided；</li>
+<li>当第二直接依赖的范围是runtime的时候，传递性依赖的范围与第一直接依赖的范围一致，<br>  但compile例外，此时传递的依赖范围为runtime；<h3 id="依赖冲突"><a href="#依赖冲突" class="headerlink" title="依赖冲突"></a>依赖冲突</h3>就近原则</li>
+</ul>
+</blockquote>
+<h1 id="Maven生命周期"><a href="#Maven生命周期" class="headerlink" title="Maven生命周期"></a>Maven生命周期</h1><p>Maven有三个生命周期：clean生命周期、default生命周期、site生命周期</p>
+<p>生命周期可以理解为项目构建的步骤集合。</p>
+<p>生命周期是由多个阶段（Phase）组成。每个阶段都是一个完整的功能，比如mvn clean中的clean就是一个阶段。</p>
+<h1 id="Maven仓库"><a href="#Maven仓库" class="headerlink" title="Maven仓库"></a>Maven仓库</h1><p>分为 <a href="http://repo1.maven.org/maven2" target="_blank" rel="external">中央仓库</a> 和本地仓库<br>可以安装Maven私服<code>Nexus</code><br>为所有来自中央仓库的构建安装提供本地缓存。即 <a href="http://nexus.sonatype.org/" target="_blank" rel="external">Nexus</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;什么是Maven&quot;&gt;&lt;a href=&quot;#什么是Maven&quot; class=&quot;headerlink&quot; title=&quot;什么是Maven&quot;&gt;&lt;/a&gt;什么是Maven&lt;/h1&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;1.&lt;code&gt;Maven&lt;/code&gt;是基于POM(
+    
+    </summary>
+    
+      <category term="technology" scheme="http://yoursite.com/categories/technology/"/>
+    
+    
+      <category term="Maven" scheme="http://yoursite.com/tags/Maven/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring学习(二)</title>
@@ -331,14 +406,14 @@
     <link href="http://yoursite.com/2017/07/02/mark%E5%9C%A8%E7%AC%AC%E4%B8%80%E7%AF%87/"/>
     <id>http://yoursite.com/2017/07/02/mark在第一篇/</id>
     <published>2017-07-02T07:33:04.000Z</published>
-    <updated>2017-07-03T09:02:38.179Z</updated>
+    <updated>2017-08-03T11:55:45.998Z</updated>
     
-    <content type="html"><![CDATA[<p>事情还是因为前几天刷知乎的时候,看到了一个人的评论,就顺便进了ta的GitHub看了看,然后就没有然后了.只是突然被刺激了一下.<br>从昨天晚上开始吧.百度看别人的博客,看经验到凌晨两点,一大早起来开始很有兴趣的去搭建一个属于自己的博客.之前不知道的时候<br>觉得是真的很难,也许那是因为没有去尝试.去做了后,发现并没有想象的那么难…</p>
+    <content type="html"><![CDATA[<p>刷知乎的时候,看到了一个人的评论,就顺便进了ta的GitHub,给了我一点的启发….<br>从某一天晚上开始吧.百度看别人的博客,取经验到凌晨两点,第二天一大早起来开始很有兴趣的去搭建一个属于自己的博客.之前不知道的时候<br>觉得是真的很难,也许那是因为没有去尝试.去做了后,发现并没有想象的那么难…</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;事情还是因为前几天刷知乎的时候,看到了一个人的评论,就顺便进了ta的GitHub看了看,然后就没有然后了.只是突然被刺激了一下.&lt;br&gt;从昨天晚上开始吧.百度看别人的博客,看经验到凌晨两点,一大早起来开始很有兴趣的去搭建一个属于自己的博客.之前不知道的时候&lt;br&gt;觉得是真的
+      &lt;p&gt;刷知乎的时候,看到了一个人的评论,就顺便进了ta的GitHub,给了我一点的启发….&lt;br&gt;从某一天晚上开始吧.百度看别人的博客,取经验到凌晨两点,第二天一大早起来开始很有兴趣的去搭建一个属于自己的博客.之前不知道的时候&lt;br&gt;觉得是真的很难,也许那是因为没有去尝试.去做了
     
     </summary>
     
