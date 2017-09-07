@@ -499,10 +499,10 @@
   
   <entry>
     <title>struts2</title>
-    <link href="http://yoursite.com/2017/05/06/struts2/"/>
-    <id>http://yoursite.com/2017/05/06/struts2/</id>
-    <published>2017-05-06T14:39:01.000Z</published>
-    <updated>2017-09-07T08:56:43.604Z</updated>
+    <link href="http://yoursite.com/2017/06/06/struts2/"/>
+    <id>http://yoursite.com/2017/06/06/struts2/</id>
+    <published>2017-06-06T14:39:01.000Z</published>
+    <updated>2017-09-07T09:08:45.777Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Struts2简介"><a href="#Struts2简介" class="headerlink" title="Struts2简介"></a>Struts2简介</h1><h2 id="1、Struts2概述"><a href="#1、Struts2概述" class="headerlink" title="1、Struts2概述"></a>1、Struts2概述</h2><p>Struts2是Apache发行的MVC开源框架。注意：它只是表现层（MVC）框架。</p>
 <h2 id="2、Struts2的来历"><a href="#2、Struts2的来历" class="headerlink" title="2、Struts2的来历"></a>2、Struts2的来历</h2><p>Struts1：也是apache开发的一套mvc的开源框架。在2005年之前非常流行。<br> 弊端：Struts1的核心控制器就是一个Servlet。随着使用者的增多，弊端开始出现。<br>Struts2：在long long ago，有一个设计超前的框架XWork，后来推出了XWork1和WebWork2。Struts2就是apache和OpenSymphony组织合并开发出来。<br>里面包含了WebWork2的核心及Struts的一些特性和功能。除此之外，和Struts1没有任何关系了。</p>
