@@ -111,7 +111,10 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjb3chb84jj30cx01mmx2.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjb3l144plj30hq06ctae.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjb3okjiguj30in02hgm1.jpg">
-<meta property="og:updated_time" content="2017-09-07T09:08:45.777Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjbfjs0sxdj30j803emx9.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjbfrh0eb4j30l807r74i.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjbg71ig0nj30an02u0sn.jpg">
+<meta property="og:updated_time" content="2017-09-07T16:22:35.352Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="struts2">
 <meta name="twitter:description" content="Struts2简介1、Struts2概述Struts2是Apache发行的MVC开源框架。注意：它只是表现层（MVC）框架。 2、Struts2的来历Struts1：也是apache开发的一套mvc的开源框架。在2005年之前非常流行。 弊端：Struts1的核心控制器就是一个Servlet。随着使用者的增多，弊端开始出现。Struts2：在long long ago，有一个设计超前的框架XWor">
@@ -467,7 +470,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  682 字
+                  1,191 字
                 </span>
               
 
@@ -483,7 +486,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -516,6 +519,30 @@
 <h2 id="struts2-xml的主要元素"><a href="#struts2-xml的主要元素" class="headerlink" title="struts2.xml的主要元素"></a>struts2.xml的主要元素</h2><p>1、package元素<br>1.1、作用：<br>在struts2的配置文件中引入了面向对象思想，使用了分包管理。易于管理动作类。便于模块化开发动作类。<br>1.2、属性：<br>name：包的名称。必须写。且必须唯一。<br>extends：一般情况下需要继承struts-default包，但不是必须的。不过如果不继承的话，将无法使用struts2提供的核心功能。<br>    struts-default.xml中定义着struts-default这个包。而struts-default.xml是在我们的struts.xml加载之前加载。<br>abstract：把包声明为抽象包，抽象包就是用来被继承的。只要是没有<action>元素的包，就可以声明为抽象包。<br>    namespace：名称空间。不写默认不是”/“.是””.<br>名称空间    +    动作名称    =    访问路径<br>2.action元素:<br>作用:配置动作用的<br>属性:name   动作名称<br>    class:动作类全名<br>动作类:<br>就是一个pojo类.通常推荐继承<code>ActionSupport</code></action></p>
 <h2 id="结果类型视图"><a href="#结果类型视图" class="headerlink" title="结果类型视图"></a>结果类型视图</h2><p>1.result元素:<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjb3chb84jj30cx01mmx2.jpg" alt=""><br>type：结果类型，指的就是用什么方式转到定义的页面。默认是dispatcher。<br><strong>type属性的取值在struts-default.xml中定义着</strong><br>常用结果类型介绍：<br>dispatcher：(默认值)<br>    使用请求转发，转向一个页面。<br>redirect：<br>    使用重定向，转向一个页面。</p>
 <h2 id="在动作类中访问Servlet的API"><a href="#在动作类中访问Servlet的API" class="headerlink" title="在动作类中访问Servlet的API"></a>在动作类中访问Servlet的API</h2><h3 id="1-第一种方式：使用ServletActionContext类"><a href="#1-第一种方式：使用ServletActionContext类" class="headerlink" title="1.第一种方式：使用ServletActionContext类"></a>1.第一种方式：使用ServletActionContext类</h3><p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjb3l144plj30hq06ctae.jpg" alt=""><br>第二种方式：使用实现接口的方式<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjb3okjiguj30in02hgm1.jpg" alt=""></p>
+<h2 id="封装请求正文到对象中"><a href="#封装请求正文到对象中" class="headerlink" title="封装请求正文到对象中"></a>封装请求正文到对象中</h2><p>动态参数封装:<br>    通过用户的表单封装请求正文参数。<br>1.动作类作为实体模型<br>表单参数直接写在动作类里面;由struts2的params拦截器完成封装<br>2.动作类和实体模型分开<br><strong>动作类</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class Action02 extends ActionSupport&#123;</div><div class="line">	private User u;</div><div class="line">	public String login()&#123;</div><div class="line">		System.out.println(u);</div><div class="line">		return null;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public User getU() &#123;</div><div class="line">		return u;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public void setU(User u) &#123;</div><div class="line">		this.u = u;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>jsp页面<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjbfjs0sxdj30j803emx9.jpg" alt=""></p>
+<p>3.模型驱动<br>实现模型驱动接口,<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjbfrh0eb4j30l807r74i.jpg" alt=""></p>
+<blockquote>
+<ul>
+<li>实体需要我们自己new创建出来</li>
+</ul>
+</blockquote>
+<h2 id="struts2的数据表单验证"><a href="#struts2的数据表单验证" class="headerlink" title="struts2的数据表单验证"></a>struts2的数据表单验证</h2><p>1.编程式验证</p>
+<blockquote>
+<p>针对动作类中的所有动作方法进行验证：<br>在动作类中覆盖public void validate()方法。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//编程式验证</div><div class="line">	/**</div><div class="line">	 * 1.动作类必须继承ActionSupport,</div><div class="line">	 * 2.重写validate方法(会对所有动作有效)</div><div class="line">	 * @return</div><div class="line">	 */</div><div class="line">	@Override</div><div class="line">	public void validate() &#123;</div><div class="line">		if(user.getUsername().isEmpty())&#123;</div><div class="line">			addFieldError(&quot;username&quot;, &quot;请输入用户名!&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>该验证方法会对动作类中的所有动作方法进行验证<br>解决办法1：给不需要验证的动作方法添加一个@SkipValidation注解。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjbg71ig0nj30an02u0sn.jpg" alt=""><br>解决办法2：validation方法遵守书写规范。<br>如验证find方法.写法如下validate+方法名首字母大写. <code>validateFind()</code><br><strong>所有编程式验证的弊端：硬编码。</strong></p>
+</blockquote>
+<h3 id="声明式验证"><a href="#声明式验证" class="headerlink" title="声明式验证"></a>声明式验证</h3><blockquote>
+<p>通过编写验证规则的xml文件。需要验证时，编写xml文件，不要验证，就不写。</p>
+</blockquote>
+<p>a、针对动作类中的所有动作进行验证：在动作类所在的包中，建立一个ActionClassName-validation.xml的文件<br>添加约束文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;!DOCTYPE validators PUBLIC</div><div class="line">  		&quot;-//Apache Struts//XWork Validator 1.0.3//EN&quot;</div><div class="line">  		&quot;http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd&quot;&gt;</div><div class="line"></div><div class="line">&lt;validators&gt;</div><div class="line">	&lt;field name=&quot;username&quot;&gt;</div><div class="line">		&lt;field-validator type=&quot;requiredstring&quot;&gt;</div><div class="line">		&lt;message&gt;用户名呢&lt;/message&gt;</div><div class="line">		&lt;/field-validator&gt;</div><div class="line">		</div><div class="line">	&lt;/field&gt;</div><div class="line">	</div><div class="line">&lt;/validators&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>b、针对动作类中的某个动作进行验证：在动作类所在的包中建立一个xml文件，名称为ActionClassName-ActionName-validation.xml。</p>
+</blockquote>
+<p><em>Struts2内置的常用声明式验证器</em><br>位置：<br><code>xwork-core-2.3.15.3.jar\com\opensymphony\xwork2\validator\validator\default.xml</code></p>
 
 
 	
@@ -789,7 +816,7 @@ src="//music.163.com/outchain/player?type=2&id=33920425&auto=0&height=66"></ifra
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Struts2简介"><span class="nav-number">1.</span> <span class="nav-text">Struts2简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Struts2概述"><span class="nav-number">1.1.</span> <span class="nav-text">1、Struts2概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Struts2的来历"><span class="nav-number">1.2.</span> <span class="nav-text">2、Struts2的来历</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建Struts2开发环境"><span class="nav-number">2.</span> <span class="nav-text">搭建Struts2开发环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个Struts2荔枝"><span class="nav-number">3.</span> <span class="nav-text">第一个Struts2荔枝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#struts2-xml的主要元素"><span class="nav-number">3.1.</span> <span class="nav-text">struts2.xml的主要元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果类型视图"><span class="nav-number">3.2.</span> <span class="nav-text">结果类型视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在动作类中访问Servlet的API"><span class="nav-number">3.3.</span> <span class="nav-text">在动作类中访问Servlet的API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-第一种方式：使用ServletActionContext类"><span class="nav-number">3.3.1.</span> <span class="nav-text">1.第一种方式：使用ServletActionContext类</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Struts2简介"><span class="nav-number">1.</span> <span class="nav-text">Struts2简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Struts2概述"><span class="nav-number">1.1.</span> <span class="nav-text">1、Struts2概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Struts2的来历"><span class="nav-number">1.2.</span> <span class="nav-text">2、Struts2的来历</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建Struts2开发环境"><span class="nav-number">2.</span> <span class="nav-text">搭建Struts2开发环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个Struts2荔枝"><span class="nav-number">3.</span> <span class="nav-text">第一个Struts2荔枝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#struts2-xml的主要元素"><span class="nav-number">3.1.</span> <span class="nav-text">struts2.xml的主要元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果类型视图"><span class="nav-number">3.2.</span> <span class="nav-text">结果类型视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在动作类中访问Servlet的API"><span class="nav-number">3.3.</span> <span class="nav-text">在动作类中访问Servlet的API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-第一种方式：使用ServletActionContext类"><span class="nav-number">3.3.1.</span> <span class="nav-text">1.第一种方式：使用ServletActionContext类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装请求正文到对象中"><span class="nav-number">3.4.</span> <span class="nav-text">封装请求正文到对象中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#struts2的数据表单验证"><span class="nav-number">3.5.</span> <span class="nav-text">struts2的数据表单验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明式验证"><span class="nav-number">3.5.1.</span> <span class="nav-text">声明式验证</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
