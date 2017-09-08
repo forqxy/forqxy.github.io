@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="hibernate,dao," />
 
 
 
@@ -95,15 +95,22 @@
 
 
 
-<meta name="description" content="一个菜鸟的自述,如果想去做某件事,就用尽全心去做吧.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="NEVERGET">
-<meta property="og:url" content="http://yoursite.com/tags/struts2/index.html">
+<meta name="description" content="hibernate之多对对映射一个学生可以选多门课程,一个课程也可以被多个学生选所以Student和Course存在多对对的关系Student实体如下:(省去set,get方法)1234public class Student &amp;#123;	private Integer id;	private String name;	private Set&amp;lt;Course&amp;gt; course = new">
+<meta name="keywords" content="hibernate,dao">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hibernate进阶">
+<meta property="og:url" content="http://yoursite.com/2017/06/18/hibernate进阶/index.html">
 <meta property="og:site_name" content="NEVERGET">
-<meta property="og:description" content="一个菜鸟的自述,如果想去做某件事,就用尽全心去做吧.">
+<meta property="og:description" content="hibernate之多对对映射一个学生可以选多门课程,一个课程也可以被多个学生选所以Student和Course存在多对对的关系Student实体如下:(省去set,get方法)1234public class Student &amp;#123;	private Integer id;	private String name;	private Set&amp;lt;Course&amp;gt; course = new">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjch42qqcuj30o60axn0b.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjchdrrekkj30lw01v0t4.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjchihbgkkj30hg08bq49.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjchl519cjj30cy03r74z.jpg">
+<meta property="og:updated_time" content="2017-09-08T13:56:25.310Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NEVERGET">
-<meta name="twitter:description" content="一个菜鸟的自述,如果想去做某件事,就用尽全心去做吧.">
+<meta name="twitter:title" content="hibernate进阶">
+<meta name="twitter:description" content="hibernate之多对对映射一个学生可以选多门课程,一个课程也可以被多个学生选所以Student和Course存在多对对的关系Student实体如下:(省去set,get方法)1234public class Student &amp;#123;	private Integer id;	private String name;	private Set&amp;lt;Course&amp;gt; course = new">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjch42qqcuj30o60axn0b.jpg">
 
 
 
@@ -131,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/struts2/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/18/hibernate进阶/"/>
 
 
 
 
 
-  <title>标签: struts2 | NEVERGET</title>
+  <title>hibernate进阶 | NEVERGET</title>
   
 
 
@@ -172,7 +179,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -340,72 +347,310 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>struts2<small>标签</small>
-      </h1>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/08/强大的OGNL表达式/" itemprop="url">
-              
-                <span itemprop="name">强大的OGNL表达式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-08T15:24:47+08:00"
-              content="2017-06-08" >
-          06-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/06/struts2/" itemprop="url">
-              
-                <span itemprop="name">struts2</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-06T22:39:01+08:00"
-              content="2017-06-06" >
-          06-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </div>
 
   
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/hibernate进阶/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hou Shuailong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/QQ.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NEVERGET">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hibernate进阶</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-18T20:42:03+08:00">
+                2017-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/technology/" itemprop="url" rel="index">
+                    <span itemprop="name">technology</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/18/hibernate进阶/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/18/hibernate进阶/" class="leancloud_visitors" data-flag-title="hibernate进阶">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+		<span class="post-meta-divider">|</span>
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  921 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="hibernate之多对对映射"><a href="#hibernate之多对对映射" class="headerlink" title="hibernate之多对对映射"></a>hibernate之多对对映射</h1><p>一个学生可以选多门课程,一个课程也可以被多个学生选<br>所以Student和Course存在多对对的关系<br>Student实体如下:(省去set,get方法)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public class Student &#123;</div><div class="line">	private Integer id;</div><div class="line">	private String name;</div><div class="line">	private Set&lt;Course&gt; course = new HashSet&lt;Course&gt;();</div></pre></td></tr></table></figure></p>
+<p>Course实体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public class Course &#123;</div><div class="line">	private Integer id;</div><div class="line">	private String name;</div><div class="line">	private Set&lt;Student&gt; student = new HashSet&lt;Student&gt;();</div></pre></td></tr></table></figure></p>
+<p>Student.hbm.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;hibernate-mapping package=&quot;cn.hsl.domain&quot;&gt;</div><div class="line">	&lt;class name=&quot;Student&quot; table=&quot;t_student&quot; &gt;</div><div class="line">		&lt;id name=&quot;id&quot; column=&quot;id&quot;&gt;</div><div class="line">			&lt;generator class=&quot;native&quot;&gt;&lt;/generator&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;property name=&quot;name&quot; column=&quot;name&quot; &gt;&lt;/property&gt;</div><div class="line">		&lt;!-- 多对多关系 --&gt;</div><div class="line">		&lt;!-- </div><div class="line">			set 表达集合</div><div class="line">				name: 集合的属性名</div><div class="line">				table:多对多中间表的表名</div><div class="line">			key 表达外键</div><div class="line">				column:引用我的外键名</div><div class="line">			many-to-many 表达多对多</div><div class="line">				class : 集合引用方的类型</div><div class="line">				column:对方在中间表的外键名</div><div class="line">		 --&gt;</div><div class="line">			&lt;set name=&quot;course&quot; table=&quot;t_student_course&quot; inverse=&quot;false&quot; cascade=&quot;save-update&quot; &gt;</div><div class="line">			&lt;!--</div><div class="line"> 				key 用来描述外键</div><div class="line"> 				column : 外键的值</div><div class="line"> 			  --&gt;</div><div class="line">				&lt;key column=&quot;sid&quot;&gt;&lt;/key&gt;</div><div class="line">				&lt;many-to-many class=&quot;Course&quot; column=&quot;cid&quot;&gt;&lt;/many-to-many&gt;</div><div class="line">			&lt;/set&gt;</div><div class="line">	&lt;/class&gt;</div></pre></td></tr></table></figure></p>
+<p>Course.hbm.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;hibernate-mapping package=&quot;cn.hsl.domain&quot;&gt;</div><div class="line">	&lt;class name=&quot;Course&quot; table=&quot;t_course&quot; &gt;</div><div class="line">		&lt;id name=&quot;id&quot; column=&quot;id&quot;&gt;</div><div class="line">			&lt;generator class=&quot;native&quot;&gt;&lt;/generator&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;property name=&quot;name&quot; column=&quot;name&quot; &gt;&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;set name=&quot;student&quot; inverse=&quot;true&quot; table=&quot;t_student_course&quot; &gt;</div><div class="line">			&lt;!--</div><div class="line"> 				key 用来描述外键</div><div class="line"> 				column : 外键的值</div><div class="line"> 			  --&gt;</div><div class="line">				&lt;key column=&quot;cid&quot;/&gt;   //当前主键!!!!!</div><div class="line">				&lt;many-to-many class=&quot;Student&quot; column=&quot;sid&quot;&gt;&lt;/many-to-many&gt;</div><div class="line">			&lt;/set&gt;</div><div class="line">	&lt;/class&gt;</div></pre></td></tr></table></figure></p>
+<p>多对多双向关系中，值得注意的是生成的中间表名称必须一样，生成中间表的字段必须一样。即<code>t_student_course</code></p>
+<h1 id="hibernate的2抓取策略（优化）"><a href="#hibernate的2抓取策略（优化）" class="headerlink" title="hibernate的2抓取策略（优化）"></a>hibernate的2抓取策略（优化）</h1><blockquote>
+<p>检索方式分为两种,</p>
+<ul>
+<li>立即检索：立即查询，在执行查询语句时，立即查询所有的数据。</li>
+<li>延迟检索：延迟查询，在执行查询语句之后，在需要时在查询。（懒加载）</li>
+</ul>
+<p>检查策略又分为两种</p>
+<ul>
+<li>类级别检索：当前的类的属性获取是否需要延迟。</li>
+<li>关联级别的检索：当前类 关联 另一个类是否需要延迟。</li>
+</ul>
+</blockquote>
+<h2 id="类级别检索"><a href="#类级别检索" class="headerlink" title="类级别检索"></a>类级别检索</h2><p>get：立即检索。get方法一执行，立即查询所有字段的数据。<br>load：延迟检索。默认情况，load方法执行后，如果只使用OID的值不进行查询，如果要使用其他属性值将查询 。<br><code>Customer.hbm.xml  &lt;class  lazy=&quot;true | false&quot;&gt;</code><br>lazy 默认值true，表示延迟检索，如果设置false表示立即检索。</p>
+<h2 id="关联级别查询"><a href="#关联级别查询" class="headerlink" title="关联级别查询"></a>关联级别查询</h2><p>一对多或多对多时<br>容器<set> 提供两个属性：fetch、lazy<br>    fetch：确定使用sql格式<br>    lazy：关联对象是否延迟。</set></p>
+<blockquote>
+<p>fetch：join、select、subselect<br>join：底层使用迫切左外连接<br>select：使用多个select语句（默认值）<br>subselect：使用子查询<br>lazy：false、true、extra<br>    false：立即<br>    true：延迟（默认值）<br>    extra：极其懒惰</p>
+</blockquote>
+<p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjch42qqcuj30o60axn0b.jpg" alt=""></p>
+<blockquote>
+<ul>
+<li><code>fetch</code>=”<code>join</code>“ ，<code>lazy</code>无效</li>
+<li>当前对象 和 关联对象 使用多条select语句查询。<br>lazy=”false” , 立即，先查询客户select，立即查询订单select<br>lazy=”true”,延迟，先查询客户select，需要订单时，再查询订单select<br>lazy=”extra”，极其懒惰（延迟），先查询客户select， 如果只需要订单数，使用聚合函数（不查询详情）</li>
+</ul>
+</blockquote>
+<h2 id="hibernate设置隔离级别"><a href="#hibernate设置隔离级别" class="headerlink" title="hibernate设置隔离级别"></a>hibernate设置隔离级别</h2><p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjchdrrekkj30lw01v0t4.jpg" alt=""><br>悲观锁：丢失更新肯定会发生。<br>    采用数据库锁机制。<br>    读锁：共享锁。<br>        select …. from  … lock in share mode;<br>    写锁：排他锁。（独占）<br>        select … from  ….  for update</p>
+<p>乐观锁：丢失更新肯定不会发生<br>在表中提供一个字段（版本字段），用于标识记录。如果版本不一致，不允许操作。</p>
+<h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><p>写锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">	public void demo01()&#123;</div><div class="line">		//1 查询所有</div><div class="line">		Session session = factory.openSession();</div><div class="line">		session.beginTransaction();</div><div class="line">		</div><div class="line">		Customer customer = (Customer) session.get(Customer.class, 1 ,LockMode.UPGRADE);</div><div class="line">		System.out.println(customer);</div><div class="line">		</div><div class="line">		session.getTransaction().commit();</div><div class="line">		session.close();</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>打印输出为<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjchihbgkkj30hg08bq49.jpg" alt=""></p>
+<h4 id="乐观锁："><a href="#乐观锁：" class="headerlink" title="乐观锁："></a>乐观锁：</h4><ol>
+<li>在PO对象（javabean）提供字段，表示版本字段。一般Integer<br>在*.hbm.xml 文件配置 <version name="..."></version></li>
+<li>在配置文件里面增加<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjchl519cjj30cy03r74z.jpg" alt=""></li>
+</ol>
+<h2 id="hibernate的二级缓存"><a href="#hibernate的二级缓存" class="headerlink" title="hibernate的二级缓存"></a>hibernate的二级缓存</h2>
+
+	
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，客官,赏一点呗！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/weixin.jpg" alt="Hou Shuailong WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/zhifubao.jpg" alt="Hou Shuailong Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Hou Shuailong
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2017/06/18/hibernate进阶/" title="hibernate进阶">http://yoursite.com/2017/06/18/hibernate进阶/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hibernate/" rel="tag"># hibernate</a>
+          
+            <a href="/tags/dao/" rel="tag"># dao</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/11/hibernate入门/" rel="next" title="hibernate入门">
+                <i class="fa fa-chevron-left"></i> hibernate入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/02/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -413,6 +658,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
 
         </div>
         
@@ -432,8 +683,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/QQ.jpg"
@@ -540,6 +800,22 @@ src="//music.163.com/outchain/player?type=2&id=33920425&auto=0&height=66"></ifra
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hibernate之多对对映射"><span class="nav-number">1.</span> <span class="nav-text">hibernate之多对对映射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hibernate的2抓取策略（优化）"><span class="nav-number">2.</span> <span class="nav-text">hibernate的2抓取策略（优化）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类级别检索"><span class="nav-number">2.1.</span> <span class="nav-text">类级别检索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联级别查询"><span class="nav-number">2.2.</span> <span class="nav-text">关联级别查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hibernate设置隔离级别"><span class="nav-number">2.3.</span> <span class="nav-text">hibernate设置隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#悲观锁"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">悲观锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乐观锁："><span class="nav-number">2.3.0.2.</span> <span class="nav-text">乐观锁：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hibernate的二级缓存"><span class="nav-number">2.4.</span> <span class="nav-text">hibernate的二级缓存</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -668,10 +944,10 @@ src="//music.163.com/outchain/player?type=2&id=33920425&auto=0&height=66"></ifra
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
