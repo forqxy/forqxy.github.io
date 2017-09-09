@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hibernate,dao," />
+  <meta name="keywords" content="mybatis,spring," />
 
 
 
@@ -95,22 +95,27 @@
 
 
 
-<meta name="description" content="hibernate之多对对映射一个学生可以选多门课程,一个课程也可以被多个学生选所以Student和Course存在多对对的关系Student实体如下:(省去set,get方法)1234public class Student &amp;#123;	private Integer id;	private String name;	private Set&amp;lt;Course&amp;gt; course = new">
-<meta name="keywords" content="hibernate,dao">
+<meta name="description" content="Mybatis整合spring整合思路  1、SqlSessionFactory对象应该放到spring容器中作为单例存在。 2、传统dao的开发方式中，应该从spring容器中获得sqlsession对象。 3、Mapper代理形式中，应该从spring容器中直接获得mapper的代理对象。 4、数据库的连接以及数据库连接池事务管理都交给spring容器来完成。   整合需要的jar包  1、s">
+<meta name="keywords" content="mybatis,spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hibernate进阶">
-<meta property="og:url" content="http://yoursite.com/2017/06/18/hibernate进阶/index.html">
+<meta property="og:title" content="mybatis与spring整合">
+<meta property="og:url" content="http://yoursite.com/2017/08/05/mybatis与spring整合/index.html">
 <meta property="og:site_name" content="forqxy&#39;s blog">
-<meta property="og:description" content="hibernate之多对对映射一个学生可以选多门课程,一个课程也可以被多个学生选所以Student和Course存在多对对的关系Student实体如下:(省去set,get方法)1234public class Student &amp;#123;	private Integer id;	private String name;	private Set&amp;lt;Course&amp;gt; course = new">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjch42qqcuj30o60axn0b.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjchdrrekkj30lw01v0t4.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjchihbgkkj30hg08bq49.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjchl519cjj30cy03r74z.jpg">
-<meta property="og:updated_time" content="2017-09-08T13:56:25.310Z">
+<meta property="og:description" content="Mybatis整合spring整合思路  1、SqlSessionFactory对象应该放到spring容器中作为单例存在。 2、传统dao的开发方式中，应该从spring容器中获得sqlsession对象。 3、Mapper代理形式中，应该从spring容器中直接获得mapper的代理对象。 4、数据库的连接以及数据库连接池事务管理都交给spring容器来完成。   整合需要的jar包  1、s">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdexrz22yj306n062749.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdfd2q4qpj30jb04cdfw.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdfj1l57ij30h303hjs1.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdg5bv29kj307d088mx9.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdg94qqvhj30lb04xglu.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgcqbnnwj30fh01wmx2.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgdfk74uj30fx01va9z.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgf038ajj30fi02idft.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdggonpy5j30en03jq2z.jpg">
+<meta property="og:updated_time" content="2017-09-09T09:53:24.102Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hibernate进阶">
-<meta name="twitter:description" content="hibernate之多对对映射一个学生可以选多门课程,一个课程也可以被多个学生选所以Student和Course存在多对对的关系Student实体如下:(省去set,get方法)1234public class Student &amp;#123;	private Integer id;	private String name;	private Set&amp;lt;Course&amp;gt; course = new">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjch42qqcuj30o60axn0b.jpg">
+<meta name="twitter:title" content="mybatis与spring整合">
+<meta name="twitter:description" content="Mybatis整合spring整合思路  1、SqlSessionFactory对象应该放到spring容器中作为单例存在。 2、传统dao的开发方式中，应该从spring容器中获得sqlsession对象。 3、Mapper代理形式中，应该从spring容器中直接获得mapper的代理对象。 4、数据库的连接以及数据库连接池事务管理都交给spring容器来完成。   整合需要的jar包  1、s">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdexrz22yj306n062749.jpg">
 
 
 
@@ -138,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/18/hibernate进阶/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/05/mybatis与spring整合/"/>
 
 
 
 
 
-  <title>hibernate进阶 | forqxy's blog</title>
+  <title>mybatis与spring整合 | forqxy's blog</title>
   
 
 
@@ -357,7 +362,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/hibernate进阶/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/05/mybatis与spring整合/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hou Shuailong">
@@ -374,7 +379,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hibernate进阶</h1>
+          <h1 class="post-title" itemprop="name headline">mybatis与spring整合</h1>
         
 
         <div class="post-meta">
@@ -386,8 +391,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-18T20:42:03+08:00">
-                2017-06-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T16:24:45+08:00">
+                2017-08-05
               </time>
             
 
@@ -427,7 +432,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/18/hibernate进阶/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/08/05/mybatis与spring整合/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -436,7 +441,7 @@
 
           
           
-             <span id="/2017/06/18/hibernate进阶/" class="leancloud_visitors" data-flag-title="hibernate进阶">
+             <span id="/2017/08/05/mybatis与spring整合/" class="leancloud_visitors" data-flag-title="mybatis与spring整合">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -462,7 +467,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  921 字
+                  1,131 字
                 </span>
               
 
@@ -478,7 +483,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -496,44 +501,62 @@
       
 
       
-        <h1 id="hibernate之多对对映射"><a href="#hibernate之多对对映射" class="headerlink" title="hibernate之多对对映射"></a>hibernate之多对对映射</h1><p>一个学生可以选多门课程,一个课程也可以被多个学生选<br>所以Student和Course存在多对对的关系<br>Student实体如下:(省去set,get方法)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public class Student &#123;</div><div class="line">	private Integer id;</div><div class="line">	private String name;</div><div class="line">	private Set&lt;Course&gt; course = new HashSet&lt;Course&gt;();</div></pre></td></tr></table></figure></p>
-<p>Course实体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public class Course &#123;</div><div class="line">	private Integer id;</div><div class="line">	private String name;</div><div class="line">	private Set&lt;Student&gt; student = new HashSet&lt;Student&gt;();</div></pre></td></tr></table></figure></p>
-<p>Student.hbm.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;hibernate-mapping package=&quot;cn.hsl.domain&quot;&gt;</div><div class="line">	&lt;class name=&quot;Student&quot; table=&quot;t_student&quot; &gt;</div><div class="line">		&lt;id name=&quot;id&quot; column=&quot;id&quot;&gt;</div><div class="line">			&lt;generator class=&quot;native&quot;&gt;&lt;/generator&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;property name=&quot;name&quot; column=&quot;name&quot; &gt;&lt;/property&gt;</div><div class="line">		&lt;!-- 多对多关系 --&gt;</div><div class="line">		&lt;!-- </div><div class="line">			set 表达集合</div><div class="line">				name: 集合的属性名</div><div class="line">				table:多对多中间表的表名</div><div class="line">			key 表达外键</div><div class="line">				column:引用我的外键名</div><div class="line">			many-to-many 表达多对多</div><div class="line">				class : 集合引用方的类型</div><div class="line">				column:对方在中间表的外键名</div><div class="line">		 --&gt;</div><div class="line">			&lt;set name=&quot;course&quot; table=&quot;t_student_course&quot; inverse=&quot;false&quot; cascade=&quot;save-update&quot; &gt;</div><div class="line">			&lt;!--</div><div class="line"> 				key 用来描述外键</div><div class="line"> 				column : 外键的值</div><div class="line"> 			  --&gt;</div><div class="line">				&lt;key column=&quot;sid&quot;&gt;&lt;/key&gt;</div><div class="line">				&lt;many-to-many class=&quot;Course&quot; column=&quot;cid&quot;&gt;&lt;/many-to-many&gt;</div><div class="line">			&lt;/set&gt;</div><div class="line">	&lt;/class&gt;</div></pre></td></tr></table></figure></p>
-<p>Course.hbm.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;hibernate-mapping package=&quot;cn.hsl.domain&quot;&gt;</div><div class="line">	&lt;class name=&quot;Course&quot; table=&quot;t_course&quot; &gt;</div><div class="line">		&lt;id name=&quot;id&quot; column=&quot;id&quot;&gt;</div><div class="line">			&lt;generator class=&quot;native&quot;&gt;&lt;/generator&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;property name=&quot;name&quot; column=&quot;name&quot; &gt;&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;set name=&quot;student&quot; inverse=&quot;true&quot; table=&quot;t_student_course&quot; &gt;</div><div class="line">			&lt;!--</div><div class="line"> 				key 用来描述外键</div><div class="line"> 				column : 外键的值</div><div class="line"> 			  --&gt;</div><div class="line">				&lt;key column=&quot;cid&quot;/&gt;   //当前主键!!!!!</div><div class="line">				&lt;many-to-many class=&quot;Student&quot; column=&quot;sid&quot;&gt;&lt;/many-to-many&gt;</div><div class="line">			&lt;/set&gt;</div><div class="line">	&lt;/class&gt;</div></pre></td></tr></table></figure></p>
-<p>多对多双向关系中，值得注意的是生成的中间表名称必须一样，生成中间表的字段必须一样。即<code>t_student_course</code></p>
-<h1 id="hibernate的2抓取策略（优化）"><a href="#hibernate的2抓取策略（优化）" class="headerlink" title="hibernate的2抓取策略（优化）"></a>hibernate的2抓取策略（优化）</h1><blockquote>
-<p>检索方式分为两种,</p>
+        <h1 id="Mybatis整合spring"><a href="#Mybatis整合spring" class="headerlink" title="Mybatis整合spring"></a>Mybatis整合spring</h1><h2 id="整合思路"><a href="#整合思路" class="headerlink" title="整合思路"></a>整合思路</h2><blockquote>
 <ul>
-<li>立即检索：立即查询，在执行查询语句时，立即查询所有的数据。</li>
-<li>延迟检索：延迟查询，在执行查询语句之后，在需要时在查询。（懒加载）</li>
-</ul>
-<p>检查策略又分为两种</p>
-<ul>
-<li>类级别检索：当前的类的属性获取是否需要延迟。</li>
-<li>关联级别的检索：当前类 关联 另一个类是否需要延迟。</li>
+<li>1、SqlSessionFactory对象应该放到spring容器中作为单例存在。</li>
+<li>2、传统dao的开发方式中，应该从spring容器中获得sqlsession对象。</li>
+<li>3、Mapper代理形式中，应该从spring容器中直接获得mapper的代理对象。</li>
+<li>4、数据库的连接以及数据库连接池事务管理都交给spring容器来完成。</li>
 </ul>
 </blockquote>
-<h2 id="类级别检索"><a href="#类级别检索" class="headerlink" title="类级别检索"></a>类级别检索</h2><p>get：立即检索。get方法一执行，立即查询所有字段的数据。<br>load：延迟检索。默认情况，load方法执行后，如果只使用OID的值不进行查询，如果要使用其他属性值将查询 。<br><code>Customer.hbm.xml  &lt;class  lazy=&quot;true | false&quot;&gt;</code><br>lazy 默认值true，表示延迟检索，如果设置false表示立即检索。</p>
-<h2 id="关联级别查询"><a href="#关联级别查询" class="headerlink" title="关联级别查询"></a>关联级别查询</h2><p>一对多或多对多时<br>容器<set> 提供两个属性：fetch、lazy<br>    fetch：确定使用sql格式<br>    lazy：关联对象是否延迟。</set></p>
-<blockquote>
-<p>fetch：join、select、subselect<br>join：底层使用迫切左外连接<br>select：使用多个select语句（默认值）<br>subselect：使用子查询<br>lazy：false、true、extra<br>    false：立即<br>    true：延迟（默认值）<br>    extra：极其懒惰</p>
-</blockquote>
-<p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjch42qqcuj30o60axn0b.jpg" alt=""></p>
-<blockquote>
+<h2 id="整合需要的jar包"><a href="#整合需要的jar包" class="headerlink" title="整合需要的jar包"></a>整合需要的jar包</h2><blockquote>
 <ul>
-<li><code>fetch</code>=”<code>join</code>“ ，<code>lazy</code>无效</li>
-<li>当前对象 和 关联对象 使用多条select语句查询。<br>lazy=”false” , 立即，先查询客户select，立即查询订单select<br>lazy=”true”,延迟，先查询客户select，需要订单时，再查询订单select<br>lazy=”extra”，极其懒惰（延迟），先查询客户select， 如果只需要订单数，使用聚合函数（不查询详情）</li>
-</ul>
-</blockquote>
-<h2 id="hibernate设置隔离级别"><a href="#hibernate设置隔离级别" class="headerlink" title="hibernate设置隔离级别"></a>hibernate设置隔离级别</h2><p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjchdrrekkj30lw01v0t4.jpg" alt=""><br>悲观锁：丢失更新肯定会发生。<br>    采用数据库锁机制。<br>    读锁：共享锁。<br>        select …. from  … lock in share mode;<br>    写锁：排他锁。（独占）<br>        select … from  ….  for update</p>
-<p>乐观锁：丢失更新肯定不会发生<br>在表中提供一个字段（版本字段），用于标识记录。如果版本不一致，不允许操作。</p>
-<h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><p>写锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">	public void demo01()&#123;</div><div class="line">		//1 查询所有</div><div class="line">		Session session = factory.openSession();</div><div class="line">		session.beginTransaction();</div><div class="line">		</div><div class="line">		Customer customer = (Customer) session.get(Customer.class, 1 ,LockMode.UPGRADE);</div><div class="line">		System.out.println(customer);</div><div class="line">		</div><div class="line">		session.getTransaction().commit();</div><div class="line">		session.close();</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
-<p>打印输出为<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjchihbgkkj30hg08bq49.jpg" alt=""></p>
-<h4 id="乐观锁："><a href="#乐观锁：" class="headerlink" title="乐观锁："></a>乐观锁：</h4><ol>
-<li>在PO对象（javabean）提供字段，表示版本字段。一般Integer<br>在*.hbm.xml 文件配置 <version name="..."></version></li>
-<li>在配置文件里面增加<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjchl519cjj30cy03r74z.jpg" alt=""></li>
+<li>1、spring的jar包</li>
+<li>2、Mybatis的jar包</li>
+<li>3、Spring+mybatis的整合包。</li>
+<li>4、Mysql的数据库驱动jar包。</li>
+<li><ol>
+<li>数据库连接池的jar包。(dbcp或c3p0)</li>
 </ol>
-<h2 id="hibernate的二级缓存"><a href="#hibernate的二级缓存" class="headerlink" title="hibernate的二级缓存"></a>hibernate的二级缓存</h2>
+</li>
+</ul>
+</blockquote>
+<h2 id="加入配置文件"><a href="#加入配置文件" class="headerlink" title="加入配置文件"></a>加入配置文件</h2><h3 id="mybatis的配置文件SqlMapConfig-xml"><a href="#mybatis的配置文件SqlMapConfig-xml" class="headerlink" title="mybatis的配置文件SqlMapConfig.xml"></a>mybatis的配置文件SqlMapConfig.xml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;!DOCTYPE configuration</div><div class="line">PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</div><div class="line">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</div><div class="line">&lt;configuration&gt;</div><div class="line">	&lt;!-- 设置别名 --&gt;</div><div class="line">	&lt;typeAliases&gt;</div><div class="line">		&lt;!-- 2. 指定扫描包，会把包内所有的类都设置别名，别名的名称就是类名，大小写不敏感 --&gt;</div><div class="line">		&lt;package name=&quot;cn.hsl.mybatis.pojo&quot; /&gt;</div><div class="line">	&lt;/typeAliases&gt;</div><div class="line"></div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
+<p>其它不用配,交由spring管理.如数据源</p>
+<blockquote>
+<p>sqlsessionFactory对象，配置到spring容器中<br>mapeer代理对象或者是dao实现类配置到spring容器中。<br>SqlSessionFactoryBean属于mybatis-spring这个jar包<br>整合Mybatis需要的是SqlSessionFactoryBean</p>
+</blockquote>
+<h3 id="spring配置applicationContext-xml"><a href="#spring配置applicationContext-xml" class="headerlink" title="spring配置applicationContext.xml"></a>spring配置applicationContext.xml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">	xmlns:context=&quot;http://www.springframework.org/schema/context&quot; </div><div class="line">	xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</div><div class="line">	xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; </div><div class="line">	xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</div><div class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">	xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans </div><div class="line">	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/context </div><div class="line">	http://www.springframework.org/schema/context/spring-context-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/aop</div><div class="line">	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/tx </div><div class="line">	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/util </div><div class="line">	http://www.springframework.org/schema/util/spring-util-4.0.xsd&quot;&gt;</div><div class="line"></div><div class="line">   &lt;!-- 加载配置文件 --&gt;</div><div class="line">   &lt;context:property-placeholder location=&quot;classpath:db.properties&quot; /&gt;</div><div class="line"></div><div class="line">	&lt;!-- 数据库连接池 --&gt;</div><div class="line">	&lt;bean id=&quot;dataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;</div><div class="line">		destroy-method=&quot;close&quot;&gt;</div><div class="line">		&lt;property name=&quot;driverClassName&quot; value=&quot;$&#123;jdbc.driver&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;url&quot; value=&quot;$&#123;jdbc.url&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;username&quot; value=&quot;$&#123;jdbc.username&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;password&quot; value=&quot;$&#123;jdbc.password&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;maxActive&quot; value=&quot;10&quot; /&gt;</div><div class="line">		&lt;property name=&quot;maxIdle&quot; value=&quot;5&quot; /&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line"></div><div class="line">		&lt;!-- 配置SqlSessionFactory --&gt;</div><div class="line">	&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</div><div class="line">		&lt;!-- 配置mybatis核心配置文件 --&gt;</div><div class="line">		&lt;property name=&quot;configLocation&quot; value=&quot;classpath:SqlMapConfig.xml&quot; /&gt;</div><div class="line">		&lt;!-- 配置数据源 --&gt;</div><div class="line">		&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure>
+<h3 id="数据源-db-properties"><a href="#数据源-db-properties" class="headerlink" title="数据源 db.properties"></a>数据源 db.properties</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jdbc.driver=com.mysql.jdbc.Driver</div><div class="line">jdbc.url=jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8</div><div class="line">jdbc.username=root</div><div class="line">jdbc.password=root</div></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdexrz22yj306n062749.jpg" alt=""></p>
+<h2 id="Dao的开发"><a href="#Dao的开发" class="headerlink" title="Dao的开发"></a>Dao的开发</h2><h3 id="两种dao的实现方式："><a href="#两种dao的实现方式：" class="headerlink" title="两种dao的实现方式："></a>两种dao的实现方式：</h3><h4 id="1、原始dao的开发方式"><a href="#1、原始dao的开发方式" class="headerlink" title="1、原始dao的开发方式"></a>1、原始dao的开发方式</h4><blockquote>
+<p>原始的DAO开发接口+实现类来完成。<br> 需要dao实现类需要继承SqlsessionDaoSupport类</p>
+<ul>
+<li>编写User.xml配置文件</li>
+<li>在SqlMapConfig进行配置映射mapper</li>
+<li>实现UserDao接口</li>
+<li>实现UserDaoImpl实现类<br>编写DAO实现类，实现类必须集成SqlSessionDaoSupport<br>SqlSessionDaoSupport提供getSqlSession()方法来获取SqlSession<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdfd2q4qpj30jb04cdfw.jpg" alt=""><br><strong>sqlsession不要关闭,不用提交.由spring统一管理</strong><br>把dao实现类配置到spring容器中<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdfj1l57ij30h303hjs1.jpg" alt=""><br>测试<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class UserDaoImplTest &#123;</div><div class="line"></div><div class="line">	ApplicationContext apc;</div><div class="line">	@Before</div><div class="line">	public void setUp() throws Exception &#123;</div><div class="line">		String path = &quot;classpath:ApplicationContext.xml&quot;;</div><div class="line">		apc = new ClassPathXmlApplicationContext(path);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Test</div><div class="line">	public void test() &#123;</div><div class="line">		UserDao ud = (UserDao) apc.getBean(&quot;userdao&quot;);</div><div class="line">		User findUserById = ud.findUserById(29);</div><div class="line">		System.out.println(findUserById);</div><div class="line">	&#125;</div><div class="line">	/**</div><div class="line">	 * mapper代理</div><div class="line">	 */</div><div class="line">	@Test</div><div class="line">	public void test02() &#123;</div><div class="line">		UserMapper mapper = apc.getBean(UserMapper.class);</div><div class="line">		User findUserById = mapper.findUserById(29);</div><div class="line">		System.out.println(findUserById);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h4 id="2、使用Mapper代理形式开发方式"><a href="#2、使用Mapper代理形式开发方式" class="headerlink" title="2、使用Mapper代理形式开发方式"></a>2、使用Mapper代理形式开发方式</h4><blockquote>
+<p>直接配置Mapper代理<br>1.编写UserMapper.xml配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;!DOCTYPE mapper    </div><div class="line">PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;    </div><div class="line">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</div><div class="line"></div><div class="line">&lt;mapper namespace=&quot;cn.hsl.mybatis.dao.UserMapper&quot;&gt;</div><div class="line">	&lt;select id=&quot;findUserById&quot; parameterType=&quot;int&quot; resultType=&quot;cn.hsl.mybatis.po.User&quot;&gt;</div><div class="line">		select * from user where id = #&#123;id&#125;</div><div class="line">	&lt;/select&gt;</div><div class="line">&lt;/mapper&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>2.编写UserMapper.java接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public interface UserMapper &#123;</div><div class="line">	</div><div class="line">	public User findUserById(int id);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>注意两个文件中namespace对应.id和方法名对应</strong><br>在applicationContext.xml添加配置<br>MapperFactoryBean也是属于mybatis-spring整合包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;!-- Mapper代理的方式开发方式一，配置Mapper代理对象 --&gt;</div><div class="line">&lt;bean id=&quot;userMapper&quot; class=&quot;org.mybatis.spring.mapper.MapperFactoryBean&quot;&gt;</div><div class="line">	&lt;!-- 配置Mapper接口 --&gt;</div><div class="line">	&lt;property name=&quot;mapperInterface&quot; value=&quot;cn.hsl.mybatis.mapper.UserMapper&quot; /&gt;</div><div class="line">	&lt;!-- 配置sqlSessionFactory --&gt;</div><div class="line">	&lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot; /&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>使用扫描包配置Mapper代理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- Mapper代理的方式开发方式二，扫描包方式配置代理 --&gt;</div><div class="line">&lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;</div><div class="line">	&lt;!-- 配置Mapper接口 --&gt;</div><div class="line">	&lt;property name=&quot;basePackage&quot; value=&quot;cn.hsl.mybatis.dao&quot;/&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>每个mapper代理对象的id就是类名，首字母小写<br>自动扫描mapper,不用配置.</p>
+<h1 id="Mybatis逆向工程"><a href="#Mybatis逆向工程" class="headerlink" title="Mybatis逆向工程"></a>Mybatis逆向工程</h1><blockquote>
+<p>使用官方网站的Mapper自动生成工具mybatis-generator-core-1.3.2来生成po类和Mapper映射文件<br>在generatorConfig.xml中配置Mapper生成的详细信息，如下图：<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdg5bv29kj307d088mx9.jpg" alt=""><br>只需要修改以下:</p>
+<ul>
+<li>1.修改要生成的数据库表</li>
+<li>2.pojo文件所在包路径</li>
+<li>3.Mapper所在的包路径<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdg94qqvhj30lb04xglu.jpg" alt=""><br>pojo生成位置<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgcqbnnwj30fh01wmx2.jpg" alt=""><br>mapper映射文件位置<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgdfk74uj30fx01va9z.jpg" alt=""><br>mapper接口位置<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgf038ajj30fi02idft.jpg" alt=""><br>指定数据库表<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdggonpy5j30en03jq2z.jpg" alt=""><br>执行工程main主函数<br>生成代码.不过,只能进行单表查询…</li>
+</ul>
+</blockquote>
+
 
 	
 
@@ -585,7 +608,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2017/06/18/hibernate进阶/" title="hibernate进阶">http://yoursite.com/2017/06/18/hibernate进阶/</a>
+      <a href="http://yoursite.com/2017/08/05/mybatis与spring整合/" title="mybatis与spring整合">http://yoursite.com/2017/08/05/mybatis与spring整合/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -601,9 +624,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hibernate/" rel="tag"># hibernate</a>
+            <a href="/tags/mybatis/" rel="tag"># mybatis</a>
           
-            <a href="/tags/dao/" rel="tag"># dao</a>
+            <a href="/tags/spring/" rel="tag"># spring</a>
           
         </div>
       
@@ -616,8 +639,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/11/hibernate入门/" rel="next" title="hibernate入门">
-                <i class="fa fa-chevron-left"></i> hibernate入门
+              <a href="/2017/08/04/MyBatis入门/" rel="next" title="MyBatis入门">
+                <i class="fa fa-chevron-left"></i> MyBatis入门
               </a>
             
           </div>
@@ -625,10 +648,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/02/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -810,7 +829,7 @@ src="//music.163.com/outchain/player?type=2&id=33920425&auto=0&height=66"></ifra
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hibernate之多对对映射"><span class="nav-number">1.</span> <span class="nav-text">hibernate之多对对映射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hibernate的2抓取策略（优化）"><span class="nav-number">2.</span> <span class="nav-text">hibernate的2抓取策略（优化）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类级别检索"><span class="nav-number">2.1.</span> <span class="nav-text">类级别检索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联级别查询"><span class="nav-number">2.2.</span> <span class="nav-text">关联级别查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hibernate设置隔离级别"><span class="nav-number">2.3.</span> <span class="nav-text">hibernate设置隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#悲观锁"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">悲观锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乐观锁："><span class="nav-number">2.3.0.2.</span> <span class="nav-text">乐观锁：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hibernate的二级缓存"><span class="nav-number">2.4.</span> <span class="nav-text">hibernate的二级缓存</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis整合spring"><span class="nav-number">1.</span> <span class="nav-text">Mybatis整合spring</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整合思路"><span class="nav-number">1.1.</span> <span class="nav-text">整合思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整合需要的jar包"><span class="nav-number">1.2.</span> <span class="nav-text">整合需要的jar包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入配置文件"><span class="nav-number">1.3.</span> <span class="nav-text">加入配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis的配置文件SqlMapConfig-xml"><span class="nav-number">1.3.1.</span> <span class="nav-text">mybatis的配置文件SqlMapConfig.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring配置applicationContext-xml"><span class="nav-number">1.3.2.</span> <span class="nav-text">spring配置applicationContext.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据源-db-properties"><span class="nav-number">1.3.3.</span> <span class="nav-text">数据源 db.properties</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dao的开发"><span class="nav-number">1.4.</span> <span class="nav-text">Dao的开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种dao的实现方式："><span class="nav-number">1.4.1.</span> <span class="nav-text">两种dao的实现方式：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、原始dao的开发方式"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">1、原始dao的开发方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、使用Mapper代理形式开发方式"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">2、使用Mapper代理形式开发方式</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis逆向工程"><span class="nav-number">2.</span> <span class="nav-text">Mybatis逆向工程</span></a></li></ol></div>
             
 
           </div>

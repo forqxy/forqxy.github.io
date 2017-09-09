@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-09T08:10:33.092Z</updated>
+  <updated>2017-09-09T09:53:24.102Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,85 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mybatis与spring整合</title>
+    <link href="http://yoursite.com/2017/08/05/mybatis%E4%B8%8Espring%E6%95%B4%E5%90%88/"/>
+    <id>http://yoursite.com/2017/08/05/mybatis与spring整合/</id>
+    <published>2017-08-05T08:24:45.000Z</published>
+    <updated>2017-09-09T09:53:24.102Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Mybatis整合spring"><a href="#Mybatis整合spring" class="headerlink" title="Mybatis整合spring"></a>Mybatis整合spring</h1><h2 id="整合思路"><a href="#整合思路" class="headerlink" title="整合思路"></a>整合思路</h2><blockquote>
+<ul>
+<li>1、SqlSessionFactory对象应该放到spring容器中作为单例存在。</li>
+<li>2、传统dao的开发方式中，应该从spring容器中获得sqlsession对象。</li>
+<li>3、Mapper代理形式中，应该从spring容器中直接获得mapper的代理对象。</li>
+<li>4、数据库的连接以及数据库连接池事务管理都交给spring容器来完成。</li>
+</ul>
+</blockquote>
+<h2 id="整合需要的jar包"><a href="#整合需要的jar包" class="headerlink" title="整合需要的jar包"></a>整合需要的jar包</h2><blockquote>
+<ul>
+<li>1、spring的jar包</li>
+<li>2、Mybatis的jar包</li>
+<li>3、Spring+mybatis的整合包。</li>
+<li>4、Mysql的数据库驱动jar包。</li>
+<li><ol>
+<li>数据库连接池的jar包。(dbcp或c3p0)</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h2 id="加入配置文件"><a href="#加入配置文件" class="headerlink" title="加入配置文件"></a>加入配置文件</h2><h3 id="mybatis的配置文件SqlMapConfig-xml"><a href="#mybatis的配置文件SqlMapConfig-xml" class="headerlink" title="mybatis的配置文件SqlMapConfig.xml"></a>mybatis的配置文件SqlMapConfig.xml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;!DOCTYPE configuration</div><div class="line">PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</div><div class="line">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</div><div class="line">&lt;configuration&gt;</div><div class="line">	&lt;!-- 设置别名 --&gt;</div><div class="line">	&lt;typeAliases&gt;</div><div class="line">		&lt;!-- 2. 指定扫描包，会把包内所有的类都设置别名，别名的名称就是类名，大小写不敏感 --&gt;</div><div class="line">		&lt;package name=&quot;cn.hsl.mybatis.pojo&quot; /&gt;</div><div class="line">	&lt;/typeAliases&gt;</div><div class="line"></div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
+<p>其它不用配,交由spring管理.如数据源</p>
+<blockquote>
+<p>sqlsessionFactory对象，配置到spring容器中<br>mapeer代理对象或者是dao实现类配置到spring容器中。<br>SqlSessionFactoryBean属于mybatis-spring这个jar包<br>整合Mybatis需要的是SqlSessionFactoryBean</p>
+</blockquote>
+<h3 id="spring配置applicationContext-xml"><a href="#spring配置applicationContext-xml" class="headerlink" title="spring配置applicationContext.xml"></a>spring配置applicationContext.xml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">	xmlns:context=&quot;http://www.springframework.org/schema/context&quot; </div><div class="line">	xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</div><div class="line">	xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; </div><div class="line">	xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</div><div class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">	xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans </div><div class="line">	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/context </div><div class="line">	http://www.springframework.org/schema/context/spring-context-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/aop</div><div class="line">	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/tx </div><div class="line">	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/util </div><div class="line">	http://www.springframework.org/schema/util/spring-util-4.0.xsd&quot;&gt;</div><div class="line"></div><div class="line">   &lt;!-- 加载配置文件 --&gt;</div><div class="line">   &lt;context:property-placeholder location=&quot;classpath:db.properties&quot; /&gt;</div><div class="line"></div><div class="line">	&lt;!-- 数据库连接池 --&gt;</div><div class="line">	&lt;bean id=&quot;dataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;</div><div class="line">		destroy-method=&quot;close&quot;&gt;</div><div class="line">		&lt;property name=&quot;driverClassName&quot; value=&quot;$&#123;jdbc.driver&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;url&quot; value=&quot;$&#123;jdbc.url&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;username&quot; value=&quot;$&#123;jdbc.username&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;password&quot; value=&quot;$&#123;jdbc.password&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;maxActive&quot; value=&quot;10&quot; /&gt;</div><div class="line">		&lt;property name=&quot;maxIdle&quot; value=&quot;5&quot; /&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line"></div><div class="line">		&lt;!-- 配置SqlSessionFactory --&gt;</div><div class="line">	&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</div><div class="line">		&lt;!-- 配置mybatis核心配置文件 --&gt;</div><div class="line">		&lt;property name=&quot;configLocation&quot; value=&quot;classpath:SqlMapConfig.xml&quot; /&gt;</div><div class="line">		&lt;!-- 配置数据源 --&gt;</div><div class="line">		&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure>
+<h3 id="数据源-db-properties"><a href="#数据源-db-properties" class="headerlink" title="数据源 db.properties"></a>数据源 db.properties</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jdbc.driver=com.mysql.jdbc.Driver</div><div class="line">jdbc.url=jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8</div><div class="line">jdbc.username=root</div><div class="line">jdbc.password=root</div></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdexrz22yj306n062749.jpg" alt=""></p>
+<h2 id="Dao的开发"><a href="#Dao的开发" class="headerlink" title="Dao的开发"></a>Dao的开发</h2><h3 id="两种dao的实现方式："><a href="#两种dao的实现方式：" class="headerlink" title="两种dao的实现方式："></a>两种dao的实现方式：</h3><h4 id="1、原始dao的开发方式"><a href="#1、原始dao的开发方式" class="headerlink" title="1、原始dao的开发方式"></a>1、原始dao的开发方式</h4><blockquote>
+<p>原始的DAO开发接口+实现类来完成。<br> 需要dao实现类需要继承SqlsessionDaoSupport类</p>
+<ul>
+<li>编写User.xml配置文件</li>
+<li>在SqlMapConfig进行配置映射mapper</li>
+<li>实现UserDao接口</li>
+<li>实现UserDaoImpl实现类<br>编写DAO实现类，实现类必须集成SqlSessionDaoSupport<br>SqlSessionDaoSupport提供getSqlSession()方法来获取SqlSession<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdfd2q4qpj30jb04cdfw.jpg" alt=""><br><strong>sqlsession不要关闭,不用提交.由spring统一管理</strong><br>把dao实现类配置到spring容器中<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdfj1l57ij30h303hjs1.jpg" alt=""><br>测试<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class UserDaoImplTest &#123;</div><div class="line"></div><div class="line">	ApplicationContext apc;</div><div class="line">	@Before</div><div class="line">	public void setUp() throws Exception &#123;</div><div class="line">		String path = &quot;classpath:ApplicationContext.xml&quot;;</div><div class="line">		apc = new ClassPathXmlApplicationContext(path);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Test</div><div class="line">	public void test() &#123;</div><div class="line">		UserDao ud = (UserDao) apc.getBean(&quot;userdao&quot;);</div><div class="line">		User findUserById = ud.findUserById(29);</div><div class="line">		System.out.println(findUserById);</div><div class="line">	&#125;</div><div class="line">	/**</div><div class="line">	 * mapper代理</div><div class="line">	 */</div><div class="line">	@Test</div><div class="line">	public void test02() &#123;</div><div class="line">		UserMapper mapper = apc.getBean(UserMapper.class);</div><div class="line">		User findUserById = mapper.findUserById(29);</div><div class="line">		System.out.println(findUserById);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h4 id="2、使用Mapper代理形式开发方式"><a href="#2、使用Mapper代理形式开发方式" class="headerlink" title="2、使用Mapper代理形式开发方式"></a>2、使用Mapper代理形式开发方式</h4><blockquote>
+<p>直接配置Mapper代理<br>1.编写UserMapper.xml配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;!DOCTYPE mapper    </div><div class="line">PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;    </div><div class="line">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</div><div class="line"></div><div class="line">&lt;mapper namespace=&quot;cn.hsl.mybatis.dao.UserMapper&quot;&gt;</div><div class="line">	&lt;select id=&quot;findUserById&quot; parameterType=&quot;int&quot; resultType=&quot;cn.hsl.mybatis.po.User&quot;&gt;</div><div class="line">		select * from user where id = #&#123;id&#125;</div><div class="line">	&lt;/select&gt;</div><div class="line">&lt;/mapper&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>2.编写UserMapper.java接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public interface UserMapper &#123;</div><div class="line">	</div><div class="line">	public User findUserById(int id);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>注意两个文件中namespace对应.id和方法名对应</strong><br>在applicationContext.xml添加配置<br>MapperFactoryBean也是属于mybatis-spring整合包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;!-- Mapper代理的方式开发方式一，配置Mapper代理对象 --&gt;</div><div class="line">&lt;bean id=&quot;userMapper&quot; class=&quot;org.mybatis.spring.mapper.MapperFactoryBean&quot;&gt;</div><div class="line">	&lt;!-- 配置Mapper接口 --&gt;</div><div class="line">	&lt;property name=&quot;mapperInterface&quot; value=&quot;cn.hsl.mybatis.mapper.UserMapper&quot; /&gt;</div><div class="line">	&lt;!-- 配置sqlSessionFactory --&gt;</div><div class="line">	&lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot; /&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>使用扫描包配置Mapper代理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- Mapper代理的方式开发方式二，扫描包方式配置代理 --&gt;</div><div class="line">&lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;</div><div class="line">	&lt;!-- 配置Mapper接口 --&gt;</div><div class="line">	&lt;property name=&quot;basePackage&quot; value=&quot;cn.hsl.mybatis.dao&quot;/&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>每个mapper代理对象的id就是类名，首字母小写<br>自动扫描mapper,不用配置.</p>
+<h1 id="Mybatis逆向工程"><a href="#Mybatis逆向工程" class="headerlink" title="Mybatis逆向工程"></a>Mybatis逆向工程</h1><blockquote>
+<p>使用官方网站的Mapper自动生成工具mybatis-generator-core-1.3.2来生成po类和Mapper映射文件<br>在generatorConfig.xml中配置Mapper生成的详细信息，如下图：<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdg5bv29kj307d088mx9.jpg" alt=""><br>只需要修改以下:</p>
+<ul>
+<li>1.修改要生成的数据库表</li>
+<li>2.pojo文件所在包路径</li>
+<li>3.Mapper所在的包路径<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdg94qqvhj30lb04xglu.jpg" alt=""><br>pojo生成位置<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgcqbnnwj30fh01wmx2.jpg" alt=""><br>mapper映射文件位置<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgdfk74uj30fx01va9z.jpg" alt=""><br>mapper接口位置<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgf038ajj30fi02idft.jpg" alt=""><br>指定数据库表<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdggonpy5j30en03jq2z.jpg" alt=""><br>执行工程main主函数<br>生成代码.不过,只能进行单表查询…</li>
+</ul>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Mybatis整合spring&quot;&gt;&lt;a href=&quot;#Mybatis整合spring&quot; class=&quot;headerlink&quot; title=&quot;Mybatis整合spring&quot;&gt;&lt;/a&gt;Mybatis整合spring&lt;/h1&gt;&lt;h2 id=&quot;整合思路&quot;&gt;&lt;a href
+    
+    </summary>
+    
+      <category term="technology" scheme="http://yoursite.com/categories/technology/"/>
+    
+    
+      <category term="mybatis" scheme="http://yoursite.com/tags/mybatis/"/>
+    
+      <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
+    
+  </entry>
   
   <entry>
     <title>MyBatis入门</title>
@@ -714,9 +793,9 @@ setMaxResults(int) 分页，每页显示个数 pageSize
       <category term="technology" scheme="http://yoursite.com/categories/technology/"/>
     
     
-      <category term="struts2" scheme="http://yoursite.com/tags/struts2/"/>
-    
       <category term="ognl" scheme="http://yoursite.com/tags/ognl/"/>
+    
+      <category term="struts2" scheme="http://yoursite.com/tags/struts2/"/>
     
   </entry>
   
