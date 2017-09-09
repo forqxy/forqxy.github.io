@@ -77,13 +77,13 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Spring,TransactionManager," />
+  <meta name="keywords" content="Spring,aop,TransactionManager," />
 
 
 
 
 
-  <link rel="alternate" href="/atom.xml" title="NEVERGET" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="forqxy's blog" type="application/atom+xml" />
 
 
 
@@ -96,13 +96,13 @@
 
 
 <meta name="description" content="事务管理  事务:一组业务操作如ABCD,要么全部成功,要么全部不成功 事务特性:ACID原子性：整体一致性：完成隔离性：并发持久性：结果   spring要管理事务，必须使用事务管理器 PlatformTransactionManager  事务管理器常见的事务管理器DataSourceTransactionManager  ，jdbc开发时事务管理器，采用JdbcTemplateHiberna">
-<meta name="keywords" content="Spring,TransactionManager">
+<meta name="keywords" content="Spring,aop,TransactionManager">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring学习(二)">
 <meta property="og:url" content="http://yoursite.com/2017/07/12/Spring学习2/index.html">
-<meta property="og:site_name" content="NEVERGET">
+<meta property="og:site_name" content="forqxy&#39;s blog">
 <meta property="og:description" content="事务管理  事务:一组业务操作如ABCD,要么全部成功,要么全部不成功 事务特性:ACID原子性：整体一致性：完成隔离性：并发持久性：结果   spring要管理事务，必须使用事务管理器 PlatformTransactionManager  事务管理器常见的事务管理器DataSourceTransactionManager  ，jdbc开发时事务管理器，采用JdbcTemplateHiberna">
-<meta property="og:updated_time" content="2017-07-12T09:35:56.986Z">
+<meta property="og:updated_time" content="2017-09-09T06:10:21.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring学习(二)">
 <meta name="twitter:description" content="事务管理  事务:一组业务操作如ABCD,要么全部成功,要么全部不成功 事务特性:ACID原子性：整体一致性：完成隔离性：并发持久性：结果   spring要管理事务，必须使用事务管理器 PlatformTransactionManager  事务管理器常见的事务管理器DataSourceTransactionManager  ，jdbc开发时事务管理器，采用JdbcTemplateHiberna">
@@ -139,7 +139,7 @@
 
 
 
-  <title>Spring学习(二) | NEVERGET</title>
+  <title>Spring学习(二) | forqxy's blog</title>
   
 
 
@@ -185,7 +185,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">NEVERGET</span>
+        <span class="site-title">forqxy's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -361,7 +361,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NEVERGET">
+      <meta itemprop="name" content="forqxy's blog">
     </span>
 
     
@@ -507,7 +507,7 @@
 <ul>
 <li>1.配置管理器</li>
 <li>2.配置事务详情</li>
-<li>3.配置aop<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 4 事务管理 --&gt;</div><div class="line">	&lt;!-- 4.1 事务管理器 --&gt;</div><div class="line">	&lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</div><div class="line">		&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">	&lt;!-- 4.2 事务详情（事务通知）  ， 在aop筛选基础上，对ABC三个确定使用什么样的事务。例如：AC读写、B只读 等</div><div class="line">		&lt;tx:attributes&gt; 用于配置事务详情（属性属性）</div><div class="line">			&lt;tx:method name=&quot;&quot;/&gt; 详情具体配置</div><div class="line">				propagation 传播行为 ， REQUIRED：必须；REQUIRES_NEW:必须是新的</div><div class="line">				isolation 隔离级别</div><div class="line">	--&gt;</div><div class="line">	&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot;&gt;</div><div class="line">		&lt;tx:attributes&gt;</div><div class="line">			&lt;tx:method name=&quot;transfer&quot; propagation=&quot;REQUIRED&quot; isolation=&quot;DEFAULT&quot;/&gt;</div><div class="line">		&lt;/tx:attributes&gt;</div><div class="line">	&lt;/tx:advice&gt;</div><div class="line">	&lt;!-- 4.3 AOP编程，目标类有ABCD（4个连接点），切入点表达式 确定增强的连接器，从而获得切入点：ABC --&gt;</div><div class="line">	&lt;aop:config&gt;</div><div class="line">		&lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut=&quot;execution(* com.itheima.service..*.*(..))&quot;/&gt;</div><div class="line">	&lt;/aop:config&gt;</div></pre></td></tr></table></figure>
+<li>3.配置aop<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 4 事务管理 --&gt;</div><div class="line">	&lt;!-- 4.1 事务管理器 --&gt;</div><div class="line">	&lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</div><div class="line">		&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">	&lt;!-- 4.2 事务详情（事务通知）  ， 在aop筛选基础上，对ABC三个确定使用什么样的事务。例如：AC读写、B只读 等</div><div class="line">		&lt;tx:attributes&gt; 用于配置事务详情（属性属性）</div><div class="line">			&lt;tx:method name=&quot;&quot;/&gt; 详情具体配置</div><div class="line">				propagation 传播行为 ， REQUIRED：必须；REQUIRES_NEW:必须是新的</div><div class="line">				isolation 隔离级别</div><div class="line">	--&gt;</div><div class="line">	&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot;&gt;</div><div class="line">		&lt;tx:attributes&gt;</div><div class="line">			&lt;tx:method name=&quot;transfer&quot; propagation=&quot;REQUIRED&quot; isolation=&quot;DEFAULT&quot;/&gt;</div><div class="line">		&lt;/tx:attributes&gt;</div><div class="line">	&lt;/tx:advice&gt;</div><div class="line">	&lt;!-- 4.3 AOP编程，目标类有ABCD（4个连接点），切入点表达式 确定增强的连接器，从而获得切入点：ABC --&gt;</div><div class="line">	&lt;aop:config&gt;</div><div class="line">		&lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut=&quot;execution(* com.hsl.service..*.*(..))&quot;/&gt;</div><div class="line">	&lt;/aop:config&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </blockquote>
@@ -603,6 +603,8 @@
         <div class="post-tags">
           
             <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/aop/" rel="tag"># aop</a>
           
             <a href="/tags/TransactionManager/" rel="tag"># TransactionManager</a>
           
@@ -731,7 +733,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
