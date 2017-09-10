@@ -99,7 +99,7 @@
 <meta name="keywords" content="mybatis,mvc,spring mvc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识Spring MVC">
-<meta property="og:url" content="http://yoursite.com/2017/07/09/初识Spring-MVC/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/08/05/初识Spring-MVC/index.html">
 <meta property="og:site_name" content="forqxy&#39;s blog">
 <meta property="og:description" content="初识spring mvcspring MVC是什么?Spring web mvc和Struts2都属于表现层的框架,它是Spring框架的一部分,我们可以从Spring的整体结构中看得出来,如下图： spring MVC执行流程回顾下之前学的struts2的执行流程   strutsPrepareAndExcuteFilter拦截请求（控制层），拦截请求，转发请求 寻找Action执行 Actio">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdlet3o5hj30do0b040h.jpg">
@@ -116,7 +116,9 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdon5krhfj30e806kglu.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdpkch1lpj30as02j0sn.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdqil1396j306908oaa5.jpg">
-<meta property="og:updated_time" content="2017-09-09T15:51:01.090Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjehgq0jgfj306x02bq2q.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjehlsb94oj30ph0a63z1.jpg">
+<meta property="og:updated_time" content="2017-09-10T08:25:53.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识Spring MVC">
 <meta name="twitter:description" content="初识spring mvcspring MVC是什么?Spring web mvc和Struts2都属于表现层的框架,它是Spring框架的一部分,我们可以从Spring的整体结构中看得出来,如下图： spring MVC执行流程回顾下之前学的struts2的执行流程   strutsPrepareAndExcuteFilter拦截请求（控制层），拦截请求，转发请求 寻找Action执行 Actio">
@@ -148,7 +150,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/09/初识Spring-MVC/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/05/初识Spring-MVC/"/>
 
 
 
@@ -367,7 +369,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/初识Spring-MVC/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/05/初识Spring-MVC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hou Shuailong">
@@ -396,8 +398,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T20:28:27+08:00">
-                2017-07-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T20:28:27+08:00">
+                2017-08-05
               </time>
             
 
@@ -437,7 +439,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/07/09/初识Spring-MVC/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/08/05/初识Spring-MVC/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -446,7 +448,7 @@
 
           
           
-             <span id="/2017/07/09/初识Spring-MVC/" class="leancloud_visitors" data-flag-title="初识Spring MVC">
+             <span id="/2017/08/05/初识Spring-MVC/" class="leancloud_visitors" data-flag-title="初识Spring MVC">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -472,7 +474,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,765 字
+                  2,202 字
                 </span>
               
 
@@ -488,7 +490,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  10 分钟
                 </span>
               
             </div>
@@ -573,6 +575,25 @@
 </blockquote>
 <h4 id="Web-xml文件"><a href="#Web-xml文件" class="headerlink" title="Web.xml文件"></a>Web.xml文件</h4><p>1、配置spring<br>2.配置前端控制器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;!-- spring监听器配置 --&gt;</div><div class="line">  &lt;context-param&gt;</div><div class="line">  	&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</div><div class="line">  	&lt;param-value&gt;classpath:ApplicationContext.xml&lt;/param-value&gt;</div><div class="line">  &lt;/context-param&gt;</div><div class="line">  &lt;listener&gt;</div><div class="line">  	&lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;</div><div class="line">  &lt;/listener&gt;</div><div class="line">  </div><div class="line">   &lt;!-- 配置springmvc前端控制器 --&gt;</div><div class="line">  &lt;servlet&gt;</div><div class="line">  	&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;</div><div class="line">  	&lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</div><div class="line">	  	&lt;init-param&gt;</div><div class="line">	  		&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</div><div class="line">	  		&lt;param-value&gt;classpath:springmvc.xml&lt;/param-value&gt;</div><div class="line">	  	&lt;/init-param&gt;</div><div class="line">  &lt;/servlet&gt;</div><div class="line">  </div><div class="line">  &lt;servlet-mapping&gt;</div><div class="line">  	&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;</div><div class="line">  	&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;</div><div class="line">  &lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure></p>
 <p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdqil1396j306908oaa5.jpg" alt=""></p>
+<h1 id="springmvc对json的支持"><a href="#springmvc对json的支持" class="headerlink" title="springmvc对json的支持"></a>springmvc对json的支持</h1><h2 id="responseBody和-RequestBody"><a href="#responseBody和-RequestBody" class="headerlink" title="@responseBody和@RequestBody"></a><code>@responseBody</code>和<code>@RequestBody</code></h2><p><code>@responseBody</code>把后台<code>pojo</code>转换<code>json</code>对象，返回到页面。<br><code>@RequestBody</code>接受前台<code>json</code>数据，把<code>json</code>数据自动封装<code>javaBean</code>。</p>
+<h2 id="导入springmvc对json的支持jar包"><a href="#导入springmvc对json的支持jar包" class="headerlink" title="导入springmvc对json的支持jar包"></a>导入springmvc对json的支持jar包</h2><p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjehgq0jgfj306x02bq2q.jpg" alt=""></p>
+<h3 id="请求json-返回json"><a href="#请求json-返回json" class="headerlink" title="请求json,返回json"></a>请求json,返回json</h3><p>controller编写如下:使用注解即可</p>
+<blockquote>
+<p>后台代码:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//请求json.返回json</div><div class="line">	@RequestMapping(value=&quot;requestJson.do&quot;)</div><div class="line">	public @ResponseBody Item requestJson(@RequestBody Item item)&#123;</div><div class="line">		System.out.println(item);</div><div class="line">		return item;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h4 id="页面传递json格式的数据"><a href="#页面传递json格式的数据" class="headerlink" title="页面传递json格式的数据"></a>页面传递json格式的数据</h4><blockquote>
+<p>Ajax传递 json格式数据</p>
+</blockquote>
+<p><code>MyJson.jsp</code>如下<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjehlsb94oj30ph0a63z1.jpg" alt=""></p>
+<h3 id="需求：pojo，后台返回json"><a href="#需求：pojo，后台返回json" class="headerlink" title="需求：pojo，后台返回json"></a>需求：pojo，后台返回json</h3><p>前台请求数据构造：key=value&amp;key=value.<br><code>data</code>改为键值对格式字符<br>如:<code>name</code>=<code>tom</code>&amp;age=21</p>
+<p>我么实现默认使用了注解驱动.如果不用,需手动配置在<code>springmvc.xml</code>中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;&gt;</div><div class="line">   	&lt;property name=&quot;messageConverters&quot;&gt;</div><div class="line">   		&lt;bean class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;/&gt;</div><div class="line">   	&lt;/property&gt;</div><div class="line">   &lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="springmvc对RESTful的支持"><a href="#springmvc对RESTful的支持" class="headerlink" title="springmvc对RESTful的支持"></a>springmvc对RESTful的支持</h1><h2 id="什么是restful？"><a href="#什么是restful？" class="headerlink" title="什么是restful？"></a>什么是restful？</h2><blockquote>
+<p>Restful就是一个资源定位及资源操作的风格。不是标准也不是协议，<br> 只是一种风格。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。<br>如传统方式操作资源<br><a href="http://127.0.0.1/item/queryItem.action?id=1" target="_blank" rel="external">http://127.0.0.1/item/queryItem.action?id=1</a>    查询,GET<br>使用RESTful操作资源<br><a href="http://127.0.0.1/item/1" target="_blank" rel="external">http://127.0.0.1/item/1</a>        查询,GET<br>我们需要从url上获取商品id，步骤如下：<br>1.使用注解@RequestMapping(“item/{id}”)声明请求的url<br>{xxx}叫做占位符，请求的URL可以是“item /1”或“item/2”</p>
+</blockquote>
+<p>使用(@PathVariable() Integer id)获取url上的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;item/&#123;id&#125;&quot;)</div><div class="line">@ResponseBody</div><div class="line">public Item queryItemById(@PathVariable() Integer id) &#123;</div><div class="line">	Item item = this.itemService.queryItemById(id);</div><div class="line">	return item;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果@RequestMapping中表示为”item/{id}”，id和形参名称一致，<br>@PathVariable不用指定名称。如果不一致，<br>例如”item/{ItemId}”则需要指定名称@PathVariable(“itemId”)。</p>
+<p>springmvc拦截器……文件上传下载后续……..</p>
 
 
 	
@@ -625,7 +646,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2017/07/09/初识Spring-MVC/" title="初识Spring MVC">http://yoursite.com/2017/07/09/初识Spring-MVC/</a>
+      <a href="http://yoursite.com/2017/08/05/初识Spring-MVC/" title="初识Spring MVC">http://yoursite.com/2017/08/05/初识Spring-MVC/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -658,8 +679,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/07/Spring学习-一/" rel="next" title="Spring学习(一)">
-                <i class="fa fa-chevron-left"></i> Spring学习(一)
+              <a href="/2017/08/05/mybatis与spring整合/" rel="next" title="mybatis与spring整合">
+                <i class="fa fa-chevron-left"></i> mybatis与spring整合
               </a>
             
           </div>
@@ -667,10 +688,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/12/Spring学习2/" rel="prev" title="Spring学习(二)">
-                Spring学习(二) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -852,7 +869,7 @@ src="//music.163.com/outchain/player?type=2&id=33920425&auto=0&height=66"></ifra
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初识spring-mvc"><span class="nav-number">1.</span> <span class="nav-text">初识spring mvc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-MVC是什么"><span class="nav-number">1.1.</span> <span class="nav-text">spring MVC是什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-MVC执行流程"><span class="nav-number">1.2.</span> <span class="nav-text">spring MVC执行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#springmvc执行流程"><span class="nav-number">1.2.1.</span> <span class="nav-text">springmvc执行流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入门spring-mvc荔枝"><span class="nav-number">1.3.</span> <span class="nav-text">入门spring mvc荔枝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-新建一个web项目"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.新建一个web项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-导入所需jar包"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.导入所需jar包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-加入核心配置文件"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.加入核心配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建springmvc-xml配置文件"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">创建springmvc.xml配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在web-xml中配置springmvc的前端控制器DispatcherServlet"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">在web.xml中配置springmvc的前端控制器DispatcherServlet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建自定义controller-实现controller接口"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">创建自定义controller,实现controller接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个index-jsp-用于接收数据显示页面"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">创建一个index.jsp,用于接收数据显示页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据代码分析springmvc执行流程-参照黑马的一张图"><span class="nav-number">1.3.3.5.</span> <span class="nav-text">根据代码分析springmvc执行流程.参照黑马的一张图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件扫描器"><span class="nav-number">1.3.3.6.</span> <span class="nav-text">组件扫描器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中文乱码问题"><span class="nav-number">1.3.3.7.</span> <span class="nav-text">中文乱码问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解式开发"><span class="nav-number">1.4.</span> <span class="nav-text">注解式开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装参数"><span class="nav-number">1.5.</span> <span class="nav-text">封装参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有了struts2，为什么还需要sprigmvc？"><span class="nav-number">1.6.</span> <span class="nav-text">有了struts2，为什么还需要sprigmvc？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springmvc页面回显"><span class="nav-number">1.7.</span> <span class="nav-text">springmvc页面回显</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转发和重定向"><span class="nav-number">1.8.</span> <span class="nav-text">转发和重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#转发"><span class="nav-number">1.8.1.</span> <span class="nav-text">转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向"><span class="nav-number">1.8.2.</span> <span class="nav-text">重定向</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-MVC-整合-MyBatis"><span class="nav-number">2.</span> <span class="nav-text">spring MVC 整合 MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建web工程"><span class="nav-number">2.1.</span> <span class="nav-text">创建web工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导包"><span class="nav-number">2.1.1.</span> <span class="nav-text">导包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整合思路"><span class="nav-number">2.1.2.</span> <span class="nav-text">整合思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dao层"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Dao层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Service层"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Service层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Controller层"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">Controller层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-xml文件"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">Web.xml文件</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初识spring-mvc"><span class="nav-number">1.</span> <span class="nav-text">初识spring mvc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-MVC是什么"><span class="nav-number">1.1.</span> <span class="nav-text">spring MVC是什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-MVC执行流程"><span class="nav-number">1.2.</span> <span class="nav-text">spring MVC执行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#springmvc执行流程"><span class="nav-number">1.2.1.</span> <span class="nav-text">springmvc执行流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入门spring-mvc荔枝"><span class="nav-number">1.3.</span> <span class="nav-text">入门spring mvc荔枝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-新建一个web项目"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.新建一个web项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-导入所需jar包"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.导入所需jar包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-加入核心配置文件"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.加入核心配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建springmvc-xml配置文件"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">创建springmvc.xml配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在web-xml中配置springmvc的前端控制器DispatcherServlet"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">在web.xml中配置springmvc的前端控制器DispatcherServlet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建自定义controller-实现controller接口"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">创建自定义controller,实现controller接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个index-jsp-用于接收数据显示页面"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">创建一个index.jsp,用于接收数据显示页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据代码分析springmvc执行流程-参照黑马的一张图"><span class="nav-number">1.3.3.5.</span> <span class="nav-text">根据代码分析springmvc执行流程.参照黑马的一张图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件扫描器"><span class="nav-number">1.3.3.6.</span> <span class="nav-text">组件扫描器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中文乱码问题"><span class="nav-number">1.3.3.7.</span> <span class="nav-text">中文乱码问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解式开发"><span class="nav-number">1.4.</span> <span class="nav-text">注解式开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装参数"><span class="nav-number">1.5.</span> <span class="nav-text">封装参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有了struts2，为什么还需要sprigmvc？"><span class="nav-number">1.6.</span> <span class="nav-text">有了struts2，为什么还需要sprigmvc？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springmvc页面回显"><span class="nav-number">1.7.</span> <span class="nav-text">springmvc页面回显</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转发和重定向"><span class="nav-number">1.8.</span> <span class="nav-text">转发和重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#转发"><span class="nav-number">1.8.1.</span> <span class="nav-text">转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向"><span class="nav-number">1.8.2.</span> <span class="nav-text">重定向</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-MVC-整合-MyBatis"><span class="nav-number">2.</span> <span class="nav-text">spring MVC 整合 MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建web工程"><span class="nav-number">2.1.</span> <span class="nav-text">创建web工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导包"><span class="nav-number">2.1.1.</span> <span class="nav-text">导包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整合思路"><span class="nav-number">2.1.2.</span> <span class="nav-text">整合思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dao层"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Dao层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Service层"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Service层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Controller层"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">Controller层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-xml文件"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">Web.xml文件</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#springmvc对json的支持"><span class="nav-number">3.</span> <span class="nav-text">springmvc对json的支持</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#responseBody和-RequestBody"><span class="nav-number">3.1.</span> <span class="nav-text">@responseBody和@RequestBody</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入springmvc对json的支持jar包"><span class="nav-number">3.2.</span> <span class="nav-text">导入springmvc对json的支持jar包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求json-返回json"><span class="nav-number">3.2.1.</span> <span class="nav-text">请求json,返回json</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#页面传递json格式的数据"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">页面传递json格式的数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求：pojo，后台返回json"><span class="nav-number">3.2.2.</span> <span class="nav-text">需求：pojo，后台返回json</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#springmvc对RESTful的支持"><span class="nav-number">4.</span> <span class="nav-text">springmvc对RESTful的支持</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是restful？"><span class="nav-number">4.1.</span> <span class="nav-text">什么是restful？</span></a></li></ol></li></ol></div>
             
 
           </div>
