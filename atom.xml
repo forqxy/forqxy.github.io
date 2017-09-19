@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-10T08:25:53.430Z</updated>
+  <updated>2017-09-19T01:05:15.058Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,68 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>算法之排序</title>
+    <link href="http://yoursite.com/2017/09/15/%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8E%92%E5%BA%8F/"/>
+    <id>http://yoursite.com/2017/09/15/算法之排序/</id>
+    <published>2017-09-15T08:40:02.000Z</published>
+    <updated>2017-09-19T01:05:15.058Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><blockquote>
+<p>常见的八种最为经典常用的内部排序算法，包括插入排序(直接插入排序，希尔排序)、<br> 选择排序(直接选择排序，堆排序)、交换排序(冒泡排序，快速排序)、<br> 归并排序、分配排序(基数排序)。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDgy1fjnmw4zircj30fz0ckq3y.jpg" alt=""></p>
+</blockquote>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><blockquote>
+<p>插入排序的基本思想：每步将一个待排序元素，按其排序码大小插入到前面已经排好序的一组元素中，直到元素全部插入为止。</p>
+<h3 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h3><p>思想:当插入第i(i&gt;=1)个元素时，前面的V[0],…,V[i-1]等i-1个 元素已经有序。这时，将第i个元素与前i-1个元素V[i-1]，…，V[0]依次比较，<br> 找到插入位置即将V[i]插入，同时原来位置上的元素向后顺移。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">Title: 插入排序中的直接插入排序，依赖于初始序列    </div><div class="line"> * Description: 在有序序列中不断插入新的记录以达到扩大有序区到整个数组的目的</div><div class="line"> *              时间复杂度：最好情形O(n)，平均情形O(n^2)，最差情形O(n^2)</div><div class="line"> *              空间复杂度：O(1)</div><div class="line"> *              稳    定   性：稳定</div><div class="line"> *              内部排序(在排序过程中数据元素完全在内存)</div><div class="line">//直接插入排序</div><div class="line">public class Demo01 &#123;</div><div class="line">	 public static int [] quickSort(int a[])&#123;</div><div class="line">		 for(int i =  0;i&lt;a.length;i++)&#123;</div><div class="line">			 for(int j = i;j&gt;0;j--)&#123;</div><div class="line">				 if(a[j]&lt;a[j-1])&#123;</div><div class="line">					 int temp = a[j];</div><div class="line">					 a[j] = a[j-1];</div><div class="line">					 a[j-1] = temp;</div><div class="line">				 &#125;</div><div class="line">			 &#125;</div><div class="line">		 &#125;</div><div class="line">		 return a;</div><div class="line">	 &#125;</div><div class="line">	 </div><div class="line">	 @Test</div><div class="line">	 public void fun01()&#123;</div><div class="line">		 int []a =&#123;49,38,65,97,76,13,27,49,78,34,12,64,5,4,62,99,98,54,56,17,18,23,34&#125;;</div><div class="line">		 int[] js = quickSort(a);</div><div class="line">		 for (int i = 0; i &lt; js.length; i++) &#123;</div><div class="line">			System.out.println(js[i]);</div><div class="line">		&#125;</div><div class="line">	 &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="希尔排序-最小增量排序"><a href="#希尔排序-最小增量排序" class="headerlink" title="希尔排序(最小增量排序)"></a>希尔排序(最小增量排序)</h3><blockquote>
+<p>基本思路:算法先将要排序的一组数按某个增量d（n/2,n为要排序数的个数）分成若干组，<br> 每组中记录的下标相差d.对每组中全部元素进行直接插入排序，然后再用一个较小的增量（d/2）对它进行分组，<br> 在每组中再进行直接插入排序。当增量减到1时，进行直接插入排序后，排序完成。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">//希尔排序</div><div class="line">/**        </div><div class="line"> * Title: 插入排序中的希尔排序，依赖于初始序列    </div><div class="line"> * Description: 分别对间隔为gap的gap个子序列进行直接插入排序，不断缩小gap,直至为 1 </div><div class="line"> * </div><div class="line"> *              刚开始时，gap较大，每个子序列元素较少，排序速度较快；</div><div class="line"> *              待到排序后期，gap变小，每个子序列元素较多，但大部分元素基本有序，所以排序速度仍较快。                </div><div class="line"> * </div><div class="line"> *              时间复杂度：O(n) ~ O(n^2)</div><div class="line"> *              空间复杂度：O(1)</div><div class="line"> *              稳    定   性：不稳定</div><div class="line"> *              内部排序(在排序过程中数据元素完全在内存)</div><div class="line"> * @author lenovo</div><div class="line"> *</div><div class="line"> */</div><div class="line">public class Demo02 &#123;</div><div class="line">	public int[] shellSort(int a[])&#123;</div><div class="line">		int d = a.length;</div><div class="line">		do &#123;</div><div class="line">			d = d/3+1;//不断缩小d的大小直至为1</div><div class="line">			for(int i = 0+d;i&lt;a.length;i++)&#123;  //对每个子序列进行直接插入排序</div><div class="line">				if(a[i]&lt;a[i-d])&#123;</div><div class="line">					int temp = a[i];          //待插入元素</div><div class="line">					int j = i-d;</div><div class="line">					do &#123;</div><div class="line">						a[j+d] = a[j];        //后移元素</div><div class="line">						j = j-d;              //在比较前一个元素</div><div class="line">					&#125; while (j&gt;=0&amp;&amp;a[j]&gt;temp);//向前比较的终止条件</div><div class="line">					a[j+d] = temp;            //将待插入值插入合适的位置</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125; while (d&gt;1);</div><div class="line">		return a;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="折半插入排序"><a href="#折半插入排序" class="headerlink" title="折半插入排序"></a>折半插入排序</h3><blockquote>
+<p>基本思路:折半插入排序的思想：当插入第i(i&gt;=1)个元素时，前面的V[0],…,V[i-1]等i-1个元素已经有序。<br> 这时，折半搜索第i个元素在前i-1个元素V[i-1]，…，V[0]中的插入位置，然后直接将V[i]插入，<br> 同时原来位置上的元素向后顺移。与直接插入排序不同的是，折半插入排序比直接插入排序明显减少了关键字之间的比较次数，<br> 但是移动次数是没有改变。所以，折半插入排序和插入排序的时间复杂度相同都是O（N^2），<br> 但其减少了比较次数，所以该算法仍然比直接插入排序好。折半插入排序是一种稳定的排序算法.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class Demo03 &#123;</div><div class="line">	public int [] binaryInsertSort(int a[])&#123;</div><div class="line">		for(int i = 1;i&lt;a.length;i++)&#123;</div><div class="line">			int left = 0;</div><div class="line">			int right = i-1;</div><div class="line">			int mid;</div><div class="line">			int temp = a[i];</div><div class="line">			if(temp&lt;a[right])&#123;             //当前值小于有序序列的最大值时,开始查找插入位置.</div><div class="line">				while(left&lt;=right)&#123;</div><div class="line">					mid = (left+right)/2;</div><div class="line">					if(a[mid]&lt;temp)&#123;</div><div class="line">						left = mid+1;</div><div class="line">					&#125;else if(a[mid]&gt;temp)&#123;</div><div class="line">						right = mid-1;</div><div class="line">					&#125;else&#123;</div><div class="line">						left = left+1;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				//left及其后面的数据顺序向后移动，并在left位置插入</div><div class="line">				for(int j = i;j&gt;left;j--)&#123;</div><div class="line">					a[j] = a[j-1];</div><div class="line">				&#125;</div><div class="line">				a[left] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return a;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
+<p>选择排序的基本思想：每一趟 (例如第i趟，i = 0,1,…)<br> 在后面第n-i个待排序元素中选出最小元素作为有序序列的第i个元素，直到第n-1趟结束后，所有元素有序。</p>
+</blockquote>
+<h3 id="直接选择排序"><a href="#直接选择排序" class="headerlink" title="直接选择排序"></a>直接选择排序</h3><blockquote>
+<p>基本思路:直接选择排序的思想：第一次从R[0]~R[n-1]中选取最小值，与R[0]交换，<br> 第二次从R1~R[n-1]中选取最小值，与R1交换，….，第i次从R[i-1]~R[n-1]中选取最小值，<br> 与R[i-1]交换，…..，第n-1次从R[n-2]~R[n-1]中选取最小值，与R[n-2]交换，总共通过n-1次，<br> 得到一个按排序码从小到大排列的有序序列。直接选择排序是一种不稳定的排序算法，</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class Demo04 &#123;</div><div class="line">	public int[] selectSort(int a[])&#123;</div><div class="line">		for(int i = 0;i&lt;a.length;i++)&#123;</div><div class="line">			int min = a[i];           //最小数</div><div class="line">			int min_index = i;        //最小数索引</div><div class="line">			for(int j = i+1;j&lt;a.length;j++)&#123;</div><div class="line">				if(a[min_index]&gt;a[j])&#123;</div><div class="line">					min_index = j;</div><div class="line">					min = a[j];</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			a[min_index] = a[i];</div><div class="line">			a[i] = min;</div><div class="line">		&#125;</div><div class="line">		return a;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>……</p>
+<h2 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h2><blockquote>
+<p>交换排序的基本思想：根据序列中两个元素的比较结果来对换这两个记录在序列中的位置，<br> 也就是说，将键值较大的记录向序列的尾部移动，键值较小的记录向序列的前部移动。</p>
+</blockquote>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><blockquote>
+<p>冒泡排序的思想：根据序列中两个元素的比较结果来对换这两个记录在序列中的位置，<br> 将键值较大的记录向序列的尾部移动，键值较小的记录向序列的前部移动。<br> 因此，每一趟都将较小的元素移到前面，较大的元素自然就逐渐沉到最后面了，<br> 也就是说，最大的元素最后才能确定，这就是冒泡。冒泡排序是一种稳定的排序算法，<br> 其实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//冒泡排序</div><div class="line">public class Test03 &#123;</div><div class="line">	@Test</div><div class="line">	public void fun03()&#123;</div><div class="line">		int []a =&#123;49,38,65,97,76,13,27,49,78,34,12,64,5,4,62,99,98,54,56,17,18,23,34&#125;;</div><div class="line">		for(int i = 0;i&lt;a.length;i++)&#123;</div><div class="line">			for(int j = 0;j&lt;a.length-1-i;j++)&#123;</div><div class="line">				if(a[j]&gt;a[j+1])&#123;</div><div class="line">					int temp = a[j];</div><div class="line">					a[j] = a[j+1];</div><div class="line">					a[j+1] = temp;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		for (int i = 0; i &lt; a.length; i++) &#123;</div><div class="line">			System.out.println(a[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><blockquote>
+<p>快速排序的思想：通过一趟排序将要排序的数据分割成独立的两部分，<br> 其中一部分的所有数据都比另外一部分的所有数据都要小(划分过程)，<br> 然后再按此方法对这两部分数据分别进行快速排序(快速排序过程)，<br> 整个排序过程可以递归进行，以此达到整个数据变成有序序列。<br> 快速排序是一种不稳定的排序算法。<br><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif" alt=""></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">//快速排序</div><div class="line">public class Test04 &#123;</div><div class="line">	public void quickSort(int [] arr)&#123;</div><div class="line">		 qsort(arr, 0, arr.length-1);</div><div class="line">		 for (int i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">			System.out.println(arr[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	private static void qsort(int[] arr,int left,int right)&#123;</div><div class="line">		if(left&lt;right)&#123;</div><div class="line">			int pivot = partition(arr,left,right);//将数组分为两部分</div><div class="line">			qsort(arr,left,pivot-1);//递归排序左边的</div><div class="line">			qsort(arr,pivot+1,right);//递归排序右边的</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private static int partition(int[] arr,int left,int right)&#123;</div><div class="line">		int pivot = arr[left];//枢纽记录</div><div class="line">		while(left&lt;right)&#123;</div><div class="line">			while(left&lt;right&amp;&amp;arr[right]&gt;=pivot)</div><div class="line">				--right;</div><div class="line">			arr[left] = arr[right];//交换比枢纽小的到左端</div><div class="line">			while(left&lt;right&amp;&amp;arr[left]&lt;=pivot)</div><div class="line">				++left;</div><div class="line">			arr[right] = arr[left];//交换比枢纽大的到右端</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">		arr[left] = pivot;//扫描完成,枢纽到位</div><div class="line">		return left;//返回的是枢纽的位置</div><div class="line">		</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>未完待续……</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;排序算法&quot;&gt;&lt;a href=&quot;#排序算法&quot; class=&quot;headerlink&quot; title=&quot;排序算法&quot;&gt;&lt;/a&gt;排序算法&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;常见的八种最为经典常用的内部排序算法，包括插入排序(直接插入排序，希尔排序)、&lt;br&gt; 选择排序(
+    
+    </summary>
+    
+      <category term="technology" scheme="http://yoursite.com/categories/technology/"/>
+    
+    
+      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>初识Spring MVC</title>
     <link href="http://yoursite.com/2017/08/05/%E5%88%9D%E8%AF%86Spring-MVC/"/>
     <id>http://yoursite.com/2017/08/05/初识Spring-MVC/</id>
     <published>2017-08-05T12:28:27.000Z</published>
-    <updated>2017-09-10T08:25:53.430Z</updated>
+    <updated>2017-09-15T06:04:13.203Z</updated>
     
     <content type="html"><![CDATA[<h1 id="初识spring-mvc"><a href="#初识spring-mvc" class="headerlink" title="初识spring mvc"></a>初识spring mvc</h1><h2 id="spring-MVC是什么"><a href="#spring-MVC是什么" class="headerlink" title="spring MVC是什么?"></a>spring MVC是什么?</h2><p>Spring web mvc和Struts2都属于表现层的框架,它是Spring框架的一部分,<br>我们可以从Spring的整体结构中看得出来,如下图：<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdlet3o5hj30do0b040h.jpg" alt=""></p>
 <h2 id="spring-MVC执行流程"><a href="#spring-MVC执行流程" class="headerlink" title="spring MVC执行流程"></a>spring MVC执行流程</h2><p>回顾下之前学的struts2的执行流程</p>
@@ -119,11 +176,11 @@
       <category term="technology" scheme="http://yoursite.com/categories/technology/"/>
     
     
-      <category term="mybatis" scheme="http://yoursite.com/tags/mybatis/"/>
-    
       <category term="mvc" scheme="http://yoursite.com/tags/mvc/"/>
     
       <category term="spring mvc" scheme="http://yoursite.com/tags/spring-mvc/"/>
+    
+      <category term="mybatis" scheme="http://yoursite.com/tags/mybatis/"/>
     
   </entry>
   

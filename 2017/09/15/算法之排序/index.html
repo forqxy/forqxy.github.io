@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="MyBatis," />
+  <meta name="keywords" content="排序算法," />
 
 
 
@@ -95,24 +95,20 @@
 
 
 
-<meta name="description" content="MyBatis简介什么是MyBatisMyBatis参考资料官网  mybatis就是一个封装来jdbc的持久层框架，它和hibernate都属于ORM框架，但是具体的说，  hibernate是一个完全的orm框架，而mybatis是一个不完全的orm框架。  Mybatis让程序员只关注sql本身，而不需要去关注如连接的创建、statement的创建等操作。  Mybatis会将输入参数、输出">
-<meta name="keywords" content="MyBatis">
+<meta name="description" content="排序算法 常见的八种最为经典常用的内部排序算法，包括插入排序(直接插入排序，希尔排序)、 选择排序(直接选择排序，堆排序)、交换排序(冒泡排序，快速排序)、 归并排序、分配排序(基数排序)。  插入排序 插入排序的基本思想：每步将一个待排序元素，按其排序码大小插入到前面已经排好序的一组元素中，直到元素全部插入为止。 直接插入排序思想:当插入第i(i&amp;gt;=1)个元素时，前面的V[0],…,V[i">
+<meta name="keywords" content="排序算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis入门">
-<meta property="og:url" content="http://yoursite.com/2017/08/04/MyBatis入门/index.html">
+<meta property="og:title" content="算法之排序">
+<meta property="og:url" content="http://yoursite.com/2017/09/15/算法之排序/index.html">
 <meta property="og:site_name" content="forqxy&#39;s blog">
-<meta property="og:description" content="MyBatis简介什么是MyBatisMyBatis参考资料官网  mybatis就是一个封装来jdbc的持久层框架，它和hibernate都属于ORM框架，但是具体的说，  hibernate是一个完全的orm框架，而mybatis是一个不完全的orm框架。  Mybatis让程序员只关注sql本身，而不需要去关注如连接的创建、statement的创建等操作。  Mybatis会将输入参数、输出">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjd9dp9sooj30i50bomz8.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdbq9n6nvj30mf0660sy.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdc7h70duj30le054mxk.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdc99pq6xj30hu044q2y.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdd4f28n7j30b2047dft.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjddbjlslaj30ap05a74c.jpg">
-<meta property="og:updated_time" content="2017-09-09T08:10:33.092Z">
+<meta property="og:description" content="排序算法 常见的八种最为经典常用的内部排序算法，包括插入排序(直接插入排序，希尔排序)、 选择排序(直接选择排序，堆排序)、交换排序(冒泡排序，快速排序)、 归并排序、分配排序(基数排序)。  插入排序 插入排序的基本思想：每步将一个待排序元素，按其排序码大小插入到前面已经排好序的一组元素中，直到元素全部插入为止。 直接插入排序思想:当插入第i(i&amp;gt;=1)个元素时，前面的V[0],…,V[i">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDgy1fjnmw4zircj30fz0ckq3y.jpg">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif">
+<meta property="og:updated_time" content="2017-09-19T01:05:15.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis入门">
-<meta name="twitter:description" content="MyBatis简介什么是MyBatisMyBatis参考资料官网  mybatis就是一个封装来jdbc的持久层框架，它和hibernate都属于ORM框架，但是具体的说，  hibernate是一个完全的orm框架，而mybatis是一个不完全的orm框架。  Mybatis让程序员只关注sql本身，而不需要去关注如连接的创建、statement的创建等操作。  Mybatis会将输入参数、输出">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjd9dp9sooj30i50bomz8.jpg">
+<meta name="twitter:title" content="算法之排序">
+<meta name="twitter:description" content="排序算法 常见的八种最为经典常用的内部排序算法，包括插入排序(直接插入排序，希尔排序)、 选择排序(直接选择排序，堆排序)、交换排序(冒泡排序，快速排序)、 归并排序、分配排序(基数排序)。  插入排序 插入排序的基本思想：每步将一个待排序元素，按其排序码大小插入到前面已经排好序的一组元素中，直到元素全部插入为止。 直接插入排序思想:当插入第i(i&amp;gt;=1)个元素时，前面的V[0],…,V[i">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/005WV0MDgy1fjnmw4zircj30fz0ckq3y.jpg">
 
 
 
@@ -140,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/04/MyBatis入门/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/15/算法之排序/"/>
 
 
 
 
 
-  <title>MyBatis入门 | forqxy's blog</title>
+  <title>算法之排序 | forqxy's blog</title>
   
 
 
@@ -359,7 +355,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/MyBatis入门/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/15/算法之排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hou Shuailong">
@@ -376,7 +372,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MyBatis入门</h1>
+          <h1 class="post-title" itemprop="name headline">算法之排序</h1>
         
 
         <div class="post-meta">
@@ -388,8 +384,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T10:34:48+08:00">
-                2017-08-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-15T16:40:02+08:00">
+                2017-09-15
               </time>
             
 
@@ -429,7 +425,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/08/04/MyBatis入门/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/09/15/算法之排序/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -438,7 +434,7 @@
 
           
           
-             <span id="/2017/08/04/MyBatis入门/" class="leancloud_visitors" data-flag-title="MyBatis入门">
+             <span id="/2017/09/15/算法之排序/" class="leancloud_visitors" data-flag-title="算法之排序">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -464,7 +460,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,745 字
+                  2,048 字
                 </span>
               
 
@@ -480,7 +476,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  8 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -498,54 +494,40 @@
       
 
       
-        <h1 id="MyBatis简介"><a href="#MyBatis简介" class="headerlink" title="MyBatis简介"></a>MyBatis简介</h1><h2 id="什么是MyBatis"><a href="#什么是MyBatis" class="headerlink" title="什么是MyBatis"></a>什么是MyBatis</h2><p><a href="https://mybatis.github.io/mybatis-3/zh/index.html" target="_blank" rel="external">MyBatis参考资料官网</a></p>
-<blockquote>
-<p><code>mybatis</code>就是一个封装来<code>jdbc</code>的持久层框架，它和<code>hibernate</code>都属于ORM框架，但是具体的说，<br>  <code>hibernate</code>是一个完全的<code>orm</code>框架，而<code>mybatis</code>是一个不完全的<code>orm</code>框架。<br>  <code>Mybatis</code>让程序员只关注<code>sql</code>本身，而不需要去关注如连接的创建、<code>statement</code>的创建等操作。<br>  <code>Mybatis</code>会将输入参数、输出结果进行映射。<br><code>MyBatis</code> 是支持定制化 <code>SQL</code>、存储过程以及高级映射的优秀的持久层框架。<br><code>MyBatis</code> 避免了几乎所有的 <code>JDBC</code> 代码和手动设置参数以及获取结果集。<br><code>MyBatis</code> 可以对配置和原生Map使用简单的 <code>XML</code> 或注解，将接口<br>和 <code>Java</code> 的 <code>POJOs(Plain Old Java Objects,普通的 Java对象)</code>映射成数据库中的记录。</p>
+        <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><blockquote>
+<p>常见的八种最为经典常用的内部排序算法，包括插入排序(直接插入排序，希尔排序)、<br> 选择排序(直接选择排序，堆排序)、交换排序(冒泡排序，快速排序)、<br> 归并排序、分配排序(基数排序)。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDgy1fjnmw4zircj30fz0ckq3y.jpg" alt=""></p>
 </blockquote>
-<h2 id="MyBatis与Hibernate区别"><a href="#MyBatis与Hibernate区别" class="headerlink" title="MyBatis与Hibernate区别"></a>MyBatis与Hibernate区别</h2><h3 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis:"></a>MyBatis:</h3><blockquote>
-<p>1.通过直接编写SQL语句，可以直接对SQL进行性能的优化<br>2.学习门槛低，学习成本低。只要有SQL基础，就可以学习mybatis，而且很容易上手；<br>3.由于直接编写SQL语句，所以灵活多变，代码维护性更好。<br>4.不能支持数据库无关性，即数据库发生变更，要写多套代码进行支持，移植性不好。</p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><blockquote>
+<p>插入排序的基本思想：每步将一个待排序元素，按其排序码大小插入到前面已经排好序的一组元素中，直到元素全部插入为止。</p>
+<h3 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h3><p>思想:当插入第i(i&gt;=1)个元素时，前面的V[0],…,V[i-1]等i-1个 元素已经有序。这时，将第i个元素与前i-1个元素V[i-1]，…，V[0]依次比较，<br> 找到插入位置即将V[i]插入，同时原来位置上的元素向后顺移。</p>
 </blockquote>
-<h3 id="Hibernate"><a href="#Hibernate" class="headerlink" title="Hibernate:"></a>Hibernate:</h3><blockquote>
-<p>1.标准的orm框架，程序员不需要编写SQL语句。<br>2.具有良好的数据库无关性，即数据库发生变化的话，代码无需再次编写。<br>3.程序员不能自主的去进行SQL性能优化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">Title: 插入排序中的直接插入排序，依赖于初始序列    </div><div class="line"> * Description: 在有序序列中不断插入新的记录以达到扩大有序区到整个数组的目的</div><div class="line"> *              时间复杂度：最好情形O(n)，平均情形O(n^2)，最差情形O(n^2)</div><div class="line"> *              空间复杂度：O(1)</div><div class="line"> *              稳    定   性：稳定</div><div class="line"> *              内部排序(在排序过程中数据元素完全在内存)</div><div class="line">//直接插入排序</div><div class="line">public class Demo01 &#123;</div><div class="line">	 public static int [] quickSort(int a[])&#123;</div><div class="line">		 for(int i =  0;i&lt;a.length;i++)&#123;</div><div class="line">			 for(int j = i;j&gt;0;j--)&#123;</div><div class="line">				 if(a[j]&lt;a[j-1])&#123;</div><div class="line">					 int temp = a[j];</div><div class="line">					 a[j] = a[j-1];</div><div class="line">					 a[j-1] = temp;</div><div class="line">				 &#125;</div><div class="line">			 &#125;</div><div class="line">		 &#125;</div><div class="line">		 return a;</div><div class="line">	 &#125;</div><div class="line">	 </div><div class="line">	 @Test</div><div class="line">	 public void fun01()&#123;</div><div class="line">		 int []a =&#123;49,38,65,97,76,13,27,49,78,34,12,64,5,4,62,99,98,54,56,17,18,23,34&#125;;</div><div class="line">		 int[] js = quickSort(a);</div><div class="line">		 for (int i = 0; i &lt; js.length; i++) &#123;</div><div class="line">			System.out.println(js[i]);</div><div class="line">		&#125;</div><div class="line">	 &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="希尔排序-最小增量排序"><a href="#希尔排序-最小增量排序" class="headerlink" title="希尔排序(最小增量排序)"></a>希尔排序(最小增量排序)</h3><blockquote>
+<p>基本思路:算法先将要排序的一组数按某个增量d（n/2,n为要排序数的个数）分成若干组，<br> 每组中记录的下标相差d.对每组中全部元素进行直接插入排序，然后再用一个较小的增量（d/2）对它进行分组，<br> 在每组中再进行直接插入排序。当增量减到1时，进行直接插入排序后，排序完成。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">//希尔排序</div><div class="line">/**        </div><div class="line"> * Title: 插入排序中的希尔排序，依赖于初始序列    </div><div class="line"> * Description: 分别对间隔为gap的gap个子序列进行直接插入排序，不断缩小gap,直至为 1 </div><div class="line"> * </div><div class="line"> *              刚开始时，gap较大，每个子序列元素较少，排序速度较快；</div><div class="line"> *              待到排序后期，gap变小，每个子序列元素较多，但大部分元素基本有序，所以排序速度仍较快。                </div><div class="line"> * </div><div class="line"> *              时间复杂度：O(n) ~ O(n^2)</div><div class="line"> *              空间复杂度：O(1)</div><div class="line"> *              稳    定   性：不稳定</div><div class="line"> *              内部排序(在排序过程中数据元素完全在内存)</div><div class="line"> * @author lenovo</div><div class="line"> *</div><div class="line"> */</div><div class="line">public class Demo02 &#123;</div><div class="line">	public int[] shellSort(int a[])&#123;</div><div class="line">		int d = a.length;</div><div class="line">		do &#123;</div><div class="line">			d = d/3+1;//不断缩小d的大小直至为1</div><div class="line">			for(int i = 0+d;i&lt;a.length;i++)&#123;  //对每个子序列进行直接插入排序</div><div class="line">				if(a[i]&lt;a[i-d])&#123;</div><div class="line">					int temp = a[i];          //待插入元素</div><div class="line">					int j = i-d;</div><div class="line">					do &#123;</div><div class="line">						a[j+d] = a[j];        //后移元素</div><div class="line">						j = j-d;              //在比较前一个元素</div><div class="line">					&#125; while (j&gt;=0&amp;&amp;a[j]&gt;temp);//向前比较的终止条件</div><div class="line">					a[j+d] = temp;            //将待插入值插入合适的位置</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125; while (d&gt;1);</div><div class="line">		return a;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="Mybatis应用场景："><a href="#Mybatis应用场景：" class="headerlink" title="Mybatis应用场景："></a>Mybatis应用场景：</h3><pre><code>需求多变的互联网项目，例如电商项目。
-</code></pre><h3 id="Hibernate应用场景："><a href="#Hibernate应用场景：" class="headerlink" title="Hibernate应用场景："></a>Hibernate应用场景：</h3><pre><code>需求明确、业务固定的项目，例如OA项目、ERP项目等。
-</code></pre><h1 id="所需环境"><a href="#所需环境" class="headerlink" title="所需环境"></a>所需环境</h1><blockquote>
-<p>jdk1.7+<br>mybatis3.4.4<br>MySQL5.x</p>
-<h2 id="下载MyBatis"><a href="#下载MyBatis" class="headerlink" title="下载MyBatis"></a>下载MyBatis</h2><p><a href="https://github.com/mybatis/mybatis-3/releases" target="_blank" rel="external">mybatis</a> 由GitHub托管</p>
-<h2 id="开发中所用jar包"><a href="#开发中所用jar包" class="headerlink" title="开发中所用jar包"></a>开发中所用jar包</h2><p><strong>mybatis的核心jar包和lib依赖包</strong><br><strong>mysql驱动包</strong></p>
-<h2 id="使用Maven时"><a href="#使用Maven时" class="headerlink" title="使用Maven时"></a>使用Maven时</h2><p>pom.xml中添加依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">  &lt;groupId&gt;org.mybatis&lt;/groupId&gt;</div><div class="line">  &lt;artifactId&gt;mybatis&lt;/artifactId&gt;</div><div class="line">  &lt;version&gt;x.x.x&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="折半插入排序"><a href="#折半插入排序" class="headerlink" title="折半插入排序"></a>折半插入排序</h3><blockquote>
+<p>基本思路:折半插入排序的思想：当插入第i(i&gt;=1)个元素时，前面的V[0],…,V[i-1]等i-1个元素已经有序。<br> 这时，折半搜索第i个元素在前i-1个元素V[i-1]，…，V[0]中的插入位置，然后直接将V[i]插入，<br> 同时原来位置上的元素向后顺移。与直接插入排序不同的是，折半插入排序比直接插入排序明显减少了关键字之间的比较次数，<br> 但是移动次数是没有改变。所以，折半插入排序和插入排序的时间复杂度相同都是O（N^2），<br> 但其减少了比较次数，所以该算法仍然比直接插入排序好。折半插入排序是一种稳定的排序算法.</p>
 </blockquote>
-<p><a href="http://blog.csdn.net/jiuqiyuliang/article/details/45286191" target="_blank" rel="external">以下引自</a><br>mybatis整个执行流程<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjd9dp9sooj30i50bomz8.jpg" alt=""><br>原理详解：<br>MyBatis应用程序根据XML配置文件创建SqlSessionFactory，SqlSessionFactory在根据配置，<br>配置来源于两个地方，一处是配置文件，一处是Java代码的注解，获取一个SqlSession。<br>SqlSession包含了执行sql所需要的所有方法，可以通过SqlSession实例直接运行映射的sql语句，<br>完成对数据的增删改查和事务提交等，用完之后关闭SqlSession。</p>
-<h1 id="第一个mybatis项目"><a href="#第一个mybatis项目" class="headerlink" title="第一个mybatis项目"></a>第一个mybatis项目</h1><p>数据库建表,与实体类属性一致</p>
-<h2 id="1-创建po类"><a href="#1-创建po类" class="headerlink" title="1.创建po类"></a>1.创建po类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class User &#123;</div><div class="line">	private int id;</div><div class="line">	private String username;// 用户姓名</div><div class="line">	private String sex;// 性别</div><div class="line">	private Date birthday;// 生日</div><div class="line">	private String address;// 地址</div><div class="line">	//set.get方法略</div></pre></td></tr></table></figure>
-<h2 id="2-创建全局配置文件"><a href="#2-创建全局配置文件" class="headerlink" title="2.创建全局配置文件"></a>2.创建全局配置文件</h2><p>可以创建一个资源文件夹,用于放配置文件<br>加入<code>log4j.properties</code>和<code>SqlMapConfig.xml</code>配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Global logging configuration</div><div class="line">log4j.rootLogger=DEBUG, stdout</div><div class="line"># Console output...</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div><div class="line">log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n</div></pre></td></tr></table></figure></p>
-<p><code>SqlMapConfig.xml</code>文件如下:<br>SqlMapConfig.xml是mybatis核心配置文件，配置文件内容为数据源、事务管理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;!DOCTYPE configuration</div><div class="line">PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</div><div class="line">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</div><div class="line">&lt;configuration&gt;</div><div class="line"></div><div class="line">	&lt;!-- 配置mybatis的环境信息，与spring整合，该信息由spring来管理 --&gt;</div><div class="line">	&lt;environments default=&quot;development&quot;&gt;</div><div class="line">		&lt;environment id=&quot;development&quot;&gt;</div><div class="line">			&lt;!-- 配置JDBC事务控制，由mybatis进行管理 --&gt;</div><div class="line">			&lt;transactionManager type=&quot;JDBC&quot;&gt;&lt;/transactionManager&gt;</div><div class="line">			&lt;!-- 配置数据源，采用mybatis连接池 --&gt;</div><div class="line">			&lt;dataSource type=&quot;POOLED&quot;&gt;</div><div class="line">				&lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot; /&gt;</div><div class="line">				&lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/how2j&quot; /&gt;</div><div class="line">				&lt;property name=&quot;username&quot; value=&quot;root&quot; /&gt;</div><div class="line">				&lt;property name=&quot;password&quot; value=&quot;root&quot; /&gt;</div><div class="line">			&lt;/dataSource&gt;</div><div class="line">		&lt;/environment&gt;</div><div class="line">	&lt;/environments&gt;</div><div class="line"></div><div class="line">	&lt;!-- 加载映射文件 --&gt;</div><div class="line">	&lt;mappers&gt;</div><div class="line">		&lt;mapper resource=&quot;User.xml&quot; /&gt;</div><div class="line">		&lt;mapper resource=&quot;UserMapper.xml&quot;/&gt;</div><div class="line">		&lt;mapper resource=&quot;OrderMapper.xml&quot;/&gt;</div><div class="line">	&lt;/mappers&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="3-编写mapper映射文件"><a href="#3-编写mapper映射文件" class="headerlink" title="3. 编写mapper映射文件"></a>3. 编写mapper映射文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;!DOCTYPE mapper    </div><div class="line">PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;    </div><div class="line">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</div><div class="line">&lt;mapper namespace=&quot;cn.hsl.dao.UserMapper&quot;&gt;</div><div class="line">	&lt;select id=&quot;findUserById&quot; parameterType=&quot;int&quot; resultType=&quot;cn.hsl.po.User&quot;&gt;</div><div class="line">	select * from user where id= #&#123;id&#125;</div><div class="line">	&lt;/select&gt;</div></pre></td></tr></table></figure>
-<h2 id="测试junit"><a href="#测试junit" class="headerlink" title="测试junit"></a>测试junit</h2><p> 1.创建SqlSessionFactoryBuilder对象</p>
-<ol>
-<li>加载SqlMapConfig.xml配置文件</li>
-<li>创建SqlSessionFactory对象</li>
-<li>创建SqlSession对象</li>
-<li>执行SqlSession对象执行查询，获取结果User</li>
-<li>打印结果</li>
-<li>释放资源</li>
-</ol>
-<p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdbq9n6nvj30mf0660sy.jpg" alt=""></p>
-<h1 id="mapper代理开发"><a href="#mapper代理开发" class="headerlink" title="mapper代理开发"></a>mapper代理开发</h1><p>Mapper接口开发方法只需要程序员编写Mapper接口（相当于Dao接口），<br>由Mybatis框架根据接口定义创建接口的动态代理对象，代理对象的方法体同上边Dao接口实现类方法。</p>
-<p>Mapper接口开发需要遵循以下规范：<br>1、Mapper.xml文件中的namespace与mapper接口的类路径相同。<br>2、Mapper接口方法名和Mapper.xml中定义的每个statement的id相同<br>3、Mapper接口方法的输入参数类型和mapper.xml中定义的每个sql 的parameterType的类型相同<br>4、Mapper接口方法的输出参数类型和mapper.xml中定义的每个sql的resultType的类型相同<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdc7h70duj30le054mxk.jpg" alt=""><br>测试时加载mapper类<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdc99pq6xj30hu044q2y.jpg" alt=""></p>
-<blockquote>
-<p>Mapper.xml映射文件中定义了操作数据库的sql，每个sql是一个statement，映射文件是mybatis的核心。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class Demo03 &#123;</div><div class="line">	public int [] binaryInsertSort(int a[])&#123;</div><div class="line">		for(int i = 1;i&lt;a.length;i++)&#123;</div><div class="line">			int left = 0;</div><div class="line">			int right = i-1;</div><div class="line">			int mid;</div><div class="line">			int temp = a[i];</div><div class="line">			if(temp&lt;a[right])&#123;             //当前值小于有序序列的最大值时,开始查找插入位置.</div><div class="line">				while(left&lt;=right)&#123;</div><div class="line">					mid = (left+right)/2;</div><div class="line">					if(a[mid]&lt;temp)&#123;</div><div class="line">						left = mid+1;</div><div class="line">					&#125;else if(a[mid]&gt;temp)&#123;</div><div class="line">						right = mid-1;</div><div class="line">					&#125;else&#123;</div><div class="line">						left = left+1;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				//left及其后面的数据顺序向后移动，并在left位置插入</div><div class="line">				for(int j = i;j&gt;left;j--)&#123;</div><div class="line">					a[j] = a[j-1];</div><div class="line">				&#125;</div><div class="line">				a[left] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return a;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
+<p>选择排序的基本思想：每一趟 (例如第i趟，i = 0,1,…)<br> 在后面第n-i个待排序元素中选出最小元素作为有序序列的第i个元素，直到第n-1趟结束后，所有元素有序。</p>
 </blockquote>
-<h1 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;select id=&quot;queryUserByWhere&quot; parameterType=&quot;cn.hsl.po.User&quot; resultType=&quot;cn.hsl.po.User&quot;&gt;</div><div class="line">	SELECT id, username, birthday, sex, address FROM `user`</div><div class="line">	</div><div class="line">	&lt;where&gt;</div><div class="line">		&lt;if test=&quot;sex!=null&quot;&gt;</div><div class="line">		sex = #&#123;sex&#125;</div><div class="line">		&lt;/if&gt;</div><div class="line">		&lt;if test=&quot;username!=null and username != &apos;&apos;&quot;&gt;</div><div class="line">		&lt;include refid=&quot;sql01&quot;/&gt;</div><div class="line">	&apos;%$&#123;username&#125;%&apos;</div><div class="line">		&lt;/if&gt;</div><div class="line">	&lt;/where&gt;</div><div class="line">	&lt;/select&gt;</div><div class="line">	&lt;sql id=&quot;sql01&quot;&gt;</div><div class="line">	AND username LIKE</div><div class="line">	&lt;/sql&gt;</div></pre></td></tr></table></figure>
-<h1 id="关联查询"><a href="#关联查询" class="headerlink" title="关联查询"></a>关联查询</h1><h2 id="一对一查询"><a href="#一对一查询" class="headerlink" title="一对一查询"></a>一对一查询</h2><p>需求：查询所有订单信息，关联查询下单用户信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">SELECT</div><div class="line">	o.id,</div><div class="line">	o.user_id userId,</div><div class="line">	o.number,</div><div class="line">	o.createtime,</div><div class="line">	o.note,</div><div class="line">	u.username,</div><div class="line">	u.address</div><div class="line">FROM</div><div class="line">	`order` o</div><div class="line">LEFT JOIN `user` u ON o.user_id = u.id</div></pre></td></tr></table></figure></p>
-<h3 id="方法一：使用resultType"><a href="#方法一：使用resultType" class="headerlink" title="方法一：使用resultType"></a>方法一：使用resultType</h3><p>使用resultType，改造订单pojo类，此pojo类中包括了订单信息和用户信息<br>这样返回对象的时候，mybatis自动把用户信息也注入进来了<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdd4f28n7j30b2047dft.jpg" alt=""><br>在UserMapper.xml添加sql，如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 查询订单，同时包含用户数据 --&gt;</div><div class="line">&lt;select id=&quot;queryOrderUser&quot; resultType=&quot;orderUser&quot;&gt;</div><div class="line">	SELECT</div><div class="line">	o.id,</div><div class="line">	o.user_id</div><div class="line">	userId,</div><div class="line">	o.number,</div><div class="line">	o.createtime,</div><div class="line">	o.note,</div><div class="line">	u.username,</div><div class="line">	u.address</div><div class="line">	FROM</div><div class="line">	`order` o</div><div class="line">	LEFT JOIN `user` u ON o.user_id = u.id</div><div class="line">&lt;/select&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="方法二：使用resultMap"><a href="#方法二：使用resultMap" class="headerlink" title="方法二：使用resultMap"></a>方法二：使用resultMap</h3><p>使用resultMap，定义专门的resultMap用于映射一对一查询结果。</p>
-<blockquote>
-<p>在Order类中加入User属性，user属性中用于存储关联查询的用户信息，<br>  因为订单关联查询用户是一对一关系，所以这里使用单个User对象存储关联查询的用户信息。<br>mapper.xml定义如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;resultMap type=&quot;order&quot; id=&quot;orderUserResultMap&quot;&gt;</div><div class="line">	&lt;id property=&quot;id&quot; column=&quot;id&quot; /&gt;</div><div class="line">	&lt;result property=&quot;userId&quot; column=&quot;user_id&quot; /&gt;</div><div class="line">	&lt;result property=&quot;number&quot; column=&quot;number&quot; /&gt;</div><div class="line">	&lt;result property=&quot;createtime&quot; column=&quot;createtime&quot; /&gt;</div><div class="line">	&lt;result property=&quot;note&quot; column=&quot;note&quot; /&gt;</div><div class="line"></div><div class="line">	&lt;!-- association ：配置一对一属性 --&gt;</div><div class="line">	&lt;!-- property:order里面的User属性名 --&gt;</div><div class="line">	&lt;!-- javaType:属性类型 --&gt;</div><div class="line">	&lt;association property=&quot;user&quot; javaType=&quot;user&quot;&gt;</div><div class="line">		&lt;!-- id:声明主键，表示user_id是关联查询对象的唯一标识--&gt;</div><div class="line">		&lt;id property=&quot;id&quot; column=&quot;user_id&quot; /&gt;</div><div class="line">		&lt;result property=&quot;username&quot; column=&quot;username&quot; /&gt;</div><div class="line">		&lt;result property=&quot;address&quot; column=&quot;address&quot; /&gt;</div><div class="line">	&lt;/association&gt;</div><div class="line"></div><div class="line">&lt;/resultMap&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="直接选择排序"><a href="#直接选择排序" class="headerlink" title="直接选择排序"></a>直接选择排序</h3><blockquote>
+<p>基本思路:直接选择排序的思想：第一次从R[0]~R[n-1]中选取最小值，与R[0]交换，<br> 第二次从R1~R[n-1]中选取最小值，与R1交换，….，第i次从R[i-1]~R[n-1]中选取最小值，<br> 与R[i-1]交换，…..，第n-1次从R[n-2]~R[n-1]中选取最小值，与R[n-2]交换，总共通过n-1次，<br> 得到一个按排序码从小到大排列的有序序列。直接选择排序是一种不稳定的排序算法，</p>
 </blockquote>
-<h2 id="一对多查询"><a href="#一对多查询" class="headerlink" title="一对多查询"></a>一对多查询</h2><p>一个用户对应多个订单<br>在User类中加入List<order> orders属性,如下图：<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjddbjlslaj30ap05a74c.jpg" alt=""></order></p>
-<p>在UserMapper.xml添加sql，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;resultMap type=&quot;user&quot; id=&quot;userOrderResultMap&quot;&gt;</div><div class="line">	&lt;id property=&quot;id&quot; column=&quot;id&quot; /&gt;</div><div class="line">	&lt;result property=&quot;username&quot; column=&quot;username&quot; /&gt;</div><div class="line">	&lt;result property=&quot;birthday&quot; column=&quot;birthday&quot; /&gt;</div><div class="line">	&lt;result property=&quot;sex&quot; column=&quot;sex&quot; /&gt;</div><div class="line">	&lt;result property=&quot;address&quot; column=&quot;address&quot; /&gt;</div><div class="line"></div><div class="line">	&lt;!-- 配置一对多的关系 --&gt;</div><div class="line">	&lt;collection property=&quot;orders&quot; javaType=&quot;list&quot; ofType=&quot;order&quot;&gt;</div><div class="line">		&lt;!-- 配置主键，是关联Order的唯一标识 --&gt;</div><div class="line">		&lt;id property=&quot;id&quot; column=&quot;oid&quot; /&gt;</div><div class="line">		&lt;result property=&quot;number&quot; column=&quot;number&quot; /&gt;</div><div class="line">		&lt;result property=&quot;createtime&quot; column=&quot;createtime&quot; /&gt;</div><div class="line">		&lt;result property=&quot;note&quot; column=&quot;note&quot; /&gt;</div><div class="line">	&lt;/collection&gt;</div><div class="line">&lt;/resultMap&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class Demo04 &#123;</div><div class="line">	public int[] selectSort(int a[])&#123;</div><div class="line">		for(int i = 0;i&lt;a.length;i++)&#123;</div><div class="line">			int min = a[i];           //最小数</div><div class="line">			int min_index = i;        //最小数索引</div><div class="line">			for(int j = i+1;j&lt;a.length;j++)&#123;</div><div class="line">				if(a[min_index]&gt;a[j])&#123;</div><div class="line">					min_index = j;</div><div class="line">					min = a[j];</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			a[min_index] = a[i];</div><div class="line">			a[i] = min;</div><div class="line">		&#125;</div><div class="line">		return a;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>……</p>
+<h2 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h2><blockquote>
+<p>交换排序的基本思想：根据序列中两个元素的比较结果来对换这两个记录在序列中的位置，<br> 也就是说，将键值较大的记录向序列的尾部移动，键值较小的记录向序列的前部移动。</p>
+</blockquote>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><blockquote>
+<p>冒泡排序的思想：根据序列中两个元素的比较结果来对换这两个记录在序列中的位置，<br> 将键值较大的记录向序列的尾部移动，键值较小的记录向序列的前部移动。<br> 因此，每一趟都将较小的元素移到前面，较大的元素自然就逐渐沉到最后面了，<br> 也就是说，最大的元素最后才能确定，这就是冒泡。冒泡排序是一种稳定的排序算法，<br> 其实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//冒泡排序</div><div class="line">public class Test03 &#123;</div><div class="line">	@Test</div><div class="line">	public void fun03()&#123;</div><div class="line">		int []a =&#123;49,38,65,97,76,13,27,49,78,34,12,64,5,4,62,99,98,54,56,17,18,23,34&#125;;</div><div class="line">		for(int i = 0;i&lt;a.length;i++)&#123;</div><div class="line">			for(int j = 0;j&lt;a.length-1-i;j++)&#123;</div><div class="line">				if(a[j]&gt;a[j+1])&#123;</div><div class="line">					int temp = a[j];</div><div class="line">					a[j] = a[j+1];</div><div class="line">					a[j+1] = temp;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		for (int i = 0; i &lt; a.length; i++) &#123;</div><div class="line">			System.out.println(a[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><blockquote>
+<p>快速排序的思想：通过一趟排序将要排序的数据分割成独立的两部分，<br> 其中一部分的所有数据都比另外一部分的所有数据都要小(划分过程)，<br> 然后再按此方法对这两部分数据分别进行快速排序(快速排序过程)，<br> 整个排序过程可以递归进行，以此达到整个数据变成有序序列。<br> 快速排序是一种不稳定的排序算法。<br><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif" alt=""></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">//快速排序</div><div class="line">public class Test04 &#123;</div><div class="line">	public void quickSort(int [] arr)&#123;</div><div class="line">		 qsort(arr, 0, arr.length-1);</div><div class="line">		 for (int i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">			System.out.println(arr[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	private static void qsort(int[] arr,int left,int right)&#123;</div><div class="line">		if(left&lt;right)&#123;</div><div class="line">			int pivot = partition(arr,left,right);//将数组分为两部分</div><div class="line">			qsort(arr,left,pivot-1);//递归排序左边的</div><div class="line">			qsort(arr,pivot+1,right);//递归排序右边的</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private static int partition(int[] arr,int left,int right)&#123;</div><div class="line">		int pivot = arr[left];//枢纽记录</div><div class="line">		while(left&lt;right)&#123;</div><div class="line">			while(left&lt;right&amp;&amp;arr[right]&gt;=pivot)</div><div class="line">				--right;</div><div class="line">			arr[left] = arr[right];//交换比枢纽小的到左端</div><div class="line">			while(left&lt;right&amp;&amp;arr[left]&lt;=pivot)</div><div class="line">				++left;</div><div class="line">			arr[right] = arr[left];//交换比枢纽大的到右端</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">		arr[left] = pivot;//扫描完成,枢纽到位</div><div class="line">		return left;//返回的是枢纽的位置</div><div class="line">		</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>未完待续……</p>
 
 
 	
@@ -598,7 +580,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2017/08/04/MyBatis入门/" title="MyBatis入门">http://yoursite.com/2017/08/04/MyBatis入门/</a>
+      <a href="http://yoursite.com/2017/09/15/算法之排序/" title="算法之排序">http://yoursite.com/2017/09/15/算法之排序/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -614,7 +596,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
+            <a href="/tags/排序算法/" rel="tag"># 排序算法</a>
           
         </div>
       
@@ -627,8 +609,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/01/Maven入门/" rel="next" title="Maven入门">
-                <i class="fa fa-chevron-left"></i> Maven入门
+              <a href="/2017/08/05/初识Spring-MVC/" rel="next" title="初识Spring MVC">
+                <i class="fa fa-chevron-left"></i> 初识Spring MVC
               </a>
             
           </div>
@@ -636,10 +618,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/05/mybatis与spring整合/" rel="prev" title="mybatis与spring整合">
-                mybatis与spring整合 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -821,7 +799,7 @@ src="//music.163.com/outchain/player?type=2&id=33920425&auto=0&height=66"></ifra
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MyBatis简介"><span class="nav-number">1.</span> <span class="nav-text">MyBatis简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是MyBatis"><span class="nav-number">1.1.</span> <span class="nav-text">什么是MyBatis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis与Hibernate区别"><span class="nav-number">1.2.</span> <span class="nav-text">MyBatis与Hibernate区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis"><span class="nav-number">1.2.1.</span> <span class="nav-text">MyBatis:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hibernate"><span class="nav-number">1.2.2.</span> <span class="nav-text">Hibernate:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis应用场景："><span class="nav-number">1.2.3.</span> <span class="nav-text">Mybatis应用场景：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hibernate应用场景："><span class="nav-number">1.2.4.</span> <span class="nav-text">Hibernate应用场景：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#所需环境"><span class="nav-number">2.</span> <span class="nav-text">所需环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载MyBatis"><span class="nav-number">2.1.</span> <span class="nav-text">下载MyBatis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发中所用jar包"><span class="nav-number">2.2.</span> <span class="nav-text">开发中所用jar包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Maven时"><span class="nav-number">2.3.</span> <span class="nav-text">使用Maven时</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个mybatis项目"><span class="nav-number">3.</span> <span class="nav-text">第一个mybatis项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建po类"><span class="nav-number">3.1.</span> <span class="nav-text">1.创建po类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-创建全局配置文件"><span class="nav-number">3.2.</span> <span class="nav-text">2.创建全局配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-编写mapper映射文件"><span class="nav-number">3.3.</span> <span class="nav-text">3. 编写mapper映射文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试junit"><span class="nav-number">3.4.</span> <span class="nav-text">测试junit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mapper代理开发"><span class="nav-number">4.</span> <span class="nav-text">mapper代理开发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态SQL"><span class="nav-number">5.</span> <span class="nav-text">动态SQL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关联查询"><span class="nav-number">6.</span> <span class="nav-text">关联查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一对一查询"><span class="nav-number">6.1.</span> <span class="nav-text">一对一查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：使用resultType"><span class="nav-number">6.1.1.</span> <span class="nav-text">方法一：使用resultType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二：使用resultMap"><span class="nav-number">6.1.2.</span> <span class="nav-text">方法二：使用resultMap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一对多查询"><span class="nav-number">6.2.</span> <span class="nav-text">一对多查询</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#排序算法"><span class="nav-number">1.</span> <span class="nav-text">排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序"><span class="nav-number">1.1.</span> <span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接插入排序"><span class="nav-number">1.1.1.</span> <span class="nav-text">直接插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序-最小增量排序"><span class="nav-number">1.1.2.</span> <span class="nav-text">希尔排序(最小增量排序)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#折半插入排序"><span class="nav-number">1.1.3.</span> <span class="nav-text">折半插入排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">1.2.</span> <span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接选择排序"><span class="nav-number">1.2.1.</span> <span class="nav-text">直接选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆排序"><span class="nav-number">1.2.2.</span> <span class="nav-text">堆排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交换排序"><span class="nav-number">1.3.</span> <span class="nav-text">交换排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.3.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">1.3.2.</span> <span class="nav-text">快速排序</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
