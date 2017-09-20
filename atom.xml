@@ -176,11 +176,11 @@
       <category term="technology" scheme="http://yoursite.com/categories/technology/"/>
     
     
+      <category term="mybatis" scheme="http://yoursite.com/tags/mybatis/"/>
+    
       <category term="mvc" scheme="http://yoursite.com/tags/mvc/"/>
     
       <category term="spring mvc" scheme="http://yoursite.com/tags/spring-mvc/"/>
-    
-      <category term="mybatis" scheme="http://yoursite.com/tags/mybatis/"/>
     
   </entry>
   
