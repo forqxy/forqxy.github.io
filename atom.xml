@@ -9,7 +9,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>Hou Shuailong</name>
+    <name>hsl</name>
     
   </author>
   
@@ -761,9 +761,9 @@
     <link href="http://yoursite.com/2017/07/04/day03/"/>
     <id>http://yoursite.com/2017/07/04/day03/</id>
     <published>2017-07-04T08:26:51.000Z</published>
-    <updated>2017-07-04T08:36:05.439Z</updated>
+    <updated>2018-06-09T08:28:35.762Z</updated>
     
-    <content type="html"><![CDATA[<p>先来fark一下别人的图<br><a href="http://upload-images.jianshu.io/upload_images/3332049-e1bb096b598e13ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">你想要锦上添花，你得先变成锦(作品：小瓜记不住那些好)</a><br>所谓的迷茫，只是懒散，只是想要不劳而获。</p>
+    <content type="html"><![CDATA[<p>先来fark一下别人的图<br><img src="http://upload-images.jianshu.io/upload_images/3332049-e1bb096b598e13ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="你想要锦上添花，你得先变成锦(作品：小瓜记不住那些好)"><br>所谓的迷茫，只是懒散，只是想要不劳而获。</p>
 <blockquote>
 <p>三分钟热度；对现状焦虑却不知道如何改变；喜欢幻想未来，却又不付出实际行动；<br>简而言之，就是间歇性的踌躇满志，持续性的混吃等死。<br>将自己的懒散包装成迷茫，让自己可以继续心安理得的不求上进，<br>然后将所有的不满足跟憎恶归结为迷茫。</p>
 </blockquote>
@@ -774,7 +774,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;先来fark一下别人的图&lt;br&gt;&lt;a href=&quot;http://upload-images.jianshu.io/upload_images/3332049-e1bb096b598e13ea.jpg?imageMogr2/auto-orient/strip%7CimageV
+      &lt;p&gt;先来fark一下别人的图&lt;br&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/3332049-e1bb096b598e13ea.jpg?imageMogr2/auto-orient/strip%7Cimage
     
     </summary>
     
