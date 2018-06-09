@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-16T02:02:13.386Z</updated>
+  <updated>2018-06-09T10:07:35.968Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>I come back</title>
+    <link href="http://yoursite.com/2018/06/09/I-come-back/"/>
+    <id>http://yoursite.com/2018/06/09/I-come-back/</id>
+    <published>2018-06-09T09:33:12.000Z</published>
+    <updated>2018-06-09T10:07:35.968Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="I-Come-Back"><a href="#I-Come-Back" class="headerlink" title="I Come Back"></a>I Come Back</h2><blockquote>
+<p>这么久没有去维护自己的<code>blog</code>,说起来都有些惭愧.给自己找理由是因为回校搞毕设等办理各种手续,<br>  可说到底那都不是懒得借口.今天突然动起来去写,发现好多最基础的命令都忘记了,真的是重新温习<br>  下才有了印象.改了些东西竟然发现提交都出问题了.真的是…去百度了下知道了问题的所在,原来是<br>  因为<code>Github</code> 禁用了<code>TLS v1.0 and v1.1</code>，必须更新<code>Windows</code>的<code>git</code>凭证管理器.遇到的问题如下:</p>
+</blockquote>
+<p><img src="http://ww1.sinaimg.cn/large/005WV0MDgy1fs52s6mf0wj30hb0c1gme.jpg" alt="问题截图"><br>如图出现了<code>HttpRequestException encountered</code>问题.<br>因为<code>Github</code> 禁用了<code>TLS v1.0 and v1.1</code>，必须更新<code>Windows</code>的<code>git</code>凭证管理器<br>这个时候去<a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/" target="_blank" rel="external">此链接https://github.com/Microsoft/</a><br>下载<code>git</code>凭证管理器.下载完点击安装运行就可以了.提交成功.<br><img src="http://ww1.sinaimg.cn/large/005WV0MDgy1fs52xpco40j30hb0a3gmc.jpg" alt=""><br>更新后就这么点小问题.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;I-Come-Back&quot;&gt;&lt;a href=&quot;#I-Come-Back&quot; class=&quot;headerlink&quot; title=&quot;I Come Back&quot;&gt;&lt;/a&gt;I Come Back&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;这么久没有去维护自己的&lt;code&gt;blog
+    
+    </summary>
+    
+      <category term="life" scheme="http://yoursite.com/categories/life/"/>
+    
+    
+      <category term="life" scheme="http://yoursite.com/tags/life/"/>
+    
+  </entry>
   
   <entry>
     <title>Shiro角色权限管理</title>
@@ -781,9 +808,9 @@
       <category term="life" scheme="http://yoursite.com/categories/life/"/>
     
     
-      <category term="first" scheme="http://yoursite.com/tags/first/"/>
-    
       <category term="life" scheme="http://yoursite.com/tags/life/"/>
+    
+      <category term="first" scheme="http://yoursite.com/tags/first/"/>
     
       <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
