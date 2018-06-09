@@ -81,8 +81,8 @@
       </categories>
       <tags>
         <tag>Spring</tag>
-        <tag>TransactionManager</tag>
         <tag>aop</tag>
+        <tag>TransactionManager</tag>
       </tags>
   </entry>
   <entry>
@@ -94,8 +94,8 @@
       </categories>
       <tags>
         <tag>Spring</tag>
-        <tag>aop</tag>
         <tag>ioc</tag>
+        <tag>aop</tag>
       </tags>
   </entry>
   <entry>

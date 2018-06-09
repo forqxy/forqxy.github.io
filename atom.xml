@@ -549,9 +549,9 @@
     
       <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
     
-      <category term="TransactionManager" scheme="http://yoursite.com/tags/TransactionManager/"/>
-    
       <category term="aop" scheme="http://yoursite.com/tags/aop/"/>
+    
+      <category term="TransactionManager" scheme="http://yoursite.com/tags/TransactionManager/"/>
     
   </entry>
   
@@ -661,9 +661,9 @@
     
       <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
     
-      <category term="aop" scheme="http://yoursite.com/tags/aop/"/>
-    
       <category term="ioc" scheme="http://yoursite.com/tags/ioc/"/>
+    
+      <category term="aop" scheme="http://yoursite.com/tags/aop/"/>
     
   </entry>
   
