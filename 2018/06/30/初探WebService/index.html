@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="mybatis,spring," />
+  <meta name="keywords" content="WebService,cxf," />
 
 
 
@@ -95,27 +95,21 @@
 
 
 
-<meta name="description" content="Mybatis整合spring整合思路  1、SqlSessionFactory对象应该放到spring容器中作为单例存在。 2、传统dao的开发方式中，应该从spring容器中获得sqlsession对象。 3、Mapper代理形式中，应该从spring容器中直接获得mapper的代理对象。 4、数据库的连接以及数据库连接池事务管理都交给spring容器来完成。   整合需要的jar包  1、s">
-<meta name="keywords" content="mybatis,spring">
+<meta name="description" content="什么是Web Service Web Service也叫XML Web Service WebService是一种可以接收从Internet或者 Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术。是通过SOAP在Web上提供的软件服务， 使用WSDL文件进行说明，并通过UDDI进行注册。 简单来说就像是一个公开的接口，其他系统不管你是用什么语言来编写的都可以调用这个接口，并可以">
+<meta name="keywords" content="WebService,cxf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mybatis与spring整合">
-<meta property="og:url" content="http://yoursite.com/2017/08/05/mybatis与spring整合/index.html">
+<meta property="og:title" content="初探WebService">
+<meta property="og:url" content="http://yoursite.com/2018/06/30/初探WebService/index.html">
 <meta property="og:site_name" content="forqxy&#39;s blog">
-<meta property="og:description" content="Mybatis整合spring整合思路  1、SqlSessionFactory对象应该放到spring容器中作为单例存在。 2、传统dao的开发方式中，应该从spring容器中获得sqlsession对象。 3、Mapper代理形式中，应该从spring容器中直接获得mapper的代理对象。 4、数据库的连接以及数据库连接池事务管理都交给spring容器来完成。   整合需要的jar包  1、s">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdexrz22yj306n062749.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdfd2q4qpj30jb04cdfw.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdfj1l57ij30h303hjs1.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdg5bv29kj307d088mx9.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdg94qqvhj30lb04xglu.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgcqbnnwj30fh01wmx2.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgdfk74uj30fx01va9z.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgf038ajj30fi02idft.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdggonpy5j30en03jq2z.jpg">
-<meta property="og:updated_time" content="2017-09-09T09:53:24.102Z">
+<meta property="og:description" content="什么是Web Service Web Service也叫XML Web Service WebService是一种可以接收从Internet或者 Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术。是通过SOAP在Web上提供的软件服务， 使用WSDL文件进行说明，并通过UDDI进行注册。 简单来说就像是一个公开的接口，其他系统不管你是用什么语言来编写的都可以调用这个接口，并可以">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fst938mayjj30bq03n75f.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fst98m7fc1j30fh053q59.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fst9v6zzx5j30k307nmx6.jpg">
+<meta property="og:updated_time" content="2018-06-30T08:25:53.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mybatis与spring整合">
-<meta name="twitter:description" content="Mybatis整合spring整合思路  1、SqlSessionFactory对象应该放到spring容器中作为单例存在。 2、传统dao的开发方式中，应该从spring容器中获得sqlsession对象。 3、Mapper代理形式中，应该从spring容器中直接获得mapper的代理对象。 4、数据库的连接以及数据库连接池事务管理都交给spring容器来完成。   整合需要的jar包  1、s">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fjdexrz22yj306n062749.jpg">
+<meta name="twitter:title" content="初探WebService">
+<meta name="twitter:description" content="什么是Web Service Web Service也叫XML Web Service WebService是一种可以接收从Internet或者 Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术。是通过SOAP在Web上提供的软件服务， 使用WSDL文件进行说明，并通过UDDI进行注册。 简单来说就像是一个公开的接口，其他系统不管你是用什么语言来编写的都可以调用这个接口，并可以">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fst938mayjj30bq03n75f.jpg">
 
 
 
@@ -143,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/05/mybatis与spring整合/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/30/初探WebService/"/>
 
 
 
 
 
-  <title>mybatis与spring整合 | forqxy's blog</title>
+  <title>初探WebService | forqxy's blog</title>
   
 
 
@@ -362,7 +356,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/05/mybatis与spring整合/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/30/初探WebService/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hsl">
@@ -379,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mybatis与spring整合</h1>
+          <h1 class="post-title" itemprop="name headline">初探WebService</h1>
         
 
         <div class="post-meta">
@@ -391,8 +385,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T16:24:45+08:00">
-                2017-08-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-30T14:49:38+08:00">
+                2018-06-30
               </time>
             
 
@@ -432,7 +426,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/08/05/mybatis与spring整合/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2018/06/30/初探WebService/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -441,7 +435,7 @@
 
           
           
-             <span id="/2017/08/05/mybatis与spring整合/" class="leancloud_visitors" data-flag-title="mybatis与spring整合">
+             <span id="/2018/06/30/初探WebService/" class="leancloud_visitors" data-flag-title="初探WebService">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -467,7 +461,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,131 字
+                  1,027 字
                 </span>
               
 
@@ -483,7 +477,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -501,61 +495,34 @@
       
 
       
-        <h1 id="Mybatis整合spring"><a href="#Mybatis整合spring" class="headerlink" title="Mybatis整合spring"></a>Mybatis整合spring</h1><h2 id="整合思路"><a href="#整合思路" class="headerlink" title="整合思路"></a>整合思路</h2><blockquote>
-<ul>
-<li>1、SqlSessionFactory对象应该放到spring容器中作为单例存在。</li>
-<li>2、传统dao的开发方式中，应该从spring容器中获得sqlsession对象。</li>
-<li>3、Mapper代理形式中，应该从spring容器中直接获得mapper的代理对象。</li>
-<li>4、数据库的连接以及数据库连接池事务管理都交给spring容器来完成。</li>
-</ul>
+        <h1 id="什么是Web-Service"><a href="#什么是Web-Service" class="headerlink" title="什么是Web Service"></a>什么是Web Service</h1><blockquote>
+<p><code>Web Service</code>也叫<code>XML Web Service</code> <code>WebService</code>是一种可以接收从<code>Internet</code>或者<br> <code>Intranet</code>上的其它系统中传递过来的请求，轻量级的独立的通讯技术。是通过<code>SOAP</code>在<code>Web</code>上提供的软件服务，<br> 使用<code>WSDL</code>文件进行说明，并通过<code>UDDI</code>进行注册。<br> 简单来说就像是一个公开的接口，其他系统不管你是用什么语言来编写的都可以调用这个接口，并可以返回相应的数据给你。就像是现在很多的天气应用，他们肯定不会自己去搞一个气象局之类的部门去监测天气，大多都是直接调用一个天气接口，然后返回天气数据，相关应用就可以将这些信息展示给用户了。<br> 通常来说发布这类接口的应用都是用一两种语言来编写即可，但是调用这个接口应用可能会是各种语言来编写的，为了满足这样的需求<br> <code>webservice</code>出现了。</p>
 </blockquote>
-<h2 id="整合需要的jar包"><a href="#整合需要的jar包" class="headerlink" title="整合需要的jar包"></a>整合需要的jar包</h2><blockquote>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><blockquote>
 <ul>
-<li>1、spring的jar包</li>
-<li>2、Mybatis的jar包</li>
-<li>3、Spring+mybatis的整合包。</li>
-<li>4、Mysql的数据库驱动jar包。</li>
-<li><ol>
-<li>数据库连接池的jar包。(dbcp或c3p0)</li>
-</ol>
+<li><p><code>XML</code>：(<code>Extensible Markup Language</code>)扩展型可标记语言。面向短期的临时数据处理、面向万维网络，是<code>SOAP</code>的基础。</p>
+</li>
+<li><p><code>SOAP</code>：(<code>Simple Object Access Protocol</code>)简单对象存取协议。是<code>XML Web Service</code><br>的通信协议。当用户通过<code>UDDI</code>找到你的<code>WSDL</code>描述文档后，他通过可以<code>SOAP</code>调用你建立的<code>Web</code>服务<br>中的一个或多个操作。<code>SOAP</code>是<code>XML</code>文档形式的调用方法的规范，它可以支持不同的底层接口，像<code>HTTP(S)</code>或者<code>SMTP</code>。</p>
+</li>
+<li><p><code>WSDL</code>：(<code>Web Services Description Language</code>) <code>WSDL</code> 文件是一个 XML 文档，用于说明一组 <code>SOAP</code><br>消息以及如何交换这些消息。大多数情况下由软件自动生成和使用。</p>
+</li>
+<li><p><code>UDDI</code> :(<code>Universal Description</code>, <code>Discovery</code>, <code>and</code> <code>Integration</code>) 是一个主要针对<code>Web</code>服务供应商和使用者的新项目。<br>在用户能够调用Web服务之前，必须确定这个服务内包含哪些商务方法，找到被调用的接口定义，还要在服务端来编制软件，<br><code>UDDI</code>是一种根据描述文档来引导系统查找相应服务的机制。<code>UDDI</code>利用<code>SOAP</code>消息机制（标准的<code>XML/HTTP</code>）来发布，编辑，<br>浏览以及查找注册信息。它采用XML格式来封装各种不同类型的数据，并且发送到注册中心或者由注册中心来返回需要的数据。</p>
 </li>
 </ul>
 </blockquote>
-<h2 id="加入配置文件"><a href="#加入配置文件" class="headerlink" title="加入配置文件"></a>加入配置文件</h2><h3 id="mybatis的配置文件SqlMapConfig-xml"><a href="#mybatis的配置文件SqlMapConfig-xml" class="headerlink" title="mybatis的配置文件SqlMapConfig.xml"></a>mybatis的配置文件SqlMapConfig.xml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;!DOCTYPE configuration</div><div class="line">PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</div><div class="line">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</div><div class="line">&lt;configuration&gt;</div><div class="line">	&lt;!-- 设置别名 --&gt;</div><div class="line">	&lt;typeAliases&gt;</div><div class="line">		&lt;!-- 2. 指定扫描包，会把包内所有的类都设置别名，别名的名称就是类名，大小写不敏感 --&gt;</div><div class="line">		&lt;package name=&quot;cn.hsl.mybatis.pojo&quot; /&gt;</div><div class="line">	&lt;/typeAliases&gt;</div><div class="line"></div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>
-<p>其它不用配,交由spring管理.如数据源</p>
+<h1 id="Web-Service实例"><a href="#Web-Service实例" class="headerlink" title="Web Service实例"></a>Web Service实例</h1><h2 id="Spring整合CXF开发服务端"><a href="#Spring整合CXF开发服务端" class="headerlink" title="Spring整合CXF开发服务端"></a>Spring整合CXF开发服务端</h2><blockquote>
+<p>加入Maven依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;!--cxf--&gt;</div><div class="line">        &lt;!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxws --&gt;</div><div class="line">        &lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;cxf-rt-frontend-jaxws&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;3.1.6&lt;/version&gt;</div><div class="line">        &lt;/dependency&gt;</div><div class="line">        &lt;!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-core --&gt;</div><div class="line">        &lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;cxf-core&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;3.1.6&lt;/version&gt;</div><div class="line">        &lt;/dependency&gt;</div><div class="line">        &lt;!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-http --&gt;</div><div class="line">        &lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;cxf-rt-transports-http&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;3.1.6&lt;/version&gt;</div><div class="line">        &lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<p><code>web.xml</code>中配置一个<code>CXF</code>的<code>servlet</code>,因为这是一个web项目,如果是简单项目可以省去配置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;servlet&gt;</div><div class="line">    &lt;servlet-name&gt;CXFServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;servlet-class&gt;org.apache.cxf.transport.servlet.CXFServlet&lt;/servlet-class&gt;</div><div class="line">&lt;/servlet&gt;</div><div class="line">&lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;CXFServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;/webservice/*&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure>
+<p>这样,项目部署后访问<code>webservice/*</code>这个地址就会进入<code>CXF</code>的<code>servlet</code>中。</p>
 <blockquote>
-<p>sqlsessionFactory对象，配置到spring容器中<br>mapeer代理对象或者是dao实现类配置到spring容器中。<br>SqlSessionFactoryBean属于mybatis-spring这个jar包<br>整合Mybatis需要的是SqlSessionFactoryBean</p>
+<p>开发一个<code>webservice</code>业务接口，方法使用<code>@WebService</code>修饰。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fst938mayjj30bq03n75f.jpg" alt=""><br>写一个这个方法的实现类，方法也需要使用<code>@WebService</code>修饰<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fst98m7fc1j30fh053q59.jpg" alt=""><br>在<code>Spring配置文件整合</code>,头部添加命名路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xmlns:jaxws=&quot;http://cxf.apache.org/jaxws&quot;</div><div class="line">http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd&quot;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="spring配置applicationContext-xml"><a href="#spring配置applicationContext-xml" class="headerlink" title="spring配置applicationContext.xml"></a>spring配置applicationContext.xml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">	xmlns:context=&quot;http://www.springframework.org/schema/context&quot; </div><div class="line">	xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</div><div class="line">	xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; </div><div class="line">	xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</div><div class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">	xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans </div><div class="line">	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/context </div><div class="line">	http://www.springframework.org/schema/context/spring-context-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/aop</div><div class="line">	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/tx </div><div class="line">	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd</div><div class="line">	http://www.springframework.org/schema/util </div><div class="line">	http://www.springframework.org/schema/util/spring-util-4.0.xsd&quot;&gt;</div><div class="line"></div><div class="line">   &lt;!-- 加载配置文件 --&gt;</div><div class="line">   &lt;context:property-placeholder location=&quot;classpath:db.properties&quot; /&gt;</div><div class="line"></div><div class="line">	&lt;!-- 数据库连接池 --&gt;</div><div class="line">	&lt;bean id=&quot;dataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;</div><div class="line">		destroy-method=&quot;close&quot;&gt;</div><div class="line">		&lt;property name=&quot;driverClassName&quot; value=&quot;$&#123;jdbc.driver&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;url&quot; value=&quot;$&#123;jdbc.url&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;username&quot; value=&quot;$&#123;jdbc.username&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;password&quot; value=&quot;$&#123;jdbc.password&#125;&quot; /&gt;</div><div class="line">		&lt;property name=&quot;maxActive&quot; value=&quot;10&quot; /&gt;</div><div class="line">		&lt;property name=&quot;maxIdle&quot; value=&quot;5&quot; /&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line"></div><div class="line">		&lt;!-- 配置SqlSessionFactory --&gt;</div><div class="line">	&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</div><div class="line">		&lt;!-- 配置mybatis核心配置文件 --&gt;</div><div class="line">		&lt;property name=&quot;configLocation&quot; value=&quot;classpath:SqlMapConfig.xml&quot; /&gt;</div><div class="line">		&lt;!-- 配置数据源 --&gt;</div><div class="line">		&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</div><div class="line">	&lt;/bean&gt;</div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure>
-<h3 id="数据源-db-properties"><a href="#数据源-db-properties" class="headerlink" title="数据源 db.properties"></a>数据源 db.properties</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jdbc.driver=com.mysql.jdbc.Driver</div><div class="line">jdbc.url=jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8</div><div class="line">jdbc.username=root</div><div class="line">jdbc.password=root</div></pre></td></tr></table></figure>
-<p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdexrz22yj306n062749.jpg" alt=""></p>
-<h2 id="Dao的开发"><a href="#Dao的开发" class="headerlink" title="Dao的开发"></a>Dao的开发</h2><h3 id="两种dao的实现方式："><a href="#两种dao的实现方式：" class="headerlink" title="两种dao的实现方式："></a>两种dao的实现方式：</h3><h4 id="1、原始dao的开发方式"><a href="#1、原始dao的开发方式" class="headerlink" title="1、原始dao的开发方式"></a>1、原始dao的开发方式</h4><blockquote>
-<p>原始的DAO开发接口+实现类来完成。<br> 需要dao实现类需要继承SqlsessionDaoSupport类</p>
-<ul>
-<li>编写User.xml配置文件</li>
-<li>在SqlMapConfig进行配置映射mapper</li>
-<li>实现UserDao接口</li>
-<li>实现UserDaoImpl实现类<br>编写DAO实现类，实现类必须集成SqlSessionDaoSupport<br>SqlSessionDaoSupport提供getSqlSession()方法来获取SqlSession<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdfd2q4qpj30jb04cdfw.jpg" alt=""><br><strong>sqlsession不要关闭,不用提交.由spring统一管理</strong><br>把dao实现类配置到spring容器中<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdfj1l57ij30h303hjs1.jpg" alt=""><br>测试<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class UserDaoImplTest &#123;</div><div class="line"></div><div class="line">	ApplicationContext apc;</div><div class="line">	@Before</div><div class="line">	public void setUp() throws Exception &#123;</div><div class="line">		String path = &quot;classpath:ApplicationContext.xml&quot;;</div><div class="line">		apc = new ClassPathXmlApplicationContext(path);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Test</div><div class="line">	public void test() &#123;</div><div class="line">		UserDao ud = (UserDao) apc.getBean(&quot;userdao&quot;);</div><div class="line">		User findUserById = ud.findUserById(29);</div><div class="line">		System.out.println(findUserById);</div><div class="line">	&#125;</div><div class="line">	/**</div><div class="line">	 * mapper代理</div><div class="line">	 */</div><div class="line">	@Test</div><div class="line">	public void test02() &#123;</div><div class="line">		UserMapper mapper = apc.getBean(UserMapper.class);</div><div class="line">		User findUserById = mapper.findUserById(29);</div><div class="line">		System.out.println(findUserById);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<h4 id="2、使用Mapper代理形式开发方式"><a href="#2、使用Mapper代理形式开发方式" class="headerlink" title="2、使用Mapper代理形式开发方式"></a>2、使用Mapper代理形式开发方式</h4><blockquote>
-<p>直接配置Mapper代理<br>1.编写UserMapper.xml配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;!DOCTYPE mapper    </div><div class="line">PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;    </div><div class="line">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</div><div class="line"></div><div class="line">&lt;mapper namespace=&quot;cn.hsl.mybatis.dao.UserMapper&quot;&gt;</div><div class="line">	&lt;select id=&quot;findUserById&quot; parameterType=&quot;int&quot; resultType=&quot;cn.hsl.mybatis.po.User&quot;&gt;</div><div class="line">		select * from user where id = #&#123;id&#125;</div><div class="line">	&lt;/select&gt;</div><div class="line">&lt;/mapper&gt;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>2.编写UserMapper.java接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public interface UserMapper &#123;</div><div class="line">	</div><div class="line">	public User findUserById(int id);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>注意两个文件中namespace对应.id和方法名对应</strong><br>在applicationContext.xml添加配置<br>MapperFactoryBean也是属于mybatis-spring整合包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;!-- Mapper代理的方式开发方式一，配置Mapper代理对象 --&gt;</div><div class="line">&lt;bean id=&quot;userMapper&quot; class=&quot;org.mybatis.spring.mapper.MapperFactoryBean&quot;&gt;</div><div class="line">	&lt;!-- 配置Mapper接口 --&gt;</div><div class="line">	&lt;property name=&quot;mapperInterface&quot; value=&quot;cn.hsl.mybatis.mapper.UserMapper&quot; /&gt;</div><div class="line">	&lt;!-- 配置sqlSessionFactory --&gt;</div><div class="line">	&lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot; /&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>使用扫描包配置Mapper代理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- Mapper代理的方式开发方式二，扫描包方式配置代理 --&gt;</div><div class="line">&lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;</div><div class="line">	&lt;!-- 配置Mapper接口 --&gt;</div><div class="line">	&lt;property name=&quot;basePackage&quot; value=&quot;cn.hsl.mybatis.dao&quot;/&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>每个mapper代理对象的id就是类名，首字母小写<br>自动扫描mapper,不用配置.</p>
-<h1 id="Mybatis逆向工程"><a href="#Mybatis逆向工程" class="headerlink" title="Mybatis逆向工程"></a>Mybatis逆向工程</h1><blockquote>
-<p>使用官方网站的Mapper自动生成工具mybatis-generator-core-1.3.2来生成po类和Mapper映射文件<br>在generatorConfig.xml中配置Mapper生成的详细信息，如下图：<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdg5bv29kj307d088mx9.jpg" alt=""><br>只需要修改以下:</p>
-<ul>
-<li>1.修改要生成的数据库表</li>
-<li>2.pojo文件所在包路径</li>
-<li>3.Mapper所在的包路径<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdg94qqvhj30lb04xglu.jpg" alt=""><br>pojo生成位置<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgcqbnnwj30fh01wmx2.jpg" alt=""><br>mapper映射文件位置<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgdfk74uj30fx01va9z.jpg" alt=""><br>mapper接口位置<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdgf038ajj30fi02idft.jpg" alt=""><br>指定数据库表<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdggonpy5j30en03jq2z.jpg" alt=""><br>执行工程main主函数<br>生成代码.不过,只能进行单表查询…</li>
-</ul>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;import resource=&quot;classpath:META-INF/cxf/cxf.xml&quot;/&gt;</div><div class="line">   &lt;import resource=&quot;classpath:META-INF/cxf/cxf-servlet.xml&quot;/&gt;</div><div class="line">   &lt;!-- 自动扫描webService --&gt;</div><div class="line">   &lt;context:component-scan base-package=&quot;com.hsl.cxf&quot; /&gt;</div><div class="line">   &lt;!-- 定义webservice的发布接口  --&gt;</div><div class="line">   &lt;jaxws:endpoint</div><div class="line">           implementor=&quot;#helloWorld&quot;           //注解名,相当于手动完成映射</div><div class="line">           address=&quot;/HelloWorld&quot;     //我们需要访问的地址</div><div class="line">   &gt;&lt;/jaxws:endpoint&gt;</div></pre></td></tr></table></figure>
+<p>运行项目,输入地址<a href="http://127.0.0.1:8080/webservice/HelloWorld?wsdl出现如下" target="_blank" rel="external">http://127.0.0.1:8080/webservice/HelloWorld?wsdl出现如下</a><br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fst9v6zzx5j30k307nmx6.jpg" alt=""><br><code>webservice</code>接口发布成功</p>
+<h2 id="使用CXF开发Web-Service客户端"><a href="#使用CXF开发Web-Service客户端" class="headerlink" title="使用CXF开发Web Service客户端"></a>使用CXF开发Web Service客户端</h2><p>可参考以下博客:<a href="https://blog.csdn.net/yangwenxue_admin/article/details/51059125" target="_blank" rel="external">传送门</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这就完成了<code>webservice</code>的入门案例的服务端,后续有时间或用的着会更新更多关于<code>webservice</code>的内容</p>
 
 
 	
@@ -608,7 +575,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2017/08/05/mybatis与spring整合/" title="mybatis与spring整合">http://yoursite.com/2017/08/05/mybatis与spring整合/</a>
+      <a href="http://yoursite.com/2018/06/30/初探WebService/" title="初探WebService">http://yoursite.com/2018/06/30/初探WebService/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -624,9 +591,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mybatis/" rel="tag"># mybatis</a>
+            <a href="/tags/WebService/" rel="tag"># WebService</a>
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/cxf/" rel="tag"># cxf</a>
           
         </div>
       
@@ -639,8 +606,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/04/MyBatis入门/" rel="next" title="MyBatis入门">
-                <i class="fa fa-chevron-left"></i> MyBatis入门
+              <a href="/2018/06/27/Lucene全文检索/" rel="next" title="Lucene全文检索">
+                <i class="fa fa-chevron-left"></i> Lucene全文检索
               </a>
             
           </div>
@@ -648,10 +615,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/05/初识Spring-MVC/" rel="prev" title="初识Spring MVC">
-                初识Spring MVC <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -833,7 +796,7 @@ src="//music.163.com/outchain/player?type=2&id=33920425&auto=0&height=66"></ifra
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis整合spring"><span class="nav-number">1.</span> <span class="nav-text">Mybatis整合spring</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整合思路"><span class="nav-number">1.1.</span> <span class="nav-text">整合思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整合需要的jar包"><span class="nav-number">1.2.</span> <span class="nav-text">整合需要的jar包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入配置文件"><span class="nav-number">1.3.</span> <span class="nav-text">加入配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis的配置文件SqlMapConfig-xml"><span class="nav-number">1.3.1.</span> <span class="nav-text">mybatis的配置文件SqlMapConfig.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring配置applicationContext-xml"><span class="nav-number">1.3.2.</span> <span class="nav-text">spring配置applicationContext.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据源-db-properties"><span class="nav-number">1.3.3.</span> <span class="nav-text">数据源 db.properties</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dao的开发"><span class="nav-number">1.4.</span> <span class="nav-text">Dao的开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种dao的实现方式："><span class="nav-number">1.4.1.</span> <span class="nav-text">两种dao的实现方式：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、原始dao的开发方式"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">1、原始dao的开发方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、使用Mapper代理形式开发方式"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">2、使用Mapper代理形式开发方式</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis逆向工程"><span class="nav-number">2.</span> <span class="nav-text">Mybatis逆向工程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Web-Service"><span class="nav-number">1.</span> <span class="nav-text">什么是Web Service</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#名词解释"><span class="nav-number">1.1.</span> <span class="nav-text">名词解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-Service实例"><span class="nav-number">2.</span> <span class="nav-text">Web Service实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring整合CXF开发服务端"><span class="nav-number">2.1.</span> <span class="nav-text">Spring整合CXF开发服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用CXF开发Web-Service客户端"><span class="nav-number">2.2.</span> <span class="nav-text">使用CXF开发Web Service客户端</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
