@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://forqxy.top/"/>
-  <updated>2018-06-30T08:25:53.722Z</updated>
+  <updated>2018-07-04T16:03:44.613Z</updated>
   <id>http://forqxy.top/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot学习</title>
+    <link href="http://forqxy.top/2018/07/04/SpringBoot%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://forqxy.top/2018/07/04/SpringBoot学习/</id>
+    <published>2018-07-04T13:33:08.000Z</published>
+    <updated>2018-07-04T16:03:44.613Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fsy6538m1gj30ia0c6wf3.jpg" alt=""></p>
+<h1 id="SpringBoot介绍"><a href="#SpringBoot介绍" class="headerlink" title="SpringBoot介绍"></a>SpringBoot介绍</h1><blockquote>
+<p>17年10月还在公司实习的时候,公司有一个项目要做技术选型.当时考虑到各种问题还是选择了<code>ssm</code>,<br> 中间也犹豫过是不是用新技术<code>SpringBoot</code>,所以当时也去大概的了解了一下这个技术.后来也没怎么<br> 去用过尝试过,忘记的差不多了.过了一年,由于微服务的发展,好像这个技术框架越来越受众多公司的欢迎.<br> 今天,就去重新的学习下.</p>
+<p>其它的介绍不多说可以直接百度百科,直接开始快速入门吧.</p>
+</blockquote>
+<h1 id="SpringBoot应用"><a href="#SpringBoot应用" class="headerlink" title="SpringBoot应用"></a>SpringBoot应用</h1><blockquote>
+<ul>
+<li>有两种方法创建<code>springboot</code>项目,第一种可以进入官网配置下载初始项目.<a href="http://start.spring.io/" target="_blank" rel="external">传送门</a></li>
+<li>再者就是用<code>IDE</code>直接创建,我选用<code>IDEA</code>作为开发工具.怎么创建步骤就不上图了,网上都有,<br>可以参考<a href="http://blog.didispace.com/spring-initializr-in-intellij/" target="_blank" rel="external">程序员DD</a></li>
+</ul>
+</blockquote>
+<p>创建完成后,项目结构如下<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fsy732mtvfj311y0kq4l3.jpg" alt=""><br>自己根据需求添加相应的包<br>核心启动程序就是<code>DemoApplication.class</code>,核心配置文件为<code>application.yml</code>.</p>
+<h2 id="Controller的使用"><a href="#Controller的使用" class="headerlink" title="Controller的使用"></a>Controller的使用</h2><p><code>@RestController</code>和<code>@RequestMapping</code>注解是来自<code>SpringMVC</code>的注解，它们不是<code>SpringBoot</code>的特定部分。<br>它提供实现了<code>REST API</code>，可以服务<code>JSON</code>,<code>XML</code>或者其他。这里是以<code>String</code>的形式渲染出结果。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fsy7f54ratj30hy0actep.jpg" alt=""></p>
+<h2 id="数据库的操作"><a href="#数据库的操作" class="headerlink" title="数据库的操作"></a>数据库的操作</h2><p>操作数据库需要配置信息,如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">server:</div><div class="line">  port: 8080</div><div class="line">spring:</div><div class="line">  datasource:</div><div class="line">    driver-class-name: com.mysql.jdbc.Driver</div><div class="line">    url: jdbc:mysql://127.0.0.1:3306/dbSpringboot</div><div class="line">    username: root</div><div class="line">    password: root</div><div class="line">  jpa:</div><div class="line">    hibernate:</div><div class="line">      ddl-auto: update</div><div class="line">    show-sql: true</div></pre></td></tr></table></figure></p>
+<p>相应的<code>pom</code>文件也要添加依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;</div><div class="line">&lt;/dependency&gt;</div><div class="line"></div><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;mysql&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</div><div class="line">	&lt;scope&gt;runtime&lt;/scope&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure></p>
+<p>操作数据库使用的是<code>spring-data-jpa</code></p>
+<blockquote>
+<p>首先定义一个接口,去继承<code>JpaRepository</code>,里面自定义的方法名也有讲究的.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by hsl on 2018-07-03</div><div class="line"> * Time:15:27</div><div class="line"> */</div><div class="line">public interface GirlJpa extends JpaRepository&lt;Girl,Integer&gt;&#123;</div><div class="line"></div><div class="line"></div><div class="line">    List&lt;Girl&gt; getAllByAge(Integer age);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于项目简单,直接省去了<code>service</code>层.控制层如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by hsl on 2018-07-03</div><div class="line"> * Time:15:24</div><div class="line"> */</div><div class="line">@RestController</div><div class="line">public class GirlController &#123;</div><div class="line"></div><div class="line">    @Autowired</div><div class="line">    private GirlJpa girlJpa;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 获取列表</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    @GetMapping(value = &quot;/girls&quot;)</div><div class="line">    public List&lt;Girl&gt; girlList()&#123;</div><div class="line">        System.out.println(&quot;执行girllist方法&quot;);</div><div class="line">        return girlJpa.findAll();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 添加一个女生</div><div class="line">     * @param</div><div class="line">     * @param</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    @PostMapping(value = &quot;/girls&quot;)</div><div class="line">    public Result&lt;Girl&gt; girlAdd(@Valid Girl girl, BindingResult bindingResult)&#123;</div><div class="line">        if(bindingResult.hasErrors())&#123;</div><div class="line">            System.out.println(bindingResult.getFieldError().getDefaultMessage());</div><div class="line">            return ResultUtil.error(1,bindingResult.getFieldError().getDefaultMessage());</div><div class="line">        &#125;</div><div class="line">        girl.setAge(girl.getAge());</div><div class="line">        girl.setCupSize(girl.getCupSize());</div><div class="line"></div><div class="line">        return ResultUtil.success(girlJpa.save(girl));</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>用<code>postman</code>测试接口用例<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fsy8gob6vdj30w80hvdhk.jpg" alt=""><br>测试成功,返回所有列表信息</p>
+<blockquote>
+<p>忘记说了,数据库可以不用自己建表,可以通过对应实体类里面写注解来完成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by hsl on 2018-07-03</div><div class="line"> * Time:15:11</div><div class="line"> */</div><div class="line">@Entity</div><div class="line">public class Girl &#123;</div><div class="line"></div><div class="line">    @Id</div><div class="line">    @GeneratedValue</div><div class="line">    private Integer id;</div><div class="line"></div><div class="line">    @Min(value = 18,message = &quot;你的年龄还不达标哦&quot;)//设置字段最小值,字段验证</div><div class="line">    private Integer age;</div><div class="line"></div><div class="line">    private String cupSize;</div><div class="line"></div><div class="line">    public Girl() &#123;</div><div class="line">    &#125;</div><div class="line">//这里省略get set方法</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h2><p>在实体的字段属性上添加注解,如上面的代码.当插入值不满足时,就会出现提示信息.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@Min(value = 18,message = &quot;你的年龄还不达标哦&quot;)//设置字段最小值,字段验证</div><div class="line">   private Integer age;</div></pre></td></tr></table></figure></p>
+<p>当新增数据年龄小于18时,就会提示信息,不能成功插入数据库.<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fsy95ck12uj30nh0csjs0.jpg" alt=""><br>上面返回的<code>json</code>信息是经过处理的,后面会讲到</p>
+<h1 id="web进阶"><a href="#web进阶" class="headerlink" title="web进阶"></a>web进阶</h1><p>springboot用在web方面结合时,主要用到的的AOP日志消息机制和统一异常处理</p>
+<h2 id="使用AOP处理请求"><a href="#使用AOP处理请求" class="headerlink" title="使用AOP处理请求"></a>使用AOP处理请求</h2><blockquote>
+<p>自己建一个Aspect类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by hsl on 2018-07-03</div><div class="line"> * Time:17:52</div><div class="line"> */</div><div class="line">@Aspect</div><div class="line">@Component</div><div class="line">public class HttpAspect &#123;</div><div class="line"></div><div class="line">    @Before(&quot;execution(public * com.hsl.springboot.demo.web.GirlController.girlList(..))&quot;)</div><div class="line">    public void log()&#123;</div><div class="line">        System.out.println(&quot;前置通知消息&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>类头上面注意所加的注解<br>运行girlList()方法,结果如下.<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fsy9cyi3q3j30is063410.jpg" alt=""></p>
+<h2 id="统一异常处理"><a href="#统一异常处理" class="headerlink" title="统一异常处理"></a>统一异常处理</h2><blockquote>
+<p>抛出Exception时,因为错误种类条件很多,不能自己定义状态码,所以建议自定义异常类</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by hsl on 2018-07-04</div><div class="line"> * Time:14:24</div><div class="line"> */</div><div class="line">@ControllerAdvice</div><div class="line">public class ExceptionHandle &#123;</div><div class="line"></div><div class="line">    @ExceptionHandler(value = Exception.class)</div><div class="line">    @ResponseBody</div><div class="line">    public Result handle(Exception e)&#123;</div><div class="line">        if(e instanceof MyException)&#123;</div><div class="line">            MyException myException = (MyException) e;</div><div class="line">            return ResultUtil.error(myException.getCode(),myException.getMessage());</div><div class="line">        &#125;</div><div class="line">        return ResultUtil.error(CodeMsg.UNKNOW_ERROR.getCode(),CodeMsg.UNKNOW_ERROR.getMsg());</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>自定义异常类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * Created by hsl on 2018-07-04</div><div class="line"> * Time:14:30</div><div class="line"> */</div><div class="line">public class MyException extends RuntimeException &#123;</div><div class="line"></div><div class="line">    //错误状态码</div><div class="line">    private Integer code;</div><div class="line"></div><div class="line">    public MyException(CodeMsg codeMsg)&#123;</div><div class="line">        super(codeMsg.getMsg());</div><div class="line">        this.code = codeMsg.getCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Integer getCode() &#123;</div><div class="line">        return code;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setCode(Integer code) &#123;</div><div class="line">        this.code = code;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其中自己封装了下返回所需的结果.全部如下<br>状态码和信息<code>CodeMsg</code>枚举类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by hsl on 2018-07-04</div><div class="line"> * Time:14:42</div><div class="line"> */</div><div class="line">public enum CodeMsg &#123;</div><div class="line">    UNKNOW_ERROR(-10,&quot;系统未知错误&quot;),</div><div class="line">    SUCCESS(0,&quot;成功&quot;),</div><div class="line">    Sixth(100,&quot;不到16岁&quot;),</div><div class="line">    eighth(101,&quot;不到18周岁&quot;);</div><div class="line"></div><div class="line"></div><div class="line">    private Integer code;</div><div class="line">    private String msg;</div><div class="line"></div><div class="line">    CodeMsg(Integer code, String msg) &#123;</div><div class="line">        this.code = code;</div><div class="line">        this.msg = msg;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Integer getCode() &#123;</div><div class="line">        return code;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getMsg() &#123;</div><div class="line">        return msg;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>统一返回结果<code>Result</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by hsl on 2018-07-03</div><div class="line"> * Time:22:47</div><div class="line"> */</div><div class="line">public class Result&lt;T&gt; &#123;</div><div class="line"></div><div class="line">    private int code;</div><div class="line">    private String msg;</div><div class="line">    private T data;</div><div class="line">    //省略set get方法</div></pre></td></tr></table></figure></p>
+<p><code>ResultUtil</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class ResultUtil &#123;</div><div class="line"></div><div class="line">    public static Result&lt;Girl&gt; success(Girl girl)&#123;</div><div class="line">        Result result = new Result();</div><div class="line">        result.setCode(0);</div><div class="line">        result.setMsg(&quot;新增成功&quot;);</div><div class="line">        result.setData(girl);</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    public static Result error(Integer code,String msg)&#123;</div><div class="line">        Result result = new Result();</div><div class="line">        result.setCode(code);</div><div class="line">        result.setMsg(msg);</div><div class="line">        return result;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>算是稍微入门了SpringBoot,后续用到的会有补充</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/005WV0MDly1fsy6538m1gj30ia0c6wf3.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;SpringBoot介绍&quot;&gt;&lt;a href=&quot;#SpringBoot介绍&quot; cla
+    
+    </summary>
+    
+      <category term="technology" scheme="http://forqxy.top/categories/technology/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://forqxy.top/tags/SpringBoot/"/>
+    
+      <category term="spring" scheme="http://forqxy.top/tags/spring/"/>
+    
+      <category term="jpa" scheme="http://forqxy.top/tags/jpa/"/>
+    
+      <category term="web" scheme="http://forqxy.top/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>初探WebService</title>
@@ -690,9 +763,9 @@
     
       <category term="Spring" scheme="http://forqxy.top/tags/Spring/"/>
     
-      <category term="aop" scheme="http://forqxy.top/tags/aop/"/>
-    
       <category term="TransactionManager" scheme="http://forqxy.top/tags/TransactionManager/"/>
+    
+      <category term="aop" scheme="http://forqxy.top/tags/aop/"/>
     
   </entry>
   
@@ -802,9 +875,9 @@
     
       <category term="Spring" scheme="http://forqxy.top/tags/Spring/"/>
     
-      <category term="ioc" scheme="http://forqxy.top/tags/ioc/"/>
-    
       <category term="aop" scheme="http://forqxy.top/tags/aop/"/>
+    
+      <category term="ioc" scheme="http://forqxy.top/tags/ioc/"/>
     
   </entry>
   
@@ -1172,84 +1245,6 @@ setMaxResults(int) 分页，每页显示个数 pageSize
       <category term="struts2" scheme="http://forqxy.top/tags/struts2/"/>
     
       <category term="ognl" scheme="http://forqxy.top/tags/ognl/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>struts2</title>
-    <link href="http://forqxy.top/2017/06/06/struts2/"/>
-    <id>http://forqxy.top/2017/06/06/struts2/</id>
-    <published>2017-06-06T14:39:01.000Z</published>
-    <updated>2017-09-08T07:23:03.239Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Struts2简介"><a href="#Struts2简介" class="headerlink" title="Struts2简介"></a>Struts2简介</h1><h2 id="1、Struts2概述"><a href="#1、Struts2概述" class="headerlink" title="1、Struts2概述"></a>1、Struts2概述</h2><p>Struts2是Apache发行的MVC开源框架。注意：它只是表现层（MVC）框架。</p>
-<h2 id="2、Struts2的来历"><a href="#2、Struts2的来历" class="headerlink" title="2、Struts2的来历"></a>2、Struts2的来历</h2><p>Struts1：也是apache开发的一套mvc的开源框架。在2005年之前非常流行。<br> 弊端：Struts1的核心控制器就是一个Servlet。随着使用者的增多，弊端开始出现。<br>Struts2：在long long ago，有一个设计超前的框架XWork，后来推出了XWork1和WebWork2。Struts2就是apache和OpenSymphony组织合并开发出来。<br>里面包含了WebWork2的核心及Struts的一些特性和功能。除此之外，和Struts1没有任何关系了。</p>
-<h1 id="搭建Struts2开发环境"><a href="#搭建Struts2开发环境" class="headerlink" title="搭建Struts2开发环境"></a>搭建Struts2开发环境</h1><blockquote>
-<p>1.下载struts2开发包<br><code>struts2</code> <a href="http://struts.apache.org" target="_blank" rel="external">链接</a><br>拷贝哪些jar包？<br>找到Struts2自带的例子中，struts-blank的war包，在它的\WEB-INF\lib目录下的jar包全拷贝。<br>2.创建struts2的配置文件</p>
-</blockquote>
-<p>在顶层目录创建一个struts2.xml的配置文件<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjaygmrfx4j30lc02paa2.jpg" alt=""></p>
-<blockquote>
-<p>3.配置struts2的核心控制器</p>
-</blockquote>
-<p>在web.xml中配置<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjaynkq6glj30py05a3yn.jpg" alt=""><br>部署应用，启动Tomcat，不报错表示搭建成功。</p>
-<h1 id="第一个Struts2荔枝"><a href="#第一个Struts2荔枝" class="headerlink" title="第一个Struts2荔枝"></a>第一个Struts2荔枝</h1><p>1.新建一个jsp<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjays051w3j30pp03yglr.jpg" alt=""><br>2.在struts2.xml文件中配置action<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjayw3achkj30np058t8u.jpg" alt=""><br>3.创建动作类和动作方法<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjayxwc85cj30fg03at8n.jpg" alt=""><br>4.创建结果视图<br>success.jsp成功页面<br>5.部署项目,访问hello.action.出现成功页面</p>
-<p><strong>struts2执行过程图</strong><br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjazouhlijj30hs0kuq5a.jpg" alt=""></p>
-<h2 id="struts2-xml的主要元素"><a href="#struts2-xml的主要元素" class="headerlink" title="struts2.xml的主要元素"></a>struts2.xml的主要元素</h2><p>1、package元素<br>1.1、作用：<br>在struts2的配置文件中引入了面向对象思想，使用了分包管理。易于管理动作类。便于模块化开发动作类。<br>1.2、属性：<br>name：包的名称。必须写。且必须唯一。<br>extends：一般情况下需要继承struts-default包，但不是必须的。不过如果不继承的话，将无法使用struts2提供的核心功能。<br>    struts-default.xml中定义着struts-default这个包。而struts-default.xml是在我们的struts.xml加载之前加载。<br>abstract：把包声明为抽象包，抽象包就是用来被继承的。只要是没有<action>元素的包，就可以声明为抽象包。<br>    namespace：名称空间。不写默认不是”/“.是””.<br>名称空间    +    动作名称    =    访问路径<br>2.action元素:<br>作用:配置动作用的<br>属性:name   动作名称<br>    class:动作类全名<br>动作类:<br>就是一个pojo类.通常推荐继承<code>ActionSupport</code></action></p>
-<h2 id="结果类型视图"><a href="#结果类型视图" class="headerlink" title="结果类型视图"></a>结果类型视图</h2><p>1.result元素:<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjb3chb84jj30cx01mmx2.jpg" alt=""><br>type：结果类型，指的就是用什么方式转到定义的页面。默认是dispatcher。<br><strong>type属性的取值在struts-default.xml中定义着</strong><br>常用结果类型介绍：<br>dispatcher：(默认值)<br>    使用请求转发，转向一个页面。<br>redirect：<br>    使用重定向，转向一个页面。</p>
-<h2 id="在动作类中访问Servlet的API"><a href="#在动作类中访问Servlet的API" class="headerlink" title="在动作类中访问Servlet的API"></a>在动作类中访问Servlet的API</h2><h3 id="1-第一种方式：使用ServletActionContext类"><a href="#1-第一种方式：使用ServletActionContext类" class="headerlink" title="1.第一种方式：使用ServletActionContext类"></a>1.第一种方式：使用ServletActionContext类</h3><p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjb3l144plj30hq06ctae.jpg" alt=""><br>第二种方式：使用实现接口的方式<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjb3okjiguj30in02hgm1.jpg" alt=""></p>
-<h2 id="封装请求正文到对象中"><a href="#封装请求正文到对象中" class="headerlink" title="封装请求正文到对象中"></a>封装请求正文到对象中</h2><p>动态参数封装:<br>    通过用户的表单封装请求正文参数。<br>1.动作类作为实体模型<br>表单参数直接写在动作类里面;由struts2的params拦截器完成封装<br>2.动作类和实体模型分开<br><strong>动作类</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class Action02 extends ActionSupport&#123;</div><div class="line">	private User u;</div><div class="line">	public String login()&#123;</div><div class="line">		System.out.println(u);</div><div class="line">		return null;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public User getU() &#123;</div><div class="line">		return u;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public void setU(User u) &#123;</div><div class="line">		this.u = u;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>jsp页面<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjbfjs0sxdj30j803emx9.jpg" alt=""></p>
-<p>3.模型驱动<br>实现模型驱动接口,<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjbfrh0eb4j30l807r74i.jpg" alt=""></p>
-<blockquote>
-<ul>
-<li>实体需要我们自己new创建出来</li>
-</ul>
-</blockquote>
-<h2 id="struts2的数据表单验证"><a href="#struts2的数据表单验证" class="headerlink" title="struts2的数据表单验证"></a>struts2的数据表单验证</h2><p>1.编程式验证</p>
-<blockquote>
-<p>针对动作类中的所有动作方法进行验证：<br>在动作类中覆盖public void validate()方法。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//编程式验证</div><div class="line">	/**</div><div class="line">	 * 1.动作类必须继承ActionSupport,</div><div class="line">	 * 2.重写validate方法(会对所有动作有效)</div><div class="line">	 * @return</div><div class="line">	 */</div><div class="line">	@Override</div><div class="line">	public void validate() &#123;</div><div class="line">		if(user.getUsername().isEmpty())&#123;</div><div class="line">			addFieldError(&quot;username&quot;, &quot;请输入用户名!&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>该验证方法会对动作类中的所有动作方法进行验证<br>解决办法1：给不需要验证的动作方法添加一个@SkipValidation注解。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjbg71ig0nj30an02u0sn.jpg" alt=""><br>解决办法2：validation方法遵守书写规范。<br>如验证find方法.写法如下validate+方法名首字母大写. <code>validateFind()</code><br><strong>所有编程式验证的弊端：硬编码。</strong></p>
-</blockquote>
-<h3 id="声明式验证"><a href="#声明式验证" class="headerlink" title="声明式验证"></a>声明式验证</h3><blockquote>
-<p>通过编写验证规则的xml文件。需要验证时，编写xml文件，不要验证，就不写。</p>
-</blockquote>
-<p>a、针对动作类中的所有动作进行验证：在动作类所在的包中，建立一个ActionClassName-validation.xml的文件<br>添加约束文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;!DOCTYPE validators PUBLIC</div><div class="line">  		&quot;-//Apache Struts//XWork Validator 1.0.3//EN&quot;</div><div class="line">  		&quot;http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd&quot;&gt;</div><div class="line"></div><div class="line">&lt;validators&gt;</div><div class="line">	&lt;field name=&quot;username&quot;&gt;</div><div class="line">		&lt;field-validator type=&quot;requiredstring&quot;&gt;</div><div class="line">		&lt;message&gt;用户名呢&lt;/message&gt;</div><div class="line">		&lt;/field-validator&gt;</div><div class="line">		</div><div class="line">	&lt;/field&gt;</div><div class="line">	</div><div class="line">&lt;/validators&gt;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>b、针对动作类中的某个动作进行验证：在动作类所在的包中建立一个xml文件，名称为ActionClassName-ActionName-validation.xml。</p>
-</blockquote>
-<p><em>Struts2内置的常用声明式验证器</em><br>位置：<br><code>xwork-core-2.3.15.3.jar\com\opensymphony\xwork2\validator\validator\default.xml</code></p>
-<h1 id="struts2中的拦截器"><a href="#struts2中的拦截器" class="headerlink" title="struts2中的拦截器"></a>struts2中的拦截器</h1><h2 id="拦截器的重要性"><a href="#拦截器的重要性" class="headerlink" title="拦截器的重要性"></a>拦截器的重要性</h2><blockquote>
-<p>Struts2中的很多功能都是由拦截器完成的。比如：servletConfig，staticParam，params，modelDriven等等。<br>是AOP编程思想的一种应用形式。</p>
-</blockquote>
-<h3 id="自定义拦截器"><a href="#自定义拦截器" class="headerlink" title="自定义拦截器"></a>自定义拦截器</h3><ol>
-<li>编写步骤<br>编写一个类，继承AbstractInterceptor类或者实现Interceptor接口。重写intercept方法。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc2kw9j2vj30n607a3yx.jpg" alt=""><br>配置拦截器：注意拦截器必须先声明再使用<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc2nretosj30oh06x0t8.jpg" alt=""><br><strong>多个拦截器的执行顺序是由使用顺序决定的</strong><blockquote>
-<p>写了自定义的拦截器后,默认拦截器就不起作用了<br>所以:<br>我们在自定义拦截器时，还可以继承MethodFilterInterceptor并且重写doIntercept方法。<br>并且在struts的配置文件中，配置需要拦截哪些方法，和需要放过哪些方法。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc3081mwpj30p307lgm5.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc315jyl7j30l604imxa.jpg" alt=""></p>
-</blockquote>
-</li>
-</ol>
-<h2 id="struts2中文件的上传和下载"><a href="#struts2中文件的上传和下载" class="headerlink" title="struts2中文件的上传和下载"></a>struts2中文件的上传和下载</h2><p>必要前提：<br>    a.表单method必须是post；<br>    b.enctype取值必须是multipart/form-data；<br>    c.提供文件选择域。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc63su8u9j30k3092dgf.jpg" alt=""></p>
-<p>动作类:<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc65awp3kj30pm0a3754.jpg" alt=""><br>文件上传大小限制（默认是2MB）<br>如果上传文件超过了默认大小，upload拦截器会转向一个input的逻辑视图。</p>
-<p>在struts.xml中改变default.properties文件中的常量。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc69nj315j30pd07w0tc.jpg" alt=""></p>
-<h3 id="限制文件上传的类型"><a href="#限制文件上传的类型" class="headerlink" title="限制文件上传的类型"></a>限制文件上传的类型</h3><p>1.给fileUpload拦截器注入参数<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc6b2n2vyj30oj04dglw.jpg" alt=""><br>或通过限制上传文件的MIME类型<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc6d6pn0oj30pw05jwex.jpg" alt=""></p>
-<h3 id="多文件上传"><a href="#多文件上传" class="headerlink" title="多文件上传"></a>多文件上传</h3><p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc6fcyqkqj30ov0bjwf3.jpg" alt=""></p>
-<h3 id="文件的下载"><a href="#文件的下载" class="headerlink" title="文件的下载"></a>文件的下载</h3><p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc6ileoxbj30ry0axmxr.jpg" alt=""><br><strong>动作类</strong><br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjc6j3z3bbj30ov07274v.jpg" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Struts2简介&quot;&gt;&lt;a href=&quot;#Struts2简介&quot; class=&quot;headerlink&quot; title=&quot;Struts2简介&quot;&gt;&lt;/a&gt;Struts2简介&lt;/h1&gt;&lt;h2 id=&quot;1、Struts2概述&quot;&gt;&lt;a href=&quot;#1、Struts2概述&quot; c
-    
-    </summary>
-    
-      <category term="technology" scheme="http://forqxy.top/categories/technology/"/>
-    
-    
-      <category term="struts2" scheme="http://forqxy.top/tags/struts2/"/>
-    
-      <category term="mvc" scheme="http://forqxy.top/tags/mvc/"/>
     
   </entry>
   
