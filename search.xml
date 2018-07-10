@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[开发过程中遇到的问题之sql_mode]]></title>
+    <url>%2F2018%2F07%2F10%2F%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[记一下开发中遇到的问题,一个小小的问题困扰了几个小时.崩溃,从晚到早,还好最后解决了.用mysql建表时,报了1055错误,虽然不影响数据,但是看着就是特不爽.后来,上网查了查,是因为mysql在5.7版本后增加了新的特性,对sql语句要求越来越严格.对于sql_mode变化如官方文档 严格的事务性存储引擎SQL模式(STRICT_TRANS_TABLES)现在是默认启用。 实现ONLY_FULL_GROUP_BY SQL模式使更有经验，不再拒绝之前被拒绝的确定性查询。结果,这种模式现在是默认启用,只禁止包含的表达式在一个组里且不能保证唯一确定的不确定性查询。 ERROR_FOR_DIVISION_BY_ZERO,NO_ZERO_DATE和NO_ZERO_IN_DATE SQL模式现在已经弃用,但默认启用。长期的计划是让他们包含在严格的SQL模式和删除它们明确的模式在未来的MySQL版本。 更改默认的SQL模式导致默认的sql_mode系统变量值使得这些模式启用： ONLY_FULL_GROUP_BY, STRICT_TRANS_TABLES, NO_ZERO_IN_DATE, NO_ZERO_DATE, ERROR_FOR_DIVISION_BY_ZERO, NO_AUTO_CREATE_USER, and NO_ENGINE_SUBSTITUTION. 解决办法:直接修改配置文件,不然每次重启服务还是会有错误.进入mysql命令模式,mysql -uroot -p输入命令select @@sql_mode;可以看到详细属性修改my.cnf如下完成后重启mysql服务,service mysqld restart.再查看sql_mode已经修改成功, 之前修改试了几次一直重启服务不成功,不知道是不是写的位置的原因……注意了注意了…..]]></content>
+      <categories>
+        <category>technology</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>linux部署</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[日志框架Logback的使用]]></title>
     <url>%2F2018%2F07%2F08%2F%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[什么是日志框架 是一套能实现日志输出的工具包 能够描述系统运行状态的所有时间都可以算作日志日志框架的能力 定制输出目标 定制输出格式 携带上下文信息 运行时选择性输出 灵活的配置 优异的性能常见的日志框架JUL JCL Log4j Log4j2 jboss-logging Logback SLF4j这里我们最后选择Logback框架.Logback的使用与配置Logback的使用因为最近在学习Springboot,这里我创建的是Springboot项目,测试用例如下:123456789101112131415161718/** * Created by hsl on 2018-07-08 * Time:18:41 */@RunWith(SpringRunner.class)@SpringBootTestpublic class LoggerTest &#123; private final Logger logger = LoggerFactory.getLogger(LoggerTest.class); @Test public void test01()&#123; logger.info(&quot;这里是info信息~&quot;); logger.debug(&quot;这里是debug信息~&quot;); logger.error(&quot;这里是error信息~&quot;); &#125;&#125; 运行后结果因为系统默认级别是info,所以只有在info级别之上的才会输出出来. 查看系统级别可以在IDEA中双击shift搜索Level就可以显示出级别信息. 每次编写一个类都要重新写1private final Logger logger = LoggerFactory.getLogger(LoggerTest.class) 所以还有更简便的方法,利用IDEA的lombok插件 安装lombok插件,在pom文件中引入依赖12345&lt;dependency&gt; &lt;groupId&gt;org.projectlombok&lt;/groupId&gt; &lt;artifactId&gt;lombok&lt;/artifactId&gt; &lt;version&gt;1.16.18&lt;/version&gt;&lt;/dependency&gt; 此后,在类的头上加上@Slf4j注解就可以直接用变量log输出了.这个功能需要插件的支持否则会提示变量log不存在不能使用. 日志输出变量时,使用{}充当占位符123String name = &quot;tom&quot;; String pwd = &quot;123456&quot;; log.info(&quot;name is &#123;&#125;,pwd is &#123;&#125;&quot;,name,pwd); Logback的配置配置有两种方式 application.yml中配置,一般只能进行简单的配置 logback-spring.xml中配置,进行较为复杂的配置第一种123456logging: pattern: console: &quot;%d - %msg%n&quot; # level: info 日志级别 # file: 自定义日志文件名的具体位置,直接自定义日志文件名 # path: 自定义日志生成的位置,是个路径 第二种资源文件下面新建logback-spring.xml,每段都有注释说明.12345678910111213141516171819202122232425262728293031323334353637&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;&lt;configuration&gt;&lt;!--日志格式--&gt; &lt;appender name=&quot;consoleLog&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt; &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt; &lt;pattern&gt; %d - %msg%n &lt;/pattern&gt; &lt;/layout&gt; &lt;/appender&gt;&lt;!--日志文件--&gt; &lt;appender name=&quot;fileInfoLog&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt; &lt;!--过滤规则--&gt; &lt;filter class=&quot;ch.qos.logback.classic.filter.LevelFilter&quot;&gt; &lt;level&gt;INFO&lt;/level&gt; &lt;onMatch&gt;DENY&lt;/onMatch&gt; &lt;onMismatah&gt;ACCEPT&lt;/onMismatah&gt; &lt;/filter&gt; &lt;encoder&gt; &lt;pattern&gt; %msg%n &lt;/pattern&gt; &lt;/encoder&gt; &lt;!--滚动策略--&gt; &lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt; &lt;!--路径--&gt; &lt;fileNamePattern&gt;/xxx/xxx/info.%d.log&lt;/fileNamePattern&gt; &lt;/rollingPolicy&gt; &lt;/appender&gt; &lt;root level=&quot;info&quot;&gt; &lt;appender-ref ref=&quot;consoleLog&quot;/&gt; &lt;appender-ref ref=&quot;fileInfoLog&quot;/&gt; &lt;/root&gt;&lt;/configuration&gt; 关于更多配置,可进入到springboot核心依赖中查看源码… 总结总之Logback日志框架还是很强大的,知道简单配置和如何自定义复杂配置.后续关于更多日志有关的问题再更……]]></content>
@@ -181,8 +193,8 @@
         <category>life</category>
       </categories>
       <tags>
-        <tag>life</tag>
         <tag>first</tag>
+        <tag>life</tag>
         <tag>随笔</tag>
       </tags>
   </entry>
