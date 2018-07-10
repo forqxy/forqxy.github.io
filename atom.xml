@@ -861,9 +861,9 @@
     
       <category term="Spring" scheme="http://forqxy.top/tags/Spring/"/>
     
-      <category term="TransactionManager" scheme="http://forqxy.top/tags/TransactionManager/"/>
-    
       <category term="aop" scheme="http://forqxy.top/tags/aop/"/>
+    
+      <category term="TransactionManager" scheme="http://forqxy.top/tags/TransactionManager/"/>
     
   </entry>
   
@@ -973,9 +973,9 @@
     
       <category term="Spring" scheme="http://forqxy.top/tags/Spring/"/>
     
-      <category term="aop" scheme="http://forqxy.top/tags/aop/"/>
-    
       <category term="ioc" scheme="http://forqxy.top/tags/ioc/"/>
+    
+      <category term="aop" scheme="http://forqxy.top/tags/aop/"/>
     
   </entry>
   
@@ -1093,9 +1093,9 @@
       <category term="life" scheme="http://forqxy.top/categories/life/"/>
     
     
-      <category term="first" scheme="http://forqxy.top/tags/first/"/>
-    
       <category term="life" scheme="http://forqxy.top/tags/life/"/>
+    
+      <category term="first" scheme="http://forqxy.top/tags/first/"/>
     
       <category term="随笔" scheme="http://forqxy.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
