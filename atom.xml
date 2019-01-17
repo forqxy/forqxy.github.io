@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://forqxy.top/"/>
-  <updated>2018-07-10T05:56:38.930Z</updated>
+  <updated>2018-07-16T09:01:21.143Z</updated>
   <id>http://forqxy.top/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>发现开发技巧篇</title>
+    <link href="http://forqxy.top/2018/07/16/%E5%8F%91%E7%8E%B0%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7%E7%AF%87/"/>
+    <id>http://forqxy.top/2018/07/16/发现开发技巧篇/</id>
+    <published>2018-07-16T08:14:18.000Z</published>
+    <updated>2018-07-16T09:01:21.143Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1ftbsem9ebzj31g80y6dne.jpg" alt=""></p>
+<h1 id="基于Springboot开发"><a href="#基于Springboot开发" class="headerlink" title="基于Springboot开发"></a>基于Springboot开发</h1><h2 id="插入数据库时遇到的问题"><a href="#插入数据库时遇到的问题" class="headerlink" title="插入数据库时遇到的问题"></a>插入数据库时遇到的问题</h2><p>在调用<code>jpa</code>的<code>save</code>方法时,发现不能成功的插入数据.调用<code>JpaRepository</code>接口的<code>save</code>方法保存一个对象到数据库中的时候就会出错.<br><code>com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException</code><br>后来试了多次发现是主键自增策略引起的问题.改为如下后就解决了<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1ftbsmfozy0j30ga03wabw.jpg" alt=""><br>原因是默认就是<code>auto</code>,不能由程序自己控制.具体原因如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Hibernate 能够出色地自动生成主键。Hibernate/EBJ 3 注释也可以为主键的自动生成提供丰富的支持，允许实现各种策略。</div><div class="line">其生成规则由@GeneratedValue设定的.这里的@id和@GeneratedValue都是JPA的标准用法, JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</div><div class="line">JPA提供的四种标准用法为TABLE,SEQUENCE,IDENTITY,AUTO.</div><div class="line">TABLE：使用一个特定的数据库表格来保存主键。</div><div class="line">SEQUENCE：根据底层数据库的序列来生成主键，条件是数据库支持序列。</div><div class="line">IDENTITY：主键由数据库自动生成（主要是自动增长型）</div><div class="line">AUTO：主键由程序控制。</div><div class="line">在指定主键时，如果不指定主键生成策略，默认为AUTO。</div><div class="line">@Id</div><div class="line">相当于</div><div class="line">@Id</div><div class="line">@GeneratedValue(strategy = GenerationType.AUTO)</div><div class="line"></div><div class="line">identity:</div><div class="line">使用SQL Server 和 MySQL 的自增字段，这个方法不能放到 Oracle 中，Oracle 不支持自增字段，要设定sequence（MySQL 和 SQL Server 中很常用）。</div><div class="line">Oracle就要采用sequence了.</div><div class="line"></div><div class="line">同时,也可采用uuid,native等其它策略.(相关用法,上网查询)</div></pre></td></tr></table></figure></p>
+<p>即<code>auto</code>为当数据库中不存在这张表的时候可以用它建表的时候,制定自增的方式,存在的时候插入数据还用它就会出错了.</p>
+<p><code>identity</code>使用<code>MySQL</code>的自增字段.</p>
+<h2 id="开发过程中的实用技能"><a href="#开发过程中的实用技能" class="headerlink" title="开发过程中的实用技能"></a>开发过程中的实用技能</h2><p>在编写实体类的时候,每次都要写<code>get</code>和<code>set</code>或<code>tostring</code>方法,虽然可以快捷键生成,不过还是显得臃肿麻烦.<br>这个时候,就可以用到上篇日志中说到的<code>lombok</code>插件.<br>首先,<code>pom</code>文件中引入依赖.然后在实体类上面加上一个<code>@Data</code>注解就可以了,就是这么简单.<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1ftbsy7udltj30fh06wdj0.jpg" alt=""><br><code>@DynamicUpdate</code>这个注解是动态更新数据库表中的时间属性.每次更改就会更新时间戳,不需要人为管理.<br><code>@Transactional</code>在测试方法上面添加这个注解,相当于回滚事务,数据库不发生更改.方便测试.<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1ftbt6cmi01j30kh05977p.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/005WV0MDly1ftbsem9ebzj31g80y6dne.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;基于Springboot开发&quot;&gt;&lt;a href=&quot;#基于Springboot开发&quot;
+    
+    </summary>
+    
+      <category term="technology" scheme="http://forqxy.top/categories/technology/"/>
+    
+    
+      <category term="实用技能" scheme="http://forqxy.top/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E8%83%BD/"/>
+    
+      <category term="方便高效" scheme="http://forqxy.top/tags/%E6%96%B9%E4%BE%BF%E9%AB%98%E6%95%88/"/>
+    
+  </entry>
   
   <entry>
     <title>开发过程中遇到的问题之sql_mode</title>
@@ -1172,67 +1202,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>hibernate进阶</title>
-    <link href="http://forqxy.top/2017/06/18/hibernate%E8%BF%9B%E9%98%B6/"/>
-    <id>http://forqxy.top/2017/06/18/hibernate进阶/</id>
-    <published>2017-06-18T12:42:03.000Z</published>
-    <updated>2017-09-08T13:56:25.310Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="hibernate之多对对映射"><a href="#hibernate之多对对映射" class="headerlink" title="hibernate之多对对映射"></a>hibernate之多对对映射</h1><p>一个学生可以选多门课程,一个课程也可以被多个学生选<br>所以Student和Course存在多对对的关系<br>Student实体如下:(省去set,get方法)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public class Student &#123;</div><div class="line">	private Integer id;</div><div class="line">	private String name;</div><div class="line">	private Set&lt;Course&gt; course = new HashSet&lt;Course&gt;();</div></pre></td></tr></table></figure></p>
-<p>Course实体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public class Course &#123;</div><div class="line">	private Integer id;</div><div class="line">	private String name;</div><div class="line">	private Set&lt;Student&gt; student = new HashSet&lt;Student&gt;();</div></pre></td></tr></table></figure></p>
-<p>Student.hbm.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;hibernate-mapping package=&quot;cn.hsl.domain&quot;&gt;</div><div class="line">	&lt;class name=&quot;Student&quot; table=&quot;t_student&quot; &gt;</div><div class="line">		&lt;id name=&quot;id&quot; column=&quot;id&quot;&gt;</div><div class="line">			&lt;generator class=&quot;native&quot;&gt;&lt;/generator&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;property name=&quot;name&quot; column=&quot;name&quot; &gt;&lt;/property&gt;</div><div class="line">		&lt;!-- 多对多关系 --&gt;</div><div class="line">		&lt;!-- </div><div class="line">			set 表达集合</div><div class="line">				name: 集合的属性名</div><div class="line">				table:多对多中间表的表名</div><div class="line">			key 表达外键</div><div class="line">				column:引用我的外键名</div><div class="line">			many-to-many 表达多对多</div><div class="line">				class : 集合引用方的类型</div><div class="line">				column:对方在中间表的外键名</div><div class="line">		 --&gt;</div><div class="line">			&lt;set name=&quot;course&quot; table=&quot;t_student_course&quot; inverse=&quot;false&quot; cascade=&quot;save-update&quot; &gt;</div><div class="line">			&lt;!--</div><div class="line"> 				key 用来描述外键</div><div class="line"> 				column : 外键的值</div><div class="line"> 			  --&gt;</div><div class="line">				&lt;key column=&quot;sid&quot;&gt;&lt;/key&gt;</div><div class="line">				&lt;many-to-many class=&quot;Course&quot; column=&quot;cid&quot;&gt;&lt;/many-to-many&gt;</div><div class="line">			&lt;/set&gt;</div><div class="line">	&lt;/class&gt;</div></pre></td></tr></table></figure></p>
-<p>Course.hbm.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;hibernate-mapping package=&quot;cn.hsl.domain&quot;&gt;</div><div class="line">	&lt;class name=&quot;Course&quot; table=&quot;t_course&quot; &gt;</div><div class="line">		&lt;id name=&quot;id&quot; column=&quot;id&quot;&gt;</div><div class="line">			&lt;generator class=&quot;native&quot;&gt;&lt;/generator&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;property name=&quot;name&quot; column=&quot;name&quot; &gt;&lt;/property&gt;</div><div class="line">			</div><div class="line">			&lt;set name=&quot;student&quot; inverse=&quot;true&quot; table=&quot;t_student_course&quot; &gt;</div><div class="line">			&lt;!--</div><div class="line"> 				key 用来描述外键</div><div class="line"> 				column : 外键的值</div><div class="line"> 			  --&gt;</div><div class="line">				&lt;key column=&quot;cid&quot;/&gt;   //当前主键!!!!!</div><div class="line">				&lt;many-to-many class=&quot;Student&quot; column=&quot;sid&quot;&gt;&lt;/many-to-many&gt;</div><div class="line">			&lt;/set&gt;</div><div class="line">	&lt;/class&gt;</div></pre></td></tr></table></figure></p>
-<p>多对多双向关系中，值得注意的是生成的中间表名称必须一样，生成中间表的字段必须一样。即<code>t_student_course</code></p>
-<h1 id="hibernate的2抓取策略（优化）"><a href="#hibernate的2抓取策略（优化）" class="headerlink" title="hibernate的2抓取策略（优化）"></a>hibernate的2抓取策略（优化）</h1><blockquote>
-<p>检索方式分为两种,</p>
-<ul>
-<li>立即检索：立即查询，在执行查询语句时，立即查询所有的数据。</li>
-<li>延迟检索：延迟查询，在执行查询语句之后，在需要时在查询。（懒加载）</li>
-</ul>
-<p>检查策略又分为两种</p>
-<ul>
-<li>类级别检索：当前的类的属性获取是否需要延迟。</li>
-<li>关联级别的检索：当前类 关联 另一个类是否需要延迟。</li>
-</ul>
-</blockquote>
-<h2 id="类级别检索"><a href="#类级别检索" class="headerlink" title="类级别检索"></a>类级别检索</h2><p>get：立即检索。get方法一执行，立即查询所有字段的数据。<br>load：延迟检索。默认情况，load方法执行后，如果只使用OID的值不进行查询，如果要使用其他属性值将查询 。<br><code>Customer.hbm.xml  &lt;class  lazy=&quot;true | false&quot;&gt;</code><br>lazy 默认值true，表示延迟检索，如果设置false表示立即检索。</p>
-<h2 id="关联级别查询"><a href="#关联级别查询" class="headerlink" title="关联级别查询"></a>关联级别查询</h2><p>一对多或多对多时<br>容器<set> 提供两个属性：fetch、lazy<br>    fetch：确定使用sql格式<br>    lazy：关联对象是否延迟。</set></p>
-<blockquote>
-<p>fetch：join、select、subselect<br>join：底层使用迫切左外连接<br>select：使用多个select语句（默认值）<br>subselect：使用子查询<br>lazy：false、true、extra<br>    false：立即<br>    true：延迟（默认值）<br>    extra：极其懒惰</p>
-</blockquote>
-<p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjch42qqcuj30o60axn0b.jpg" alt=""></p>
-<blockquote>
-<ul>
-<li><code>fetch</code>=”<code>join</code>“ ，<code>lazy</code>无效</li>
-<li>当前对象 和 关联对象 使用多条select语句查询。<br>lazy=”false” , 立即，先查询客户select，立即查询订单select<br>lazy=”true”,延迟，先查询客户select，需要订单时，再查询订单select<br>lazy=”extra”，极其懒惰（延迟），先查询客户select， 如果只需要订单数，使用聚合函数（不查询详情）</li>
-</ul>
-</blockquote>
-<h2 id="hibernate设置隔离级别"><a href="#hibernate设置隔离级别" class="headerlink" title="hibernate设置隔离级别"></a>hibernate设置隔离级别</h2><p><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjchdrrekkj30lw01v0t4.jpg" alt=""><br>悲观锁：丢失更新肯定会发生。<br>    采用数据库锁机制。<br>    读锁：共享锁。<br>        select …. from  … lock in share mode;<br>    写锁：排他锁。（独占）<br>        select … from  ….  for update</p>
-<p>乐观锁：丢失更新肯定不会发生<br>在表中提供一个字段（版本字段），用于标识记录。如果版本不一致，不允许操作。</p>
-<h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><p>写锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">	public void demo01()&#123;</div><div class="line">		//1 查询所有</div><div class="line">		Session session = factory.openSession();</div><div class="line">		session.beginTransaction();</div><div class="line">		</div><div class="line">		Customer customer = (Customer) session.get(Customer.class, 1 ,LockMode.UPGRADE);</div><div class="line">		System.out.println(customer);</div><div class="line">		</div><div class="line">		session.getTransaction().commit();</div><div class="line">		session.close();</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
-<p>打印输出为<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjchihbgkkj30hg08bq49.jpg" alt=""></p>
-<h4 id="乐观锁："><a href="#乐观锁：" class="headerlink" title="乐观锁："></a>乐观锁：</h4><ol>
-<li>在PO对象（javabean）提供字段，表示版本字段。一般Integer<br>在*.hbm.xml 文件配置 <version name="..."></version></li>
-<li>在配置文件里面增加<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjchl519cjj30cy03r74z.jpg" alt=""></li>
-</ol>
-<h2 id="hibernate的二级缓存"><a href="#hibernate的二级缓存" class="headerlink" title="hibernate的二级缓存"></a>hibernate的二级缓存</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;hibernate之多对对映射&quot;&gt;&lt;a href=&quot;#hibernate之多对对映射&quot; class=&quot;headerlink&quot; title=&quot;hibernate之多对对映射&quot;&gt;&lt;/a&gt;hibernate之多对对映射&lt;/h1&gt;&lt;p&gt;一个学生可以选多门课程,一个课程也可
-    
-    </summary>
-    
-      <category term="technology" scheme="http://forqxy.top/categories/technology/"/>
-    
-    
-      <category term="hibernate" scheme="http://forqxy.top/tags/hibernate/"/>
-    
-      <category term="dao" scheme="http://forqxy.top/tags/dao/"/>
     
   </entry>
   
