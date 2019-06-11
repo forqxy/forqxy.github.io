@@ -102,14 +102,14 @@
 <meta property="og:url" content="http://forqxy.top/2018/06/30/初探WebService/index.html">
 <meta property="og:site_name" content="forqxy&#39;s blog">
 <meta property="og:description" content="什么是Web Service Web Service也叫XML Web Service WebService是一种可以接收从Internet或者 Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术。是通过SOAP在Web上提供的软件服务， 使用WSDL文件进行说明，并通过UDDI进行注册。 简单来说就像是一个公开的接口，其他系统不管你是用什么语言来编写的都可以调用这个接口，并可以">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fst938mayjj30bq03n75f.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fst98m7fc1j30fh053q59.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fst9v6zzx5j30k307nmx6.jpg">
-<meta property="og:updated_time" content="2018-06-30T08:25:53.722Z">
+<meta property="og:image" content="https://i.loli.net/2019/06/11/5cffce6023b5793719.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/06/11/5cffce4c6398c16330.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/06/11/5cffce29dc1f187382.jpg">
+<meta property="og:updated_time" content="2019-06-11T15:53:43.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初探WebService">
 <meta name="twitter:description" content="什么是Web Service Web Service也叫XML Web Service WebService是一种可以接收从Internet或者 Intranet上的其它系统中传递过来的请求，轻量级的独立的通讯技术。是通过SOAP在Web上提供的软件服务， 使用WSDL文件进行说明，并通过UDDI进行注册。 简单来说就像是一个公开的接口，其他系统不管你是用什么语言来编写的都可以调用这个接口，并可以">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/005WV0MDly1fst938mayjj30bq03n75f.jpg">
+<meta name="twitter:image" content="https://i.loli.net/2019/06/11/5cffce6023b5793719.jpg">
 
 
 
@@ -517,10 +517,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;servlet&gt;</div><div class="line">    &lt;servlet-name&gt;CXFServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;servlet-class&gt;org.apache.cxf.transport.servlet.CXFServlet&lt;/servlet-class&gt;</div><div class="line">&lt;/servlet&gt;</div><div class="line">&lt;servlet-mapping&gt;</div><div class="line">    &lt;servlet-name&gt;CXFServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;url-pattern&gt;/webservice/*&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure>
 <p>这样,项目部署后访问<code>webservice/*</code>这个地址就会进入<code>CXF</code>的<code>servlet</code>中。</p>
 <blockquote>
-<p>开发一个<code>webservice</code>业务接口，方法使用<code>@WebService</code>修饰。<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fst938mayjj30bq03n75f.jpg" alt=""><br>写一个这个方法的实现类，方法也需要使用<code>@WebService</code>修饰<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fst98m7fc1j30fh053q59.jpg" alt=""><br>在<code>Spring配置文件整合</code>,头部添加命名路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xmlns:jaxws=&quot;http://cxf.apache.org/jaxws&quot;</div><div class="line">http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd&quot;</div></pre></td></tr></table></figure></p>
+<p>开发一个<code>webservice</code>业务接口，方法使用<code>@WebService</code>修饰。<br><img src="https://i.loli.net/2019/06/11/5cffce6023b5793719.jpg" alt="初探WebService.md---005WV0MDly1fst938mayjj30bq03n75f.jpg"><br>写一个这个方法的实现类，方法也需要使用<code>@WebService</code>修饰<br><img src="https://i.loli.net/2019/06/11/5cffce4c6398c16330.jpg" alt="初探WebService.md---005WV0MDly1fst98m7fc1j30fh053q59.jpg"><br>在<code>Spring配置文件整合</code>,头部添加命名路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xmlns:jaxws=&quot;http://cxf.apache.org/jaxws&quot;</div><div class="line">http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd&quot;</div></pre></td></tr></table></figure></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;import resource=&quot;classpath:META-INF/cxf/cxf.xml&quot;/&gt;</div><div class="line">   &lt;import resource=&quot;classpath:META-INF/cxf/cxf-servlet.xml&quot;/&gt;</div><div class="line">   &lt;!-- 自动扫描webService --&gt;</div><div class="line">   &lt;context:component-scan base-package=&quot;com.hsl.cxf&quot; /&gt;</div><div class="line">   &lt;!-- 定义webservice的发布接口  --&gt;</div><div class="line">   &lt;jaxws:endpoint</div><div class="line">           implementor=&quot;#helloWorld&quot;           //注解名,相当于手动完成映射</div><div class="line">           address=&quot;/HelloWorld&quot;     //我们需要访问的地址</div><div class="line">   &gt;&lt;/jaxws:endpoint&gt;</div></pre></td></tr></table></figure>
-<p>运行项目,输入地址<a href="http://127.0.0.1:8080/webservice/HelloWorld?wsdl出现如下" target="_blank" rel="external">http://127.0.0.1:8080/webservice/HelloWorld?wsdl出现如下</a><br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fst9v6zzx5j30k307nmx6.jpg" alt=""><br><code>webservice</code>接口发布成功</p>
+<p>运行项目,输入地址<a href="http://127.0.0.1:8080/webservice/HelloWorld?wsdl出现如下" target="_blank" rel="external">http://127.0.0.1:8080/webservice/HelloWorld?wsdl出现如下</a><br><img src="https://i.loli.net/2019/06/11/5cffce29dc1f187382.jpg" alt="初探WebService.md---005WV0MDly1fst9v6zzx5j30k307nmx6.jpg"><br><code>webservice</code>接口发布成功</p>
 <h2 id="使用CXF开发Web-Service客户端"><a href="#使用CXF开发Web-Service客户端" class="headerlink" title="使用CXF开发Web Service客户端"></a>使用CXF开发Web Service客户端</h2><p>可参考以下博客:<a href="https://blog.csdn.net/yangwenxue_admin/article/details/51059125" target="_blank" rel="external">传送门</a></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这就完成了<code>webservice</code>的入门案例的服务端,后续有时间或用的着会更新更多关于<code>webservice</code>的内容</p>
 
