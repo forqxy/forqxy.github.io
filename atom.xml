@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://forqxy.top/"/>
-  <updated>2019-07-09T16:19:12.775Z</updated>
+  <updated>2019-12-30T15:42:20.980Z</updated>
   <id>http://forqxy.top/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>算法解题</title>
+    <link href="http://forqxy.top/2023/12/30/%E7%AE%97%E6%B3%95%E8%A7%A3%E9%A2%98/"/>
+    <id>http://forqxy.top/2023/12/30/算法解题/</id>
+    <published>2023-12-30T15:37:42.000Z</published>
+    <updated>2019-12-30T15:42:20.980Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="technology" scheme="http://forqxy.top/categories/technology/"/>
+    
+    
+      <category term="算法" scheme="http://forqxy.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="剑指offer" scheme="http://forqxy.top/tags/%E5%89%91%E6%8C%87offer/"/>
+    
+  </entry>
   
   <entry>
     <title>怎样科学上网</title>
@@ -396,13 +416,13 @@
   </entry>
   
   <entry>
-    <title>I come back</title>
-    <link href="http://forqxy.top/2018/06/09/I-come-back/"/>
-    <id>http://forqxy.top/2018/06/09/I-come-back/</id>
+    <title>小结</title>
+    <link href="http://forqxy.top/2018/06/09/%E5%B0%8F%E7%BB%93/"/>
+    <id>http://forqxy.top/2018/06/09/小结/</id>
     <published>2018-06-09T09:33:12.000Z</published>
-    <updated>2019-06-11T15:17:56.861Z</updated>
+    <updated>2019-12-24T16:01:05.390Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="I-Come-Back"><a href="#I-Come-Back" class="headerlink" title="I Come Back"></a>I Come Back</h2><blockquote>
+    <content type="html"><![CDATA[<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><blockquote>
 <p>这么久没有去维护自己的<code>blog</code>,说起来都有些惭愧.给自己找理由是因为回校搞毕设等办理各种手续,<br>  可说到底那都不是懒得借口.今天突然动起来去写,发现好多最基础的命令都忘记了,真的是重新温习<br>  下才有了印象.改了些东西竟然发现提交都出问题了.真的是…去百度了下知道了问题的所在,原来是<br>  因为<code>Github</code> 禁用了<code>TLS v1.0 and v1.1</code>，必须更新<code>Windows</code>的<code>git</code>凭证管理器.遇到的问题如下:</p>
 </blockquote>
 <p><img src="https://i.loli.net/2019/06/11/5cffc5f0867cc72843.jpg" alt="I-come-back.md---005WV0MDgy1fs52s6mf0wj30hb0c1gme.jpg"><br>如图出现了<code>HttpRequestException encountered</code>问题.<br>因为<code>Github</code> 禁用了<code>TLS v1.0 and v1.1</code>，必须更新<code>Windows</code>的<code>git</code>凭证管理器<br>这个时候去<a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/" target="_blank" rel="external">此链接https://github.com/Microsoft/</a><br>下载<code>git</code>凭证管理器.下载完点击安装运行就可以了.提交成功.<br><img src="https://i.loli.net/2019/06/11/5cffc60513a6f16209.jpg" alt="I-come-back.md---005WV0MDgy1fs52xpco40j30hb0a3gmc.jpg"><br>更新后就这么点小问题.</p>
@@ -410,8 +430,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;I-Come-Back&quot;&gt;&lt;a href=&quot;#I-Come-Back&quot; class=&quot;headerlink&quot; title=&quot;I Come Back&quot;&gt;&lt;/a&gt;I Come Back&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;这么久没有去维护自己的&lt;code&gt;blog
+      &lt;h2 id=&quot;小结&quot;&gt;&lt;a href=&quot;#小结&quot; class=&quot;headerlink&quot; title=&quot;小结&quot;&gt;&lt;/a&gt;小结&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;这么久没有去维护自己的&lt;code&gt;blog&lt;/code&gt;,说起来都有些惭愧.给自己找理由是因为回校搞毕设等办理各种
     
     </summary>
     
@@ -1186,9 +1206,9 @@
       <category term="life" scheme="http://forqxy.top/categories/life/"/>
     
     
-      <category term="life" scheme="http://forqxy.top/tags/life/"/>
-    
       <category term="first" scheme="http://forqxy.top/tags/first/"/>
+    
+      <category term="life" scheme="http://forqxy.top/tags/life/"/>
     
       <category term="随笔" scheme="http://forqxy.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
@@ -1217,27 +1237,6 @@
     
     
       <category term="first" scheme="http://forqxy.top/tags/first/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记在第一篇</title>
-    <link href="http://forqxy.top/2017/07/02/mark%E5%9C%A8%E7%AC%AC%E4%B8%80%E7%AF%87/"/>
-    <id>http://forqxy.top/2017/07/02/mark在第一篇/</id>
-    <published>2017-07-02T07:33:04.000Z</published>
-    <updated>2017-08-03T11:55:45.998Z</updated>
-    
-    <content type="html"><![CDATA[<p>刷知乎的时候,看到了一个人的评论,就顺便进了ta的GitHub,给了我一点的启发….<br>从某一天晚上开始吧.百度看别人的博客,取经验到凌晨两点,第二天一大早起来开始很有兴趣的去搭建一个属于自己的博客.之前不知道的时候<br>觉得是真的很难,也许那是因为没有去尝试.去做了后,发现并没有想象的那么难…</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;刷知乎的时候,看到了一个人的评论,就顺便进了ta的GitHub,给了我一点的启发….&lt;br&gt;从某一天晚上开始吧.百度看别人的博客,取经验到凌晨两点,第二天一大早起来开始很有兴趣的去搭建一个属于自己的博客.之前不知道的时候&lt;br&gt;觉得是真的很难,也许那是因为没有去尝试.去做了
-    
-    </summary>
-    
-      <category term="life" scheme="http://forqxy.top/categories/life/"/>
-    
     
   </entry>
   
