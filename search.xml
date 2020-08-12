@@ -13,6 +13,14 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[2020-08-12]]></title>
+    <url>%2F2020%2F08%2F12%2F2020-08-12%2F</url>
+    <content type="text"><![CDATA[2020-08-12 重新捡起来吧!!!]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[怎样科学上网]]></title>
     <url>%2F2019%2F07%2F09%2F%E6%80%8E%E6%A0%B7%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%2F</url>
     <content type="text"><![CDATA[前几天趁下班闲下来时间想科学上网一番,于是就在vultr上购买了一个vps搭建了ssr. 开始了愉快的科学上网.鉴于网上的教程比较杂,记录一下自己的填坑路程,也备以后自己还能用得到. 怎么样才能愉快的科学上网 vultr ShadowsocksR 对比了许多家的vps,网上推荐比较多的还是vultr和搬瓦工,鉴于自己短期试用(其实还是贫穷啦).选择了vultr, 最便宜的一个月只要5刀.价格算是还能接收.下面是自己的填坑过程.至于是什么是vps,ssr,这里就不再多描述了. 购买vps首先呢,进入vultr官网https://my.vultr.com/,这里支持支付宝和微信充值,很是方便. 这里是要先充钱才能继续后面的步奏的,然后左侧选择products.看自己的情况购买自己的vps吧. 推荐是centos7 64位的,地点可以根据自己情况选择吧,虽然都说是距离越近的vps越快,但是东京的真的是大部分都被墙了.后面主要说下怎么搭建ssr. 搭建ssr购买成功后用客户端连接你的远程vps,这里我用的是SecureCRT,第一次输入ip和密码即可,自动默认的密码较长,这里登陆进去后可以自己选择是否更改为自己容易记的住的.顺便还可以温故下linux的命令行. 安装gityum -y install git 下载一键搭建ss脚本文件 1git clone -b master https://github.com/flyzy2005/ss-fly 进入目录下运行脚本ss-fly/ss-fly.sh -ssr执行完上述的脚本代码后，会进入到输入参数的界面，包括服务器端口，密码，加密方式，协议，混淆。可以直接输入回车选择默认值,也可以输入相应的值选择对应的选项 协议默认选择origin,混肴方式默认选plain之后产看ssr信息可以输入bash ssr.sh查看1234567启动：/etc/init.d/shadowsocks start停止：/etc/init.d/shadowsocks stop重启：/etc/init.d/shadowsocks restart状态：/etc/init.d/shadowsocks status配置文件路径：/etc/shadowsocks.json日志文件路径：/var/log/shadowsocks.log代码安装目录：/usr/local/shadowsocks 开启BBR加速BBR是Google开源的一套内核加速算法，可以让你搭建的shadowsocks/shadowsocksR速度上一个台阶，本一键搭建ss/ssr脚本支持一键升级最新版本的内核并开启BBR加速。 BBR支持4.9以上的，如果低于这个版本则会自动下载最新内容版本的内核后开启BBR加速并重启，如果高于4.9以上则自动开启BBR加速，执行如下脚本命令即可自动开启BBR加速：(flyzy小站)1ss-fly/ss-fly.sh -bbr 或者旧的方式12345wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.shchmod +x bbr.sh./bbr.sh 装完后需要重启系统，输入y即可立即重启，或者之后输入reboot命令重启。判断BBR加速有没有开启成功。输入以下命令：1sysctl net.ipv4.tcp_available_congestion_control 如果返回1net.ipv4.tcp_available_congestion_control = bbr cubic reno 只要后面有bbr，则说明已经开启成功了。 卸载ssr服务./shadowsocksR.sh uninstallshadowsocksR传送门配置之前的配置文件,开始愉快上网吧…]]></content>
@@ -292,8 +300,8 @@
         <category>technology</category>
       </categories>
       <tags>
-        <tag>ognl</tag>
         <tag>struts2</tag>
+        <tag>ognl</tag>
       </tags>
   </entry>
   <entry>
