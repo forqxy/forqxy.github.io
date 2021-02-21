@@ -92,63 +92,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Lucene全文检索</title>
-    <url>/2018/06/27/Lucene%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2/</url>
-    <content><![CDATA[<h1 id="Lucene简介"><a href="#Lucene简介" class="headerlink" title="Lucene简介"></a>Lucene简介</h1><blockquote>
-<p><a href="http://lucene.apache.org/">Apache Lucene</a>是一个基于Java全文搜索引擎，利用它可以轻易地<br> 为<code>Java</code>软件加入全文搜寻功能。当前最新已经更新到<code>Lucene7.3.1</code>版本<br> <code>Lucene</code>的最主要工作是替文件的每一个字作索引，索引让搜寻的效率比传统的逐字比较大大提高，<br> <code>Lucene</code>提供一组解读，过滤，分析文件，编排和使用索引的<code>API</code>.前天看到网上的一些教程,有兴趣<br> 也去了解了一下,今天就基于maven项目做一个小的demo.</p>
-</blockquote>
-<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h3><blockquote>
-<p>根据你输入的值去找，这个值就是索引.</p>
-</blockquote>
-<h3 id="索引过程"><a href="#索引过程" class="headerlink" title="索引过程"></a>索引过程</h3><blockquote>
-<p>索引过程是Lucene提供的核心功能之一.<br><img src="https://i.loli.net/2019/06/11/5cffc6449760f21240.jpg" alt="Lucene全文检索.md---005WV0MDly1fsptw4avcej30fw0713zg.jpg"></p>
-</blockquote>
-<h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><blockquote>
-<p>创建索引有两种方式,一种是根据文件来生成索引，如后缀为.txt等的文件.<br> 另一种是根据字段来生成索引，在这里我用的是数组来进行创建的.<br> 分为两步,先创建索引,然后将字段添加到文档中.</p>
-</blockquote>
-<h1 id="添加Lucene依赖"><a href="#添加Lucene依赖" class="headerlink" title="添加Lucene依赖"></a>添加Lucene依赖</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--加入lucene--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-core --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-queryparser --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-queryparser&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-analyzers-common --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-analyzers-common&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--lucene中文分词--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-analyzers-smartcn --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-analyzers-smartcn&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--lucene高亮--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-highlighter --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-highlighter&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="代码具体实现"><a href="#代码具体实现" class="headerlink" title="代码具体实现"></a>代码具体实现</h1><blockquote>
-<p>主要代码都有注释,这里就不多说.更多不懂得可以去看官方<code>API</code></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Indexer &#123;</span><br><span class="line"></span><br><span class="line">    private Integer ids[]&#x3D;&#123;1,2,3&#125;;</span><br><span class="line">    private String citys[]&#x3D;&#123;&quot;青岛&quot;,&quot;南京&quot;,&quot;上海&quot;&#125;;</span><br><span class="line">    private String descs[]&#x3D;&#123;</span><br><span class="line">            &quot;青岛是一个美丽的城市。&quot;,</span><br><span class="line">            &quot;南京是一个有文化的城市。南京是一个文化的城市南京，简称宁，是江苏省会，地处中国东部地区，长江下游，&quot; +</span><br><span class="line">                    &quot;濒江近海。全市下辖11个区，总面积6597平方公里，2013年建成区面积752.83平方公里，常住人口818.78万&quot; +</span><br><span class="line">                    &quot;，其中城镇人口659.1万人。[1-4] “江南佳丽地，金陵帝王州”，南京拥有着6000多年文明史、&quot; +</span><br><span class="line">                    &quot;近2600年建城史和近500年的建都史，是中国四大古都之一，有“六朝古都”、“十朝都会”之称，&quot; +</span><br><span class="line">                    &quot;是中华文明的重要发祥地，历史上曾数次庇佑华夏之正朔，长期是中国南方的政治、经济、文化中心，&quot; +</span><br><span class="line">                    &quot;拥有厚重的文化底蕴和丰富的历史遗存。[5-7] 南京是国家重要的科教中心，&quot; +</span><br><span class="line">                    &quot;自古以来就是一座崇文重教的城市，有“天下文枢”、&quot; +</span><br><span class="line">                    &quot;“东南第一学”的美誉。截至2013年，南京有高等院校75所，&quot; +</span><br><span class="line">                    &quot;其中211高校8所，仅次于北京上海；国家重点实验室25所、&quot; +</span><br><span class="line">                    &quot;国家重点学科169个、两院院士83人，均居中国第三。[8-10] 。&quot;,</span><br><span class="line">            &quot;上海是一个繁华的城市。&quot;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    private Directory dir;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取IndexWriter实例</span><br><span class="line">     * @return</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private IndexWriter getWriter()throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;Analyzer analyzer&#x3D;new StandardAnalyzer(); &#x2F;&#x2F; 标准分词器</span><br><span class="line">        SmartChineseAnalyzer analyzer&#x3D;new SmartChineseAnalyzer();</span><br><span class="line">        IndexWriterConfig iwc&#x3D;new IndexWriterConfig(analyzer);</span><br><span class="line">        IndexWriter writer&#x3D;new IndexWriter(dir, iwc);</span><br><span class="line">        return writer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 根据字段生成索引,这里用的是数组</span><br><span class="line">     * 添加文档</span><br><span class="line">     * @param indexDir</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void index(String indexDir)throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;获得luceneIndex目录</span><br><span class="line">        dir&#x3D;FSDirectory.open(Paths.get(indexDir));</span><br><span class="line">        &#x2F;&#x2F;得到索引</span><br><span class="line">        IndexWriter writer&#x3D;getWriter();</span><br><span class="line">        for(int i&#x3D;0;i&lt;ids.length;i++)&#123;</span><br><span class="line">            Document doc&#x3D;new Document();&#x2F;&#x2F;创建文档</span><br><span class="line">            &#x2F;&#x2F;将属性存入内存中</span><br><span class="line">            doc.add(new StringField(&quot;id&quot;, ids[i]+&quot;&quot;, Field.Store.YES));</span><br><span class="line">            doc.add(new StringField(&quot;city&quot;,citys[i],Field.Store.YES));</span><br><span class="line">            doc.add(new TextField(&quot;desc&quot;, descs[i], Field.Store.YES));</span><br><span class="line">            writer.addDocument(doc); &#x2F;&#x2F; 添加文档</span><br><span class="line">        &#125;</span><br><span class="line">        writer.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        new Indexer().index(&quot;C:\\Lucene&quot;);&#x2F;&#x2F;索引生成的位置</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>运行上段主程序后,索引就在c盘根目录生成了.如下:<br><img src="https://i.loli.net/2019/06/11/5cffc673bb6bb64814.jpg" alt="Lucene全文检索.md---005WV0MDly1fspuvwq2eej30js0593yq.jpg"></p>
-</blockquote>
-<blockquote>
-<p>接下来就是关于索引的搜索实现<br> 具体都有注释表明功能</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Searcher &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     *</span><br><span class="line">     * @param indexDir 生成索引的目录</span><br><span class="line">     * @param q 要查询的关键字</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static void search(String indexDir,String q)throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;打开目录</span><br><span class="line">        Directory dir&#x3D;FSDirectory.open(Paths.get(indexDir));</span><br><span class="line">        &#x2F;&#x2F;读取</span><br><span class="line">        IndexReader reader&#x3D;DirectoryReader.open(dir);</span><br><span class="line">        &#x2F;&#x2F;索引查询器</span><br><span class="line">        IndexSearcher is&#x3D;new IndexSearcher(reader);</span><br><span class="line">        &#x2F;&#x2F; Analyzer analyzer&#x3D;new StandardAnalyzer(); &#x2F;&#x2F; 标准分词器</span><br><span class="line">        SmartChineseAnalyzer analyzer&#x3D;new SmartChineseAnalyzer();</span><br><span class="line">        &#x2F;&#x2F;在哪查询，第一个参数为查询的Document，在Indexer中创建了,这里就是在desc中查询</span><br><span class="line">        QueryParser parser&#x3D;new QueryParser(&quot;desc&quot;, analyzer);</span><br><span class="line">        &#x2F;&#x2F; 对字段进行解析后返回给查询</span><br><span class="line">        Query query&#x3D;parser.parse(q);</span><br><span class="line">        long start&#x3D;System.currentTimeMillis();</span><br><span class="line">        &#x2F;&#x2F;开始查询，10代表前10条数据；返回一个文档</span><br><span class="line">        TopDocs hits&#x3D;is.search(query, 10);</span><br><span class="line">        long end&#x3D;System.currentTimeMillis();</span><br><span class="line">        System.out.println(&quot;匹配 &quot;+q+&quot; ，总共花费&quot;+(end-start)+&quot;毫秒&quot;+&quot;查询到&quot;+hits.totalHits+&quot;个记录&quot;);</span><br><span class="line"></span><br><span class="line">        QueryScorer scorer&#x3D;new QueryScorer(query);&#x2F;&#x2F;查询得分</span><br><span class="line">        Fragmenter fragmenter&#x3D;new SimpleSpanFragmenter(scorer);&#x2F;&#x2F;得到得分的片段,就是得到一段包含所查询的关键字的摘要</span><br><span class="line">        &#x2F;&#x2F;对查询的数据格式化；无参构造器的默认是将关键字加粗</span><br><span class="line">        SimpleHTMLFormatter simpleHTMLFormatter&#x3D;new SimpleHTMLFormatter(&quot;&lt;b&gt;&lt;font color&#x3D;&#39;red&#39;&gt;&quot;,&quot;&lt;&#x2F;font&gt;&lt;&#x2F;b&gt;&quot;);</span><br><span class="line">        Highlighter highlighter&#x3D;new Highlighter(simpleHTMLFormatter, scorer);&#x2F;&#x2F;根据得分和格式化</span><br><span class="line">        &#x2F;&#x2F;设置成高亮</span><br><span class="line">        highlighter.setTextFragmenter(fragmenter);</span><br><span class="line">        for(ScoreDoc scoreDoc:hits.scoreDocs)&#123;</span><br><span class="line">            &#x2F;&#x2F; 根据文档的标识获取文档</span><br><span class="line">            Document doc&#x3D;is.doc(scoreDoc.doc);</span><br><span class="line">            System.out.println(doc.get(&quot;city&quot;));</span><br><span class="line">            System.out.println(doc.get(&quot;desc&quot;));</span><br><span class="line">            String desc&#x3D;doc.get(&quot;desc&quot;);</span><br><span class="line">            if(desc!&#x3D;null)&#123;</span><br><span class="line">                &#x2F;&#x2F;TokenStream将查询出来的搞成片段，得到的是整个内容</span><br><span class="line">                TokenStream tokenStream&#x3D;analyzer.tokenStream(&quot;desc&quot;, new StringReader(desc));</span><br><span class="line">                &#x2F;&#x2F;将权重高的摘要显示出来，得到的是关键字内容</span><br><span class="line">                System.out.println(highlighter.getBestFragment(tokenStream, desc));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        reader.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String indexDir&#x3D;&quot;C:\\Lucene&quot;;</span><br><span class="line">        String q&#x3D;&quot;南京&quot;;</span><br><span class="line">        try &#123;</span><br><span class="line">            search(indexDir,q);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>进行关键字搜索时,务必先保证索引的存在,否则会出现如下异常信息<br><img src="https://i.loli.net/2019/06/11/5cffc68a790e754298.jpg" alt="Lucene全文检索.md---005WV0MDly1fspvaq2jolj310z055gq3.jpg"></p>
-</blockquote>
-<blockquote>
-<p>一切都正常运行后,显示结果如下<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fspvaq2jolj310z055gq3.jpg"><br>关键字也高亮显示了</p>
-</blockquote>
-<h1 id="Lucene索引的增删改查"><a href="#Lucene索引的增删改查" class="headerlink" title="Lucene索引的增删改查"></a>Lucene索引的增删改查</h1><blockquote>
-<ul>
-<li>获取IndexWriter实例</li>
-<li><code>IndexWriter writer = new IndexWriter(Directory, IndexWriterConfig)</code></li>
-<li>增加文档：writer.addDocument();</li>
-<li>读取文档：DirectoryReader.open(Directory)</li>
-<li>删除在合并前（先删除后增加，结果为删除前的结果，即文档还保留在内存中）:writer.deleteDocuments()</li>
-<li>删除在合并后（先删除后增加，结果为删除后的结果，即文档不在内存中）：</li>
-<li>writer.deleteDocuments(new Term(“id”, userId));writer.forceMergeDeletes() // 强制删除</li>
-<li>更新:writer.updateDocument(new Term(“id”, “1”), doc)</li>
-</ul>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="Lucene和Solr的区别"><a href="#Lucene和Solr的区别" class="headerlink" title="Lucene和Solr的区别"></a>Lucene和Solr的区别</h2><blockquote>
-<p><code>Lucene</code>是一个开放源代码的全文检索引擎工具包，即它不是一个完整的全文检索引擎，<br> 而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎<br> （英文与德文两种西方语言）。<code>Lucene</code>的目的是为软件开发人员提供一个简单易用的工具包，<br> 以方便的在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎.<br> 提供了比<code>Lucene</code>更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，<br> <code>Web-service</code>的<code>API</code>接口。用户可以通过<code>http</code>请求，向搜索引擎服务器提交一定格式的<code>XML</code>文件，<br> 生成索引；也可以通过Http Solr Get操作提出查找请求，并得到<code>XML</code>格式的返回结果；<br> <code>Solr</code>和<code>Lucene</code>的本质区别有以下三点：搜索服务器，企业级和管理。<code>Lucene</code>本质上是搜索库，<br> 不是独立的应用程序，而<code>Solr</code>是。<code>Lucene</code>专注于搜索底层的建设，而<code>Solr</code>专注于企业应用。<br> <code>Lucene</code>不负责支撑搜索服务所必须的管理，而<code>Solr</code>负责。<br> 所以说，一句话概括<code>Solr</code>: <code>Solr</code>是<code>Lucene</code>面向企业搜索应用的扩展.</p>
-</blockquote>
-<p><a href="http://www.cnblogs.com/lirenzhujiu">参考</a></p>
-]]></content>
-      <categories>
-        <category>technology</category>
-      </categories>
-      <tags>
-        <tag>Lucene</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Maven入门</title>
     <url>/2017/08/01/Maven%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h1 id="什么是Maven"><a href="#什么是Maven" class="headerlink" title="什么是Maven"></a>什么是Maven</h1><blockquote>
@@ -225,6 +168,63 @@
       </categories>
       <tags>
         <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Lucene全文检索</title>
+    <url>/2018/06/27/Lucene%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2/</url>
+    <content><![CDATA[<h1 id="Lucene简介"><a href="#Lucene简介" class="headerlink" title="Lucene简介"></a>Lucene简介</h1><blockquote>
+<p><a href="http://lucene.apache.org/">Apache Lucene</a>是一个基于Java全文搜索引擎，利用它可以轻易地<br> 为<code>Java</code>软件加入全文搜寻功能。当前最新已经更新到<code>Lucene7.3.1</code>版本<br> <code>Lucene</code>的最主要工作是替文件的每一个字作索引，索引让搜寻的效率比传统的逐字比较大大提高，<br> <code>Lucene</code>提供一组解读，过滤，分析文件，编排和使用索引的<code>API</code>.前天看到网上的一些教程,有兴趣<br> 也去了解了一下,今天就基于maven项目做一个小的demo.</p>
+</blockquote>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h3><blockquote>
+<p>根据你输入的值去找，这个值就是索引.</p>
+</blockquote>
+<h3 id="索引过程"><a href="#索引过程" class="headerlink" title="索引过程"></a>索引过程</h3><blockquote>
+<p>索引过程是Lucene提供的核心功能之一.<br><img src="https://i.loli.net/2019/06/11/5cffc6449760f21240.jpg" alt="Lucene全文检索.md---005WV0MDly1fsptw4avcej30fw0713zg.jpg"></p>
+</blockquote>
+<h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><blockquote>
+<p>创建索引有两种方式,一种是根据文件来生成索引，如后缀为.txt等的文件.<br> 另一种是根据字段来生成索引，在这里我用的是数组来进行创建的.<br> 分为两步,先创建索引,然后将字段添加到文档中.</p>
+</blockquote>
+<h1 id="添加Lucene依赖"><a href="#添加Lucene依赖" class="headerlink" title="添加Lucene依赖"></a>添加Lucene依赖</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--加入lucene--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-core --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-queryparser --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-queryparser&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-analyzers-common --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-analyzers-common&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--lucene中文分词--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-analyzers-smartcn --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-analyzers-smartcn&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--lucene高亮--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-highlighter --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-highlighter&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="代码具体实现"><a href="#代码具体实现" class="headerlink" title="代码具体实现"></a>代码具体实现</h1><blockquote>
+<p>主要代码都有注释,这里就不多说.更多不懂得可以去看官方<code>API</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Indexer &#123;</span><br><span class="line"></span><br><span class="line">    private Integer ids[]&#x3D;&#123;1,2,3&#125;;</span><br><span class="line">    private String citys[]&#x3D;&#123;&quot;青岛&quot;,&quot;南京&quot;,&quot;上海&quot;&#125;;</span><br><span class="line">    private String descs[]&#x3D;&#123;</span><br><span class="line">            &quot;青岛是一个美丽的城市。&quot;,</span><br><span class="line">            &quot;南京是一个有文化的城市。南京是一个文化的城市南京，简称宁，是江苏省会，地处中国东部地区，长江下游，&quot; +</span><br><span class="line">                    &quot;濒江近海。全市下辖11个区，总面积6597平方公里，2013年建成区面积752.83平方公里，常住人口818.78万&quot; +</span><br><span class="line">                    &quot;，其中城镇人口659.1万人。[1-4] “江南佳丽地，金陵帝王州”，南京拥有着6000多年文明史、&quot; +</span><br><span class="line">                    &quot;近2600年建城史和近500年的建都史，是中国四大古都之一，有“六朝古都”、“十朝都会”之称，&quot; +</span><br><span class="line">                    &quot;是中华文明的重要发祥地，历史上曾数次庇佑华夏之正朔，长期是中国南方的政治、经济、文化中心，&quot; +</span><br><span class="line">                    &quot;拥有厚重的文化底蕴和丰富的历史遗存。[5-7] 南京是国家重要的科教中心，&quot; +</span><br><span class="line">                    &quot;自古以来就是一座崇文重教的城市，有“天下文枢”、&quot; +</span><br><span class="line">                    &quot;“东南第一学”的美誉。截至2013年，南京有高等院校75所，&quot; +</span><br><span class="line">                    &quot;其中211高校8所，仅次于北京上海；国家重点实验室25所、&quot; +</span><br><span class="line">                    &quot;国家重点学科169个、两院院士83人，均居中国第三。[8-10] 。&quot;,</span><br><span class="line">            &quot;上海是一个繁华的城市。&quot;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    private Directory dir;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取IndexWriter实例</span><br><span class="line">     * @return</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private IndexWriter getWriter()throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;Analyzer analyzer&#x3D;new StandardAnalyzer(); &#x2F;&#x2F; 标准分词器</span><br><span class="line">        SmartChineseAnalyzer analyzer&#x3D;new SmartChineseAnalyzer();</span><br><span class="line">        IndexWriterConfig iwc&#x3D;new IndexWriterConfig(analyzer);</span><br><span class="line">        IndexWriter writer&#x3D;new IndexWriter(dir, iwc);</span><br><span class="line">        return writer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 根据字段生成索引,这里用的是数组</span><br><span class="line">     * 添加文档</span><br><span class="line">     * @param indexDir</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void index(String indexDir)throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;获得luceneIndex目录</span><br><span class="line">        dir&#x3D;FSDirectory.open(Paths.get(indexDir));</span><br><span class="line">        &#x2F;&#x2F;得到索引</span><br><span class="line">        IndexWriter writer&#x3D;getWriter();</span><br><span class="line">        for(int i&#x3D;0;i&lt;ids.length;i++)&#123;</span><br><span class="line">            Document doc&#x3D;new Document();&#x2F;&#x2F;创建文档</span><br><span class="line">            &#x2F;&#x2F;将属性存入内存中</span><br><span class="line">            doc.add(new StringField(&quot;id&quot;, ids[i]+&quot;&quot;, Field.Store.YES));</span><br><span class="line">            doc.add(new StringField(&quot;city&quot;,citys[i],Field.Store.YES));</span><br><span class="line">            doc.add(new TextField(&quot;desc&quot;, descs[i], Field.Store.YES));</span><br><span class="line">            writer.addDocument(doc); &#x2F;&#x2F; 添加文档</span><br><span class="line">        &#125;</span><br><span class="line">        writer.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        new Indexer().index(&quot;C:\\Lucene&quot;);&#x2F;&#x2F;索引生成的位置</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行上段主程序后,索引就在c盘根目录生成了.如下:<br><img src="https://i.loli.net/2019/06/11/5cffc673bb6bb64814.jpg" alt="Lucene全文检索.md---005WV0MDly1fspuvwq2eej30js0593yq.jpg"></p>
+</blockquote>
+<blockquote>
+<p>接下来就是关于索引的搜索实现<br> 具体都有注释表明功能</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Searcher &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     *</span><br><span class="line">     * @param indexDir 生成索引的目录</span><br><span class="line">     * @param q 要查询的关键字</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static void search(String indexDir,String q)throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;打开目录</span><br><span class="line">        Directory dir&#x3D;FSDirectory.open(Paths.get(indexDir));</span><br><span class="line">        &#x2F;&#x2F;读取</span><br><span class="line">        IndexReader reader&#x3D;DirectoryReader.open(dir);</span><br><span class="line">        &#x2F;&#x2F;索引查询器</span><br><span class="line">        IndexSearcher is&#x3D;new IndexSearcher(reader);</span><br><span class="line">        &#x2F;&#x2F; Analyzer analyzer&#x3D;new StandardAnalyzer(); &#x2F;&#x2F; 标准分词器</span><br><span class="line">        SmartChineseAnalyzer analyzer&#x3D;new SmartChineseAnalyzer();</span><br><span class="line">        &#x2F;&#x2F;在哪查询，第一个参数为查询的Document，在Indexer中创建了,这里就是在desc中查询</span><br><span class="line">        QueryParser parser&#x3D;new QueryParser(&quot;desc&quot;, analyzer);</span><br><span class="line">        &#x2F;&#x2F; 对字段进行解析后返回给查询</span><br><span class="line">        Query query&#x3D;parser.parse(q);</span><br><span class="line">        long start&#x3D;System.currentTimeMillis();</span><br><span class="line">        &#x2F;&#x2F;开始查询，10代表前10条数据；返回一个文档</span><br><span class="line">        TopDocs hits&#x3D;is.search(query, 10);</span><br><span class="line">        long end&#x3D;System.currentTimeMillis();</span><br><span class="line">        System.out.println(&quot;匹配 &quot;+q+&quot; ，总共花费&quot;+(end-start)+&quot;毫秒&quot;+&quot;查询到&quot;+hits.totalHits+&quot;个记录&quot;);</span><br><span class="line"></span><br><span class="line">        QueryScorer scorer&#x3D;new QueryScorer(query);&#x2F;&#x2F;查询得分</span><br><span class="line">        Fragmenter fragmenter&#x3D;new SimpleSpanFragmenter(scorer);&#x2F;&#x2F;得到得分的片段,就是得到一段包含所查询的关键字的摘要</span><br><span class="line">        &#x2F;&#x2F;对查询的数据格式化；无参构造器的默认是将关键字加粗</span><br><span class="line">        SimpleHTMLFormatter simpleHTMLFormatter&#x3D;new SimpleHTMLFormatter(&quot;&lt;b&gt;&lt;font color&#x3D;&#39;red&#39;&gt;&quot;,&quot;&lt;&#x2F;font&gt;&lt;&#x2F;b&gt;&quot;);</span><br><span class="line">        Highlighter highlighter&#x3D;new Highlighter(simpleHTMLFormatter, scorer);&#x2F;&#x2F;根据得分和格式化</span><br><span class="line">        &#x2F;&#x2F;设置成高亮</span><br><span class="line">        highlighter.setTextFragmenter(fragmenter);</span><br><span class="line">        for(ScoreDoc scoreDoc:hits.scoreDocs)&#123;</span><br><span class="line">            &#x2F;&#x2F; 根据文档的标识获取文档</span><br><span class="line">            Document doc&#x3D;is.doc(scoreDoc.doc);</span><br><span class="line">            System.out.println(doc.get(&quot;city&quot;));</span><br><span class="line">            System.out.println(doc.get(&quot;desc&quot;));</span><br><span class="line">            String desc&#x3D;doc.get(&quot;desc&quot;);</span><br><span class="line">            if(desc!&#x3D;null)&#123;</span><br><span class="line">                &#x2F;&#x2F;TokenStream将查询出来的搞成片段，得到的是整个内容</span><br><span class="line">                TokenStream tokenStream&#x3D;analyzer.tokenStream(&quot;desc&quot;, new StringReader(desc));</span><br><span class="line">                &#x2F;&#x2F;将权重高的摘要显示出来，得到的是关键字内容</span><br><span class="line">                System.out.println(highlighter.getBestFragment(tokenStream, desc));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        reader.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String indexDir&#x3D;&quot;C:\\Lucene&quot;;</span><br><span class="line">        String q&#x3D;&quot;南京&quot;;</span><br><span class="line">        try &#123;</span><br><span class="line">            search(indexDir,q);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>进行关键字搜索时,务必先保证索引的存在,否则会出现如下异常信息<br><img src="https://i.loli.net/2019/06/11/5cffc68a790e754298.jpg" alt="Lucene全文检索.md---005WV0MDly1fspvaq2jolj310z055gq3.jpg"></p>
+</blockquote>
+<blockquote>
+<p>一切都正常运行后,显示结果如下<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fspvaq2jolj310z055gq3.jpg"><br>关键字也高亮显示了</p>
+</blockquote>
+<h1 id="Lucene索引的增删改查"><a href="#Lucene索引的增删改查" class="headerlink" title="Lucene索引的增删改查"></a>Lucene索引的增删改查</h1><blockquote>
+<ul>
+<li>获取IndexWriter实例</li>
+<li><code>IndexWriter writer = new IndexWriter(Directory, IndexWriterConfig)</code></li>
+<li>增加文档：writer.addDocument();</li>
+<li>读取文档：DirectoryReader.open(Directory)</li>
+<li>删除在合并前（先删除后增加，结果为删除前的结果，即文档还保留在内存中）:writer.deleteDocuments()</li>
+<li>删除在合并后（先删除后增加，结果为删除后的结果，即文档不在内存中）：</li>
+<li>writer.deleteDocuments(new Term(“id”, userId));writer.forceMergeDeletes() // 强制删除</li>
+<li>更新:writer.updateDocument(new Term(“id”, “1”), doc)</li>
+</ul>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="Lucene和Solr的区别"><a href="#Lucene和Solr的区别" class="headerlink" title="Lucene和Solr的区别"></a>Lucene和Solr的区别</h2><blockquote>
+<p><code>Lucene</code>是一个开放源代码的全文检索引擎工具包，即它不是一个完整的全文检索引擎，<br> 而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎<br> （英文与德文两种西方语言）。<code>Lucene</code>的目的是为软件开发人员提供一个简单易用的工具包，<br> 以方便的在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎.<br> 提供了比<code>Lucene</code>更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，<br> <code>Web-service</code>的<code>API</code>接口。用户可以通过<code>http</code>请求，向搜索引擎服务器提交一定格式的<code>XML</code>文件，<br> 生成索引；也可以通过Http Solr Get操作提出查找请求，并得到<code>XML</code>格式的返回结果；<br> <code>Solr</code>和<code>Lucene</code>的本质区别有以下三点：搜索服务器，企业级和管理。<code>Lucene</code>本质上是搜索库，<br> 不是独立的应用程序，而<code>Solr</code>是。<code>Lucene</code>专注于搜索底层的建设，而<code>Solr</code>专注于企业应用。<br> <code>Lucene</code>不负责支撑搜索服务所必须的管理，而<code>Solr</code>负责。<br> 所以说，一句话概括<code>Solr</code>: <code>Solr</code>是<code>Lucene</code>面向企业搜索应用的扩展.</p>
+</blockquote>
+<p><a href="http://www.cnblogs.com/lirenzhujiu">参考</a></p>
+]]></content>
+      <categories>
+        <category>technology</category>
+      </categories>
+      <tags>
+        <tag>Lucene</tag>
       </tags>
   </entry>
   <entry>
@@ -613,26 +613,6 @@
       </tags>
   </entry>
   <entry>
-    <title>day03</title>
-    <url>/2017/07/04/day03/</url>
-    <content><![CDATA[<p>先来fark一下别人的图<br><img src="http://upload-images.jianshu.io/upload_images/3332049-e1bb096b598e13ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="你想要锦上添花，你得先变成锦(作品：小瓜记不住那些好)"><br>所谓的迷茫，只是懒散，只是想要不劳而获。</p>
-<blockquote>
-<p>三分钟热度；对现状焦虑却不知道如何改变；喜欢幻想未来，却又不付出实际行动；<br>简而言之，就是间歇性的踌躇满志，持续性的混吃等死。<br>将自己的懒散包装成迷茫，让自己可以继续心安理得的不求上进，<br>然后将所有的不满足跟憎恶归结为迷茫。</p>
-</blockquote>
-<p>当懒散成为习惯，当迷茫成为常态，浑浑噩噩、煎熬焦虑也就变成了生活的主流。</p>
-<p>你可以迷茫，但不能懒散；你可以焦虑，但不能不思进取；你可以不励志，但不能不自律。</p>
-<p>不说那么多,以后就开始写一些学习上技术上的东西.这样也可以为日后留用……</p>
-<h3 id="END"><a href="#END" class="headerlink" title="-END-"></a>-END-</h3>]]></content>
-      <categories>
-        <category>life</category>
-      </categories>
-      <tags>
-        <tag>first</tag>
-        <tag>life</tag>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>gradle构建工具</title>
     <url>/2021/02/01/gradle%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<p><a href="https://imgchr.com/i/yesfCq"><img src="https://s3.ax1x.com/2021/02/01/yesfCq.jpg" alt="gradle学习.jpg"></a></p>
@@ -687,6 +667,26 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>day03</title>
+    <url>/2017/07/04/day03/</url>
+    <content><![CDATA[<p>先来fark一下别人的图<br><img src="http://upload-images.jianshu.io/upload_images/3332049-e1bb096b598e13ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="你想要锦上添花，你得先变成锦(作品：小瓜记不住那些好)"><br>所谓的迷茫，只是懒散，只是想要不劳而获。</p>
+<blockquote>
+<p>三分钟热度；对现状焦虑却不知道如何改变；喜欢幻想未来，却又不付出实际行动；<br>简而言之，就是间歇性的踌躇满志，持续性的混吃等死。<br>将自己的懒散包装成迷茫，让自己可以继续心安理得的不求上进，<br>然后将所有的不满足跟憎恶归结为迷茫。</p>
+</blockquote>
+<p>当懒散成为习惯，当迷茫成为常态，浑浑噩噩、煎熬焦虑也就变成了生活的主流。</p>
+<p>你可以迷茫，但不能懒散；你可以焦虑，但不能不思进取；你可以不励志，但不能不自律。</p>
+<p>不说那么多,以后就开始写一些学习上技术上的东西.这样也可以为日后留用……</p>
+<h3 id="END"><a href="#END" class="headerlink" title="-END-"></a>-END-</h3>]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>first</tag>
+        <tag>life</tag>
+        <tag>随笔</tag>
+      </tags>
   </entry>
   <entry>
     <title>hibernate入门</title>
@@ -1218,69 +1218,6 @@ setMaxResults(int) 分页，每页显示个数 pageSize
       <tags>
         <tag>struts2</tag>
         <tag>ognl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>怎样科学上网</title>
-    <url>/2019/07/09/%E6%80%8E%E6%A0%B7%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
-    <content><![CDATA[<p><img src="https://i.loli.net/2019/07/09/5d24af4437e3676256.png" alt="图片2.png"></p>
-<blockquote>
-<p>前几天趁下班闲下来时间想科学上网一番,于是就在<code>vultr</code>上购买了一个vps搭建了<code>ssr</code>.<br>  开始了愉快的科学上网.鉴于网上的教程比较杂,记录一下自己的填坑路程,也备以后自己还能用得到.</p>
-</blockquote>
-<h1 id="怎么样才能愉快的科学上网"><a href="#怎么样才能愉快的科学上网" class="headerlink" title="怎么样才能愉快的科学上网"></a>怎么样才能愉快的科学上网</h1><blockquote>
-<ul>
-<li>vultr</li>
-<li>ShadowsocksR</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>对比了许多家的vps,网上推荐比较多的还是<code>vultr</code>和<code>搬瓦工</code>,鉴于自己短期试用(其实还是贫穷啦).选择了<code>vultr</code>,<br>  最便宜的一个月只要<code>5刀</code>.价格算是还能接收.下面是自己的填坑过程.至于是什么是<code>vps</code>,<code>ssr</code>,这里就不再多描述了.</p>
-</blockquote>
-<h2 id="购买vps"><a href="#购买vps" class="headerlink" title="购买vps"></a>购买vps</h2><blockquote>
-<p>首先呢,进入<code>vultr</code>官网<a href="https://my.vultr.com/">https://my.vultr.com/</a>,这里支持支付宝和微信充值,很是方便.<br>  <img src="https://i.loli.net/2019/07/09/5d24b4af0fe2c37975.png" alt="20190709233723.png"><br>  这里是要先充钱才能继续后面的步奏的,然后左侧选择<code>products</code>.看自己的情况购买自己的<code>vps</code>吧.<br>  推荐是<code>centos7 64位</code>的,地点可以根据自己情况选择吧,虽然都说是距离越近的<code>vps</code>越快,但是东京的真的是大部分都被墙了.后面主要说下怎么搭建<code>ssr</code>.</p>
-</blockquote>
-<h2 id="搭建ssr"><a href="#搭建ssr" class="headerlink" title="搭建ssr"></a>搭建ssr</h2><p>购买成功后用客户端连接你的远程<code>vps</code>,这里我用的是<code>SecureCRT</code>,第一次输入<code>ip</code>和密码即可,自动默认的密码较长,这里登陆进去后可以自己选择是否更改为自己容易记的住的.顺便还可以温故下<code>linux</code>的命令行.</p>
-<blockquote>
-<ul>
-<li>安装git<br><code>yum -y install git</code></li>
-<li>下载一键搭建ss脚本文件</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone -b master https:&#x2F;&#x2F;github.com&#x2F;flyzy2005&#x2F;ss-fly</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>进入目录下运行脚本<br><code>ss-fly/ss-fly.sh -ssr</code><br>执行完上述的脚本代码后，会进入到输入参数的界面，包括服务器端口，密码，加密方式，协议，混淆。可以直接输入回车选择默认值,<br>也可以输入相应的值选择对应的选项</li>
-</ul>
-</blockquote>
-<p><img src="https://i.loli.net/2019/07/10/5d24bac3a5db574767.png" alt="QQ截图20190710000330.png"><br>协议默认选择<code>origin</code>,混肴方式默认选<code>plain</code><br>之后产看ssr信息可以输入<code>bash ssr.sh</code>查看</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">启动：&#x2F;etc&#x2F;init.d&#x2F;shadowsocks start</span><br><span class="line">停止：&#x2F;etc&#x2F;init.d&#x2F;shadowsocks stop</span><br><span class="line">重启：&#x2F;etc&#x2F;init.d&#x2F;shadowsocks restart</span><br><span class="line">状态：&#x2F;etc&#x2F;init.d&#x2F;shadowsocks status</span><br><span class="line">配置文件路径：&#x2F;etc&#x2F;shadowsocks.json</span><br><span class="line">日志文件路径：&#x2F;var&#x2F;log&#x2F;shadowsocks.log</span><br><span class="line">代码安装目录：&#x2F;usr&#x2F;local&#x2F;shadowsocks</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>开启<code>BBR</code>加速<br>BBR是Google开源的一套内核加速算法，可以让你搭建的shadowsocks/shadowsocksR速度上一个台阶，本一键搭建ss/ssr脚本支持一键升级最新版本的内核并开启BBR加速。</li>
-</ul>
-</blockquote>
-<p>BBR支持4.9以上的，如果低于这个版本则会自动下载最新内容版本的内核后开启BBR加速并重启，如果高于4.9以上则自动开启BBR加速，执行如下脚本命令即可自动开启BBR加速：(flyzy小站)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ss-fly&#x2F;ss-fly.sh -bbr</span><br></pre></td></tr></table></figure>
-<p>或者旧的方式</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https:&#x2F;&#x2F;github.com&#x2F;teddysun&#x2F;across&#x2F;raw&#x2F;master&#x2F;bbr.sh</span><br><span class="line"></span><br><span class="line">chmod +x bbr.sh</span><br><span class="line"></span><br><span class="line">.&#x2F;bbr.sh</span><br></pre></td></tr></table></figure>
-<p>装完后需要重启系统，输入y即可立即重启，或者之后输入reboot命令重启。<br>判断BBR加速有没有开启成功。输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>
-<p>如果返回</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">net.ipv4.tcp_available_congestion_control &#x3D; bbr cubic reno</span><br></pre></td></tr></table></figure>
-<p>只要后面有bbr，则说明已经开启成功了。</p>
-<blockquote>
-<ul>
-<li>卸载ssr服务<br><code>./shadowsocksR.sh uninstall</code><br><a href="https://github.com/shadowsocksrr/shadowsocksr-csharp/releases">shadowsocksR传送门</a><br>配置之前的配置文件,开始愉快上网吧…</li>
-</ul>
-</blockquote>
-]]></content>
-      <categories>
-        <category>technology</category>
-      </categories>
-      <tags>
-        <tag>vps</tag>
-        <tag>ssr</tag>
-        <tag>vultr</tag>
       </tags>
   </entry>
   <entry>
