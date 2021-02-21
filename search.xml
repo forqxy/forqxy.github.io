@@ -92,6 +92,63 @@
       </tags>
   </entry>
   <entry>
+    <title>Lucene全文检索</title>
+    <url>/2018/06/27/Lucene%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2/</url>
+    <content><![CDATA[<h1 id="Lucene简介"><a href="#Lucene简介" class="headerlink" title="Lucene简介"></a>Lucene简介</h1><blockquote>
+<p><a href="http://lucene.apache.org/">Apache Lucene</a>是一个基于Java全文搜索引擎，利用它可以轻易地<br> 为<code>Java</code>软件加入全文搜寻功能。当前最新已经更新到<code>Lucene7.3.1</code>版本<br> <code>Lucene</code>的最主要工作是替文件的每一个字作索引，索引让搜寻的效率比传统的逐字比较大大提高，<br> <code>Lucene</code>提供一组解读，过滤，分析文件，编排和使用索引的<code>API</code>.前天看到网上的一些教程,有兴趣<br> 也去了解了一下,今天就基于maven项目做一个小的demo.</p>
+</blockquote>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h3><blockquote>
+<p>根据你输入的值去找，这个值就是索引.</p>
+</blockquote>
+<h3 id="索引过程"><a href="#索引过程" class="headerlink" title="索引过程"></a>索引过程</h3><blockquote>
+<p>索引过程是Lucene提供的核心功能之一.<br><img src="https://i.loli.net/2019/06/11/5cffc6449760f21240.jpg" alt="Lucene全文检索.md---005WV0MDly1fsptw4avcej30fw0713zg.jpg"></p>
+</blockquote>
+<h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><blockquote>
+<p>创建索引有两种方式,一种是根据文件来生成索引，如后缀为.txt等的文件.<br> 另一种是根据字段来生成索引，在这里我用的是数组来进行创建的.<br> 分为两步,先创建索引,然后将字段添加到文档中.</p>
+</blockquote>
+<h1 id="添加Lucene依赖"><a href="#添加Lucene依赖" class="headerlink" title="添加Lucene依赖"></a>添加Lucene依赖</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--加入lucene--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-core --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-queryparser --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-queryparser&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-analyzers-common --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-analyzers-common&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--lucene中文分词--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-analyzers-smartcn --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-analyzers-smartcn&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--lucene高亮--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-highlighter --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-highlighter&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="代码具体实现"><a href="#代码具体实现" class="headerlink" title="代码具体实现"></a>代码具体实现</h1><blockquote>
+<p>主要代码都有注释,这里就不多说.更多不懂得可以去看官方<code>API</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Indexer &#123;</span><br><span class="line"></span><br><span class="line">    private Integer ids[]&#x3D;&#123;1,2,3&#125;;</span><br><span class="line">    private String citys[]&#x3D;&#123;&quot;青岛&quot;,&quot;南京&quot;,&quot;上海&quot;&#125;;</span><br><span class="line">    private String descs[]&#x3D;&#123;</span><br><span class="line">            &quot;青岛是一个美丽的城市。&quot;,</span><br><span class="line">            &quot;南京是一个有文化的城市。南京是一个文化的城市南京，简称宁，是江苏省会，地处中国东部地区，长江下游，&quot; +</span><br><span class="line">                    &quot;濒江近海。全市下辖11个区，总面积6597平方公里，2013年建成区面积752.83平方公里，常住人口818.78万&quot; +</span><br><span class="line">                    &quot;，其中城镇人口659.1万人。[1-4] “江南佳丽地，金陵帝王州”，南京拥有着6000多年文明史、&quot; +</span><br><span class="line">                    &quot;近2600年建城史和近500年的建都史，是中国四大古都之一，有“六朝古都”、“十朝都会”之称，&quot; +</span><br><span class="line">                    &quot;是中华文明的重要发祥地，历史上曾数次庇佑华夏之正朔，长期是中国南方的政治、经济、文化中心，&quot; +</span><br><span class="line">                    &quot;拥有厚重的文化底蕴和丰富的历史遗存。[5-7] 南京是国家重要的科教中心，&quot; +</span><br><span class="line">                    &quot;自古以来就是一座崇文重教的城市，有“天下文枢”、&quot; +</span><br><span class="line">                    &quot;“东南第一学”的美誉。截至2013年，南京有高等院校75所，&quot; +</span><br><span class="line">                    &quot;其中211高校8所，仅次于北京上海；国家重点实验室25所、&quot; +</span><br><span class="line">                    &quot;国家重点学科169个、两院院士83人，均居中国第三。[8-10] 。&quot;,</span><br><span class="line">            &quot;上海是一个繁华的城市。&quot;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    private Directory dir;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取IndexWriter实例</span><br><span class="line">     * @return</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private IndexWriter getWriter()throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;Analyzer analyzer&#x3D;new StandardAnalyzer(); &#x2F;&#x2F; 标准分词器</span><br><span class="line">        SmartChineseAnalyzer analyzer&#x3D;new SmartChineseAnalyzer();</span><br><span class="line">        IndexWriterConfig iwc&#x3D;new IndexWriterConfig(analyzer);</span><br><span class="line">        IndexWriter writer&#x3D;new IndexWriter(dir, iwc);</span><br><span class="line">        return writer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 根据字段生成索引,这里用的是数组</span><br><span class="line">     * 添加文档</span><br><span class="line">     * @param indexDir</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void index(String indexDir)throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;获得luceneIndex目录</span><br><span class="line">        dir&#x3D;FSDirectory.open(Paths.get(indexDir));</span><br><span class="line">        &#x2F;&#x2F;得到索引</span><br><span class="line">        IndexWriter writer&#x3D;getWriter();</span><br><span class="line">        for(int i&#x3D;0;i&lt;ids.length;i++)&#123;</span><br><span class="line">            Document doc&#x3D;new Document();&#x2F;&#x2F;创建文档</span><br><span class="line">            &#x2F;&#x2F;将属性存入内存中</span><br><span class="line">            doc.add(new StringField(&quot;id&quot;, ids[i]+&quot;&quot;, Field.Store.YES));</span><br><span class="line">            doc.add(new StringField(&quot;city&quot;,citys[i],Field.Store.YES));</span><br><span class="line">            doc.add(new TextField(&quot;desc&quot;, descs[i], Field.Store.YES));</span><br><span class="line">            writer.addDocument(doc); &#x2F;&#x2F; 添加文档</span><br><span class="line">        &#125;</span><br><span class="line">        writer.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        new Indexer().index(&quot;C:\\Lucene&quot;);&#x2F;&#x2F;索引生成的位置</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行上段主程序后,索引就在c盘根目录生成了.如下:<br><img src="https://i.loli.net/2019/06/11/5cffc673bb6bb64814.jpg" alt="Lucene全文检索.md---005WV0MDly1fspuvwq2eej30js0593yq.jpg"></p>
+</blockquote>
+<blockquote>
+<p>接下来就是关于索引的搜索实现<br> 具体都有注释表明功能</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Searcher &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     *</span><br><span class="line">     * @param indexDir 生成索引的目录</span><br><span class="line">     * @param q 要查询的关键字</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static void search(String indexDir,String q)throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;打开目录</span><br><span class="line">        Directory dir&#x3D;FSDirectory.open(Paths.get(indexDir));</span><br><span class="line">        &#x2F;&#x2F;读取</span><br><span class="line">        IndexReader reader&#x3D;DirectoryReader.open(dir);</span><br><span class="line">        &#x2F;&#x2F;索引查询器</span><br><span class="line">        IndexSearcher is&#x3D;new IndexSearcher(reader);</span><br><span class="line">        &#x2F;&#x2F; Analyzer analyzer&#x3D;new StandardAnalyzer(); &#x2F;&#x2F; 标准分词器</span><br><span class="line">        SmartChineseAnalyzer analyzer&#x3D;new SmartChineseAnalyzer();</span><br><span class="line">        &#x2F;&#x2F;在哪查询，第一个参数为查询的Document，在Indexer中创建了,这里就是在desc中查询</span><br><span class="line">        QueryParser parser&#x3D;new QueryParser(&quot;desc&quot;, analyzer);</span><br><span class="line">        &#x2F;&#x2F; 对字段进行解析后返回给查询</span><br><span class="line">        Query query&#x3D;parser.parse(q);</span><br><span class="line">        long start&#x3D;System.currentTimeMillis();</span><br><span class="line">        &#x2F;&#x2F;开始查询，10代表前10条数据；返回一个文档</span><br><span class="line">        TopDocs hits&#x3D;is.search(query, 10);</span><br><span class="line">        long end&#x3D;System.currentTimeMillis();</span><br><span class="line">        System.out.println(&quot;匹配 &quot;+q+&quot; ，总共花费&quot;+(end-start)+&quot;毫秒&quot;+&quot;查询到&quot;+hits.totalHits+&quot;个记录&quot;);</span><br><span class="line"></span><br><span class="line">        QueryScorer scorer&#x3D;new QueryScorer(query);&#x2F;&#x2F;查询得分</span><br><span class="line">        Fragmenter fragmenter&#x3D;new SimpleSpanFragmenter(scorer);&#x2F;&#x2F;得到得分的片段,就是得到一段包含所查询的关键字的摘要</span><br><span class="line">        &#x2F;&#x2F;对查询的数据格式化；无参构造器的默认是将关键字加粗</span><br><span class="line">        SimpleHTMLFormatter simpleHTMLFormatter&#x3D;new SimpleHTMLFormatter(&quot;&lt;b&gt;&lt;font color&#x3D;&#39;red&#39;&gt;&quot;,&quot;&lt;&#x2F;font&gt;&lt;&#x2F;b&gt;&quot;);</span><br><span class="line">        Highlighter highlighter&#x3D;new Highlighter(simpleHTMLFormatter, scorer);&#x2F;&#x2F;根据得分和格式化</span><br><span class="line">        &#x2F;&#x2F;设置成高亮</span><br><span class="line">        highlighter.setTextFragmenter(fragmenter);</span><br><span class="line">        for(ScoreDoc scoreDoc:hits.scoreDocs)&#123;</span><br><span class="line">            &#x2F;&#x2F; 根据文档的标识获取文档</span><br><span class="line">            Document doc&#x3D;is.doc(scoreDoc.doc);</span><br><span class="line">            System.out.println(doc.get(&quot;city&quot;));</span><br><span class="line">            System.out.println(doc.get(&quot;desc&quot;));</span><br><span class="line">            String desc&#x3D;doc.get(&quot;desc&quot;);</span><br><span class="line">            if(desc!&#x3D;null)&#123;</span><br><span class="line">                &#x2F;&#x2F;TokenStream将查询出来的搞成片段，得到的是整个内容</span><br><span class="line">                TokenStream tokenStream&#x3D;analyzer.tokenStream(&quot;desc&quot;, new StringReader(desc));</span><br><span class="line">                &#x2F;&#x2F;将权重高的摘要显示出来，得到的是关键字内容</span><br><span class="line">                System.out.println(highlighter.getBestFragment(tokenStream, desc));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        reader.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String indexDir&#x3D;&quot;C:\\Lucene&quot;;</span><br><span class="line">        String q&#x3D;&quot;南京&quot;;</span><br><span class="line">        try &#123;</span><br><span class="line">            search(indexDir,q);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>进行关键字搜索时,务必先保证索引的存在,否则会出现如下异常信息<br><img src="https://i.loli.net/2019/06/11/5cffc68a790e754298.jpg" alt="Lucene全文检索.md---005WV0MDly1fspvaq2jolj310z055gq3.jpg"></p>
+</blockquote>
+<blockquote>
+<p>一切都正常运行后,显示结果如下<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fspvaq2jolj310z055gq3.jpg"><br>关键字也高亮显示了</p>
+</blockquote>
+<h1 id="Lucene索引的增删改查"><a href="#Lucene索引的增删改查" class="headerlink" title="Lucene索引的增删改查"></a>Lucene索引的增删改查</h1><blockquote>
+<ul>
+<li>获取IndexWriter实例</li>
+<li><code>IndexWriter writer = new IndexWriter(Directory, IndexWriterConfig)</code></li>
+<li>增加文档：writer.addDocument();</li>
+<li>读取文档：DirectoryReader.open(Directory)</li>
+<li>删除在合并前（先删除后增加，结果为删除前的结果，即文档还保留在内存中）:writer.deleteDocuments()</li>
+<li>删除在合并后（先删除后增加，结果为删除后的结果，即文档不在内存中）：</li>
+<li>writer.deleteDocuments(new Term(“id”, userId));writer.forceMergeDeletes() // 强制删除</li>
+<li>更新:writer.updateDocument(new Term(“id”, “1”), doc)</li>
+</ul>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="Lucene和Solr的区别"><a href="#Lucene和Solr的区别" class="headerlink" title="Lucene和Solr的区别"></a>Lucene和Solr的区别</h2><blockquote>
+<p><code>Lucene</code>是一个开放源代码的全文检索引擎工具包，即它不是一个完整的全文检索引擎，<br> 而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎<br> （英文与德文两种西方语言）。<code>Lucene</code>的目的是为软件开发人员提供一个简单易用的工具包，<br> 以方便的在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎.<br> 提供了比<code>Lucene</code>更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，<br> <code>Web-service</code>的<code>API</code>接口。用户可以通过<code>http</code>请求，向搜索引擎服务器提交一定格式的<code>XML</code>文件，<br> 生成索引；也可以通过Http Solr Get操作提出查找请求，并得到<code>XML</code>格式的返回结果；<br> <code>Solr</code>和<code>Lucene</code>的本质区别有以下三点：搜索服务器，企业级和管理。<code>Lucene</code>本质上是搜索库，<br> 不是独立的应用程序，而<code>Solr</code>是。<code>Lucene</code>专注于搜索底层的建设，而<code>Solr</code>专注于企业应用。<br> <code>Lucene</code>不负责支撑搜索服务所必须的管理，而<code>Solr</code>负责。<br> 所以说，一句话概括<code>Solr</code>: <code>Solr</code>是<code>Lucene</code>面向企业搜索应用的扩展.</p>
+</blockquote>
+<p><a href="http://www.cnblogs.com/lirenzhujiu">参考</a></p>
+]]></content>
+      <categories>
+        <category>technology</category>
+      </categories>
+      <tags>
+        <tag>Lucene</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Maven入门</title>
     <url>/2017/08/01/Maven%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h1 id="什么是Maven"><a href="#什么是Maven" class="headerlink" title="什么是Maven"></a>什么是Maven</h1><blockquote>
@@ -168,63 +225,6 @@
       </categories>
       <tags>
         <tag>Maven</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Lucene全文检索</title>
-    <url>/2018/06/27/Lucene%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2/</url>
-    <content><![CDATA[<h1 id="Lucene简介"><a href="#Lucene简介" class="headerlink" title="Lucene简介"></a>Lucene简介</h1><blockquote>
-<p><a href="http://lucene.apache.org/">Apache Lucene</a>是一个基于Java全文搜索引擎，利用它可以轻易地<br> 为<code>Java</code>软件加入全文搜寻功能。当前最新已经更新到<code>Lucene7.3.1</code>版本<br> <code>Lucene</code>的最主要工作是替文件的每一个字作索引，索引让搜寻的效率比传统的逐字比较大大提高，<br> <code>Lucene</code>提供一组解读，过滤，分析文件，编排和使用索引的<code>API</code>.前天看到网上的一些教程,有兴趣<br> 也去了解了一下,今天就基于maven项目做一个小的demo.</p>
-</blockquote>
-<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h3><blockquote>
-<p>根据你输入的值去找，这个值就是索引.</p>
-</blockquote>
-<h3 id="索引过程"><a href="#索引过程" class="headerlink" title="索引过程"></a>索引过程</h3><blockquote>
-<p>索引过程是Lucene提供的核心功能之一.<br><img src="https://i.loli.net/2019/06/11/5cffc6449760f21240.jpg" alt="Lucene全文检索.md---005WV0MDly1fsptw4avcej30fw0713zg.jpg"></p>
-</blockquote>
-<h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><blockquote>
-<p>创建索引有两种方式,一种是根据文件来生成索引，如后缀为.txt等的文件.<br> 另一种是根据字段来生成索引，在这里我用的是数组来进行创建的.<br> 分为两步,先创建索引,然后将字段添加到文档中.</p>
-</blockquote>
-<h1 id="添加Lucene依赖"><a href="#添加Lucene依赖" class="headerlink" title="添加Lucene依赖"></a>添加Lucene依赖</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--加入lucene--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-core --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-queryparser --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-queryparser&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-analyzers-common --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-analyzers-common&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--lucene中文分词--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-analyzers-smartcn --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-analyzers-smartcn&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--lucene高亮--&gt;</span><br><span class="line">      &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.lucene&#x2F;lucene-highlighter --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;lucene-highlighter&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;$&#123;lucene.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="代码具体实现"><a href="#代码具体实现" class="headerlink" title="代码具体实现"></a>代码具体实现</h1><blockquote>
-<p>主要代码都有注释,这里就不多说.更多不懂得可以去看官方<code>API</code></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Indexer &#123;</span><br><span class="line"></span><br><span class="line">    private Integer ids[]&#x3D;&#123;1,2,3&#125;;</span><br><span class="line">    private String citys[]&#x3D;&#123;&quot;青岛&quot;,&quot;南京&quot;,&quot;上海&quot;&#125;;</span><br><span class="line">    private String descs[]&#x3D;&#123;</span><br><span class="line">            &quot;青岛是一个美丽的城市。&quot;,</span><br><span class="line">            &quot;南京是一个有文化的城市。南京是一个文化的城市南京，简称宁，是江苏省会，地处中国东部地区，长江下游，&quot; +</span><br><span class="line">                    &quot;濒江近海。全市下辖11个区，总面积6597平方公里，2013年建成区面积752.83平方公里，常住人口818.78万&quot; +</span><br><span class="line">                    &quot;，其中城镇人口659.1万人。[1-4] “江南佳丽地，金陵帝王州”，南京拥有着6000多年文明史、&quot; +</span><br><span class="line">                    &quot;近2600年建城史和近500年的建都史，是中国四大古都之一，有“六朝古都”、“十朝都会”之称，&quot; +</span><br><span class="line">                    &quot;是中华文明的重要发祥地，历史上曾数次庇佑华夏之正朔，长期是中国南方的政治、经济、文化中心，&quot; +</span><br><span class="line">                    &quot;拥有厚重的文化底蕴和丰富的历史遗存。[5-7] 南京是国家重要的科教中心，&quot; +</span><br><span class="line">                    &quot;自古以来就是一座崇文重教的城市，有“天下文枢”、&quot; +</span><br><span class="line">                    &quot;“东南第一学”的美誉。截至2013年，南京有高等院校75所，&quot; +</span><br><span class="line">                    &quot;其中211高校8所，仅次于北京上海；国家重点实验室25所、&quot; +</span><br><span class="line">                    &quot;国家重点学科169个、两院院士83人，均居中国第三。[8-10] 。&quot;,</span><br><span class="line">            &quot;上海是一个繁华的城市。&quot;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    private Directory dir;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 获取IndexWriter实例</span><br><span class="line">     * @return</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private IndexWriter getWriter()throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;Analyzer analyzer&#x3D;new StandardAnalyzer(); &#x2F;&#x2F; 标准分词器</span><br><span class="line">        SmartChineseAnalyzer analyzer&#x3D;new SmartChineseAnalyzer();</span><br><span class="line">        IndexWriterConfig iwc&#x3D;new IndexWriterConfig(analyzer);</span><br><span class="line">        IndexWriter writer&#x3D;new IndexWriter(dir, iwc);</span><br><span class="line">        return writer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 根据字段生成索引,这里用的是数组</span><br><span class="line">     * 添加文档</span><br><span class="line">     * @param indexDir</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public void index(String indexDir)throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;获得luceneIndex目录</span><br><span class="line">        dir&#x3D;FSDirectory.open(Paths.get(indexDir));</span><br><span class="line">        &#x2F;&#x2F;得到索引</span><br><span class="line">        IndexWriter writer&#x3D;getWriter();</span><br><span class="line">        for(int i&#x3D;0;i&lt;ids.length;i++)&#123;</span><br><span class="line">            Document doc&#x3D;new Document();&#x2F;&#x2F;创建文档</span><br><span class="line">            &#x2F;&#x2F;将属性存入内存中</span><br><span class="line">            doc.add(new StringField(&quot;id&quot;, ids[i]+&quot;&quot;, Field.Store.YES));</span><br><span class="line">            doc.add(new StringField(&quot;city&quot;,citys[i],Field.Store.YES));</span><br><span class="line">            doc.add(new TextField(&quot;desc&quot;, descs[i], Field.Store.YES));</span><br><span class="line">            writer.addDocument(doc); &#x2F;&#x2F; 添加文档</span><br><span class="line">        &#125;</span><br><span class="line">        writer.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        new Indexer().index(&quot;C:\\Lucene&quot;);&#x2F;&#x2F;索引生成的位置</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>运行上段主程序后,索引就在c盘根目录生成了.如下:<br><img src="https://i.loli.net/2019/06/11/5cffc673bb6bb64814.jpg" alt="Lucene全文检索.md---005WV0MDly1fspuvwq2eej30js0593yq.jpg"></p>
-</blockquote>
-<blockquote>
-<p>接下来就是关于索引的搜索实现<br> 具体都有注释表明功能</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Searcher &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     *</span><br><span class="line">     * @param indexDir 生成索引的目录</span><br><span class="line">     * @param q 要查询的关键字</span><br><span class="line">     * @throws Exception</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static void search(String indexDir,String q)throws Exception&#123;</span><br><span class="line">        &#x2F;&#x2F;打开目录</span><br><span class="line">        Directory dir&#x3D;FSDirectory.open(Paths.get(indexDir));</span><br><span class="line">        &#x2F;&#x2F;读取</span><br><span class="line">        IndexReader reader&#x3D;DirectoryReader.open(dir);</span><br><span class="line">        &#x2F;&#x2F;索引查询器</span><br><span class="line">        IndexSearcher is&#x3D;new IndexSearcher(reader);</span><br><span class="line">        &#x2F;&#x2F; Analyzer analyzer&#x3D;new StandardAnalyzer(); &#x2F;&#x2F; 标准分词器</span><br><span class="line">        SmartChineseAnalyzer analyzer&#x3D;new SmartChineseAnalyzer();</span><br><span class="line">        &#x2F;&#x2F;在哪查询，第一个参数为查询的Document，在Indexer中创建了,这里就是在desc中查询</span><br><span class="line">        QueryParser parser&#x3D;new QueryParser(&quot;desc&quot;, analyzer);</span><br><span class="line">        &#x2F;&#x2F; 对字段进行解析后返回给查询</span><br><span class="line">        Query query&#x3D;parser.parse(q);</span><br><span class="line">        long start&#x3D;System.currentTimeMillis();</span><br><span class="line">        &#x2F;&#x2F;开始查询，10代表前10条数据；返回一个文档</span><br><span class="line">        TopDocs hits&#x3D;is.search(query, 10);</span><br><span class="line">        long end&#x3D;System.currentTimeMillis();</span><br><span class="line">        System.out.println(&quot;匹配 &quot;+q+&quot; ，总共花费&quot;+(end-start)+&quot;毫秒&quot;+&quot;查询到&quot;+hits.totalHits+&quot;个记录&quot;);</span><br><span class="line"></span><br><span class="line">        QueryScorer scorer&#x3D;new QueryScorer(query);&#x2F;&#x2F;查询得分</span><br><span class="line">        Fragmenter fragmenter&#x3D;new SimpleSpanFragmenter(scorer);&#x2F;&#x2F;得到得分的片段,就是得到一段包含所查询的关键字的摘要</span><br><span class="line">        &#x2F;&#x2F;对查询的数据格式化；无参构造器的默认是将关键字加粗</span><br><span class="line">        SimpleHTMLFormatter simpleHTMLFormatter&#x3D;new SimpleHTMLFormatter(&quot;&lt;b&gt;&lt;font color&#x3D;&#39;red&#39;&gt;&quot;,&quot;&lt;&#x2F;font&gt;&lt;&#x2F;b&gt;&quot;);</span><br><span class="line">        Highlighter highlighter&#x3D;new Highlighter(simpleHTMLFormatter, scorer);&#x2F;&#x2F;根据得分和格式化</span><br><span class="line">        &#x2F;&#x2F;设置成高亮</span><br><span class="line">        highlighter.setTextFragmenter(fragmenter);</span><br><span class="line">        for(ScoreDoc scoreDoc:hits.scoreDocs)&#123;</span><br><span class="line">            &#x2F;&#x2F; 根据文档的标识获取文档</span><br><span class="line">            Document doc&#x3D;is.doc(scoreDoc.doc);</span><br><span class="line">            System.out.println(doc.get(&quot;city&quot;));</span><br><span class="line">            System.out.println(doc.get(&quot;desc&quot;));</span><br><span class="line">            String desc&#x3D;doc.get(&quot;desc&quot;);</span><br><span class="line">            if(desc!&#x3D;null)&#123;</span><br><span class="line">                &#x2F;&#x2F;TokenStream将查询出来的搞成片段，得到的是整个内容</span><br><span class="line">                TokenStream tokenStream&#x3D;analyzer.tokenStream(&quot;desc&quot;, new StringReader(desc));</span><br><span class="line">                &#x2F;&#x2F;将权重高的摘要显示出来，得到的是关键字内容</span><br><span class="line">                System.out.println(highlighter.getBestFragment(tokenStream, desc));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        reader.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String indexDir&#x3D;&quot;C:\\Lucene&quot;;</span><br><span class="line">        String q&#x3D;&quot;南京&quot;;</span><br><span class="line">        try &#123;</span><br><span class="line">            search(indexDir,q);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>进行关键字搜索时,务必先保证索引的存在,否则会出现如下异常信息<br><img src="https://i.loli.net/2019/06/11/5cffc68a790e754298.jpg" alt="Lucene全文检索.md---005WV0MDly1fspvaq2jolj310z055gq3.jpg"></p>
-</blockquote>
-<blockquote>
-<p>一切都正常运行后,显示结果如下<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fspvaq2jolj310z055gq3.jpg"><br>关键字也高亮显示了</p>
-</blockquote>
-<h1 id="Lucene索引的增删改查"><a href="#Lucene索引的增删改查" class="headerlink" title="Lucene索引的增删改查"></a>Lucene索引的增删改查</h1><blockquote>
-<ul>
-<li>获取IndexWriter实例</li>
-<li><code>IndexWriter writer = new IndexWriter(Directory, IndexWriterConfig)</code></li>
-<li>增加文档：writer.addDocument();</li>
-<li>读取文档：DirectoryReader.open(Directory)</li>
-<li>删除在合并前（先删除后增加，结果为删除前的结果，即文档还保留在内存中）:writer.deleteDocuments()</li>
-<li>删除在合并后（先删除后增加，结果为删除后的结果，即文档不在内存中）：</li>
-<li>writer.deleteDocuments(new Term(“id”, userId));writer.forceMergeDeletes() // 强制删除</li>
-<li>更新:writer.updateDocument(new Term(“id”, “1”), doc)</li>
-</ul>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="Lucene和Solr的区别"><a href="#Lucene和Solr的区别" class="headerlink" title="Lucene和Solr的区别"></a>Lucene和Solr的区别</h2><blockquote>
-<p><code>Lucene</code>是一个开放源代码的全文检索引擎工具包，即它不是一个完整的全文检索引擎，<br> 而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎<br> （英文与德文两种西方语言）。<code>Lucene</code>的目的是为软件开发人员提供一个简单易用的工具包，<br> 以方便的在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎.<br> 提供了比<code>Lucene</code>更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，<br> <code>Web-service</code>的<code>API</code>接口。用户可以通过<code>http</code>请求，向搜索引擎服务器提交一定格式的<code>XML</code>文件，<br> 生成索引；也可以通过Http Solr Get操作提出查找请求，并得到<code>XML</code>格式的返回结果；<br> <code>Solr</code>和<code>Lucene</code>的本质区别有以下三点：搜索服务器，企业级和管理。<code>Lucene</code>本质上是搜索库，<br> 不是独立的应用程序，而<code>Solr</code>是。<code>Lucene</code>专注于搜索底层的建设，而<code>Solr</code>专注于企业应用。<br> <code>Lucene</code>不负责支撑搜索服务所必须的管理，而<code>Solr</code>负责。<br> 所以说，一句话概括<code>Solr</code>: <code>Solr</code>是<code>Lucene</code>面向企业搜索应用的扩展.</p>
-</blockquote>
-<p><a href="http://www.cnblogs.com/lirenzhujiu">参考</a></p>
-]]></content>
-      <categories>
-        <category>technology</category>
-      </categories>
-      <tags>
-        <tag>Lucene</tag>
       </tags>
   </entry>
   <entry>
@@ -613,6 +613,26 @@
       </tags>
   </entry>
   <entry>
+    <title>day03</title>
+    <url>/2017/07/04/day03/</url>
+    <content><![CDATA[<p>先来fark一下别人的图<br><img src="http://upload-images.jianshu.io/upload_images/3332049-e1bb096b598e13ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="你想要锦上添花，你得先变成锦(作品：小瓜记不住那些好)"><br>所谓的迷茫，只是懒散，只是想要不劳而获。</p>
+<blockquote>
+<p>三分钟热度；对现状焦虑却不知道如何改变；喜欢幻想未来，却又不付出实际行动；<br>简而言之，就是间歇性的踌躇满志，持续性的混吃等死。<br>将自己的懒散包装成迷茫，让自己可以继续心安理得的不求上进，<br>然后将所有的不满足跟憎恶归结为迷茫。</p>
+</blockquote>
+<p>当懒散成为习惯，当迷茫成为常态，浑浑噩噩、煎熬焦虑也就变成了生活的主流。</p>
+<p>你可以迷茫，但不能懒散；你可以焦虑，但不能不思进取；你可以不励志，但不能不自律。</p>
+<p>不说那么多,以后就开始写一些学习上技术上的东西.这样也可以为日后留用……</p>
+<h3 id="END"><a href="#END" class="headerlink" title="-END-"></a>-END-</h3>]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>first</tag>
+        <tag>life</tag>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gradle构建工具</title>
     <url>/2021/02/01/gradle%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<p><a href="https://imgchr.com/i/yesfCq"><img src="https://s3.ax1x.com/2021/02/01/yesfCq.jpg" alt="gradle学习.jpg"></a></p>
@@ -667,26 +687,6 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>day03</title>
-    <url>/2017/07/04/day03/</url>
-    <content><![CDATA[<p>先来fark一下别人的图<br><img src="http://upload-images.jianshu.io/upload_images/3332049-e1bb096b598e13ea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="你想要锦上添花，你得先变成锦(作品：小瓜记不住那些好)"><br>所谓的迷茫，只是懒散，只是想要不劳而获。</p>
-<blockquote>
-<p>三分钟热度；对现状焦虑却不知道如何改变；喜欢幻想未来，却又不付出实际行动；<br>简而言之，就是间歇性的踌躇满志，持续性的混吃等死。<br>将自己的懒散包装成迷茫，让自己可以继续心安理得的不求上进，<br>然后将所有的不满足跟憎恶归结为迷茫。</p>
-</blockquote>
-<p>当懒散成为习惯，当迷茫成为常态，浑浑噩噩、煎熬焦虑也就变成了生活的主流。</p>
-<p>你可以迷茫，但不能懒散；你可以焦虑，但不能不思进取；你可以不励志，但不能不自律。</p>
-<p>不说那么多,以后就开始写一些学习上技术上的东西.这样也可以为日后留用……</p>
-<h3 id="END"><a href="#END" class="headerlink" title="-END-"></a>-END-</h3>]]></content>
-      <categories>
-        <category>life</category>
-      </categories>
-      <tags>
-        <tag>first</tag>
-        <tag>life</tag>
-        <tag>随笔</tag>
-      </tags>
   </entry>
   <entry>
     <title>hibernate入门</title>
@@ -966,58 +966,6 @@ setMaxResults(int) 分页，每页显示个数 pageSize
       </tags>
   </entry>
   <entry>
-    <title>初探WebService</title>
-    <url>/2018/06/30/%E5%88%9D%E6%8E%A2WebService/</url>
-    <content><![CDATA[<h1 id="什么是Web-Service"><a href="#什么是Web-Service" class="headerlink" title="什么是Web Service"></a>什么是Web Service</h1><blockquote>
-<p><code>Web Service</code>也叫<code>XML Web Service</code> <code>WebService</code>是一种可以接收从<code>Internet</code>或者<br> <code>Intranet</code>上的其它系统中传递过来的请求，轻量级的独立的通讯技术。是通过<code>SOAP</code>在<code>Web</code>上提供的软件服务，<br> 使用<code>WSDL</code>文件进行说明，并通过<code>UDDI</code>进行注册。<br> 简单来说就像是一个公开的接口，其他系统不管你是用什么语言来编写的都可以调用这个接口，并可以返回相应的数据给你。就像是现在很多的天气应用，他们肯定不会自己去搞一个气象局之类的部门去监测天气，大多都是直接调用一个天气接口，然后返回天气数据，相关应用就可以将这些信息展示给用户了。<br> 通常来说发布这类接口的应用都是用一两种语言来编写即可，但是调用这个接口应用可能会是各种语言来编写的，为了满足这样的需求<br> <code>webservice</code>出现了。</p>
-</blockquote>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><blockquote>
-<ul>
-<li><code>XML</code>：(<code>Extensible Markup Language</code>)扩展型可标记语言。面向短期的临时数据处理、面向万维网络，是<code>SOAP</code>的基础。</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><code>SOAP</code>：(<code>Simple Object Access Protocol</code>)简单对象存取协议。是<code>XML Web Service</code><br>的通信协议。当用户通过<code>UDDI</code>找到你的<code>WSDL</code>描述文档后，他通过可以<code>SOAP</code>调用你建立的<code>Web</code>服务<br>中的一个或多个操作。<code>SOAP</code>是<code>XML</code>文档形式的调用方法的规范，它可以支持不同的底层接口，像<code>HTTP(S)</code>或者<code>SMTP</code>。</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><code>WSDL</code>：(<code>Web Services Description Language</code>) <code>WSDL</code> 文件是一个 XML 文档，用于说明一组 <code>SOAP</code><br>消息以及如何交换这些消息。大多数情况下由软件自动生成和使用。</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><code>UDDI</code> :(<code>Universal Description</code>, <code>Discovery</code>, <code>and</code> <code>Integration</code>) 是一个主要针对<code>Web</code>服务供应商和使用者的新项目。<br>在用户能够调用Web服务之前，必须确定这个服务内包含哪些商务方法，找到被调用的接口定义，还要在服务端来编制软件，<br><code>UDDI</code>是一种根据描述文档来引导系统查找相应服务的机制。<code>UDDI</code>利用<code>SOAP</code>消息机制（标准的<code>XML/HTTP</code>）来发布，编辑，<br>浏览以及查找注册信息。它采用XML格式来封装各种不同类型的数据，并且发送到注册中心或者由注册中心来返回需要的数据。</li>
-</ul>
-</blockquote>
-<h1 id="Web-Service实例"><a href="#Web-Service实例" class="headerlink" title="Web Service实例"></a>Web Service实例</h1><h2 id="Spring整合CXF开发服务端"><a href="#Spring整合CXF开发服务端" class="headerlink" title="Spring整合CXF开发服务端"></a>Spring整合CXF开发服务端</h2><blockquote>
-<p>加入Maven依赖</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--cxf--&gt;</span><br><span class="line">        &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.cxf&#x2F;cxf-rt-frontend-jaxws --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.cxf&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;cxf-rt-frontend-jaxws&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.cxf&#x2F;cxf-core --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.cxf&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;cxf-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.cxf&#x2F;cxf-rt-transports-http --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.cxf&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;cxf-rt-transports-http&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>web.xml</code>中配置一个<code>CXF</code>的<code>servlet</code>,因为这是一个web项目,如果是简单项目可以省去配置</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;CXFServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;org.apache.cxf.transport.servlet.CXFServlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;CXFServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;webservice&#x2F;*&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;servlet-mapping&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>这样,项目部署后访问<code>webservice/*</code>这个地址就会进入<code>CXF</code>的<code>servlet</code>中。</p>
-<blockquote>
-<p>开发一个<code>webservice</code>业务接口，方法使用<code>@WebService</code>修饰。<br><img src="https://i.loli.net/2019/06/11/5cffce6023b5793719.jpg" alt="初探WebService.md---005WV0MDly1fst938mayjj30bq03n75f.jpg"><br>写一个这个方法的实现类，方法也需要使用<code>@WebService</code>修饰<br><img src="https://i.loli.net/2019/06/11/5cffce4c6398c16330.jpg" alt="初探WebService.md---005WV0MDly1fst98m7fc1j30fh053q59.jpg"><br>在<code>Spring配置文件整合</code>,头部添加命名路径</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xmlns:jaxws&#x3D;&quot;http:&#x2F;&#x2F;cxf.apache.org&#x2F;jaxws&quot;</span><br><span class="line">http:&#x2F;&#x2F;cxf.apache.org&#x2F;jaxws http:&#x2F;&#x2F;cxf.apache.org&#x2F;schemas&#x2F;jaxws.xsd&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;import resource&#x3D;&quot;classpath:META-INF&#x2F;cxf&#x2F;cxf.xml&quot;&#x2F;&gt;</span><br><span class="line">   &lt;import resource&#x3D;&quot;classpath:META-INF&#x2F;cxf&#x2F;cxf-servlet.xml&quot;&#x2F;&gt;</span><br><span class="line">   &lt;!-- 自动扫描webService --&gt;</span><br><span class="line">   &lt;context:component-scan base-package&#x3D;&quot;com.hsl.cxf&quot; &#x2F;&gt;</span><br><span class="line">   &lt;!-- 定义webservice的发布接口  --&gt;</span><br><span class="line">   &lt;jaxws:endpoint</span><br><span class="line">           implementor&#x3D;&quot;#helloWorld&quot;           &#x2F;&#x2F;注解名,相当于手动完成映射</span><br><span class="line">           address&#x3D;&quot;&#x2F;HelloWorld&quot;     &#x2F;&#x2F;我们需要访问的地址</span><br><span class="line">   &gt;&lt;&#x2F;jaxws:endpoint&gt;</span><br></pre></td></tr></table></figure>
-<p>运行项目,输入地址<a href="http://127.0.0.1:8080/webservice/HelloWorld?wsdl%E5%87%BA%E7%8E%B0%E5%A6%82%E4%B8%8B">http://127.0.0.1:8080/webservice/HelloWorld?wsdl出现如下</a><br><img src="https://i.loli.net/2019/06/11/5cffce29dc1f187382.jpg" alt="初探WebService.md---005WV0MDly1fst9v6zzx5j30k307nmx6.jpg"><br><code>webservice</code>接口发布成功</p>
-<h2 id="使用CXF开发Web-Service客户端"><a href="#使用CXF开发Web-Service客户端" class="headerlink" title="使用CXF开发Web Service客户端"></a>使用CXF开发Web Service客户端</h2><p>可参考以下博客:<a href="https://blog.csdn.net/yangwenxue_admin/article/details/51059125">传送门</a></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这就完成了<code>webservice</code>的入门案例的服务端,后续有时间或用的着会更新更多关于<code>webservice</code>的内容</p>
-]]></content>
-      <categories>
-        <category>technology</category>
-      </categories>
-      <tags>
-        <tag>WebService</tag>
-        <tag>cxf</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>初识Spring MVC</title>
     <url>/2017/08/05/%E5%88%9D%E8%AF%86Spring-MVC/</url>
     <content><![CDATA[<h1 id="初识spring-mvc"><a href="#初识spring-mvc" class="headerlink" title="初识spring mvc"></a>初识spring mvc</h1><h2 id="spring-MVC是什么"><a href="#spring-MVC是什么" class="headerlink" title="spring MVC是什么?"></a>spring MVC是什么?</h2><p>Spring web mvc和Struts2都属于表现层的框架,它是Spring框架的一部分,<br>我们可以从Spring的整体结构中看得出来,如下图：<br><img src="http://ww1.sinaimg.cn/large/005WV0MDly1fjdlet3o5hj30do0b040h.jpg"></p>
@@ -1134,21 +1082,55 @@ setMaxResults(int) 分页，每页显示个数 pageSize
       </tags>
   </entry>
   <entry>
-    <title>发现开发技巧篇</title>
-    <url>/2018/07/16/%E5%8F%91%E7%8E%B0%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7%E7%AF%87/</url>
-    <content><![CDATA[<p><img src="https://i.loli.net/2019/06/12/5d011fd75bee774966.jpg"></p>
-<h1 id="基于Springboot开发"><a href="#基于Springboot开发" class="headerlink" title="基于Springboot开发"></a>基于Springboot开发</h1><h2 id="插入数据库时遇到的问题"><a href="#插入数据库时遇到的问题" class="headerlink" title="插入数据库时遇到的问题"></a>插入数据库时遇到的问题</h2><p>在调用<code>jpa</code>的<code>save</code>方法时,发现不能成功的插入数据.调用<code>JpaRepository</code>接口的<code>save</code>方法保存一个对象到数据库中的时候就会出错.<br><code>com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException</code><br>后来试了多次发现是主键自增策略引起的问题.改为如下后就解决了<br><img src="https://i.loli.net/2019/06/12/5d01207b1e0c797324.jpg"><br>原因是默认就是<code>auto</code>,不能由程序自己控制.具体原因如下:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hibernate 能够出色地自动生成主键。Hibernate&#x2F;EBJ 3 注释也可以为主键的自动生成提供丰富的支持，允许实现各种策略。</span><br><span class="line">其生成规则由@GeneratedValue设定的.这里的@id和@GeneratedValue都是JPA的标准用法, JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</span><br><span class="line">JPA提供的四种标准用法为TABLE,SEQUENCE,IDENTITY,AUTO.</span><br><span class="line">TABLE：使用一个特定的数据库表格来保存主键。</span><br><span class="line">SEQUENCE：根据底层数据库的序列来生成主键，条件是数据库支持序列。</span><br><span class="line">IDENTITY：主键由数据库自动生成（主要是自动增长型）</span><br><span class="line">AUTO：主键由程序控制。</span><br><span class="line">在指定主键时，如果不指定主键生成策略，默认为AUTO。</span><br><span class="line">@Id</span><br><span class="line">相当于</span><br><span class="line">@Id</span><br><span class="line">@GeneratedValue(strategy &#x3D; GenerationType.AUTO)</span><br><span class="line"></span><br><span class="line">identity:</span><br><span class="line">使用SQL Server 和 MySQL 的自增字段，这个方法不能放到 Oracle 中，Oracle 不支持自增字段，要设定sequence（MySQL 和 SQL Server 中很常用）。</span><br><span class="line">Oracle就要采用sequence了.</span><br><span class="line"></span><br><span class="line">同时,也可采用uuid,native等其它策略.(相关用法,上网查询)</span><br></pre></td></tr></table></figure>
-<p>即<code>auto</code>为当数据库中不存在这张表的时候可以用它建表的时候,制定自增的方式,存在的时候插入数据还用它就会出错了.</p>
-<p><code>identity</code>使用<code>MySQL</code>的自增字段.</p>
-<h2 id="开发过程中的实用技能"><a href="#开发过程中的实用技能" class="headerlink" title="开发过程中的实用技能"></a>开发过程中的实用技能</h2><p>在编写实体类的时候,每次都要写<code>get</code>和<code>set</code>或<code>tostring</code>方法,虽然可以快捷键生成,不过还是显得臃肿麻烦.<br>这个时候,就可以用到上篇日志中说到的<code>lombok</code>插件.<br>首先,<code>pom</code>文件中引入依赖.然后在实体类上面加上一个<code>@Data</code>注解就可以了,就是这么简单.<br><img src="https://i.loli.net/2019/06/12/5d0120d9d786e48428.jpg"><br><code>@DynamicUpdate</code>这个注解是动态更新数据库表中的时间属性.每次更改就会更新时间戳,不需要人为管理.<br><code>@Transactional</code>在测试方法上面添加这个注解,相当于回滚事务,数据库不发生更改.方便测试.<br><img src="https://i.loli.net/2019/06/12/5d01215a565dc96326.jpg"></p>
+    <title>初探WebService</title>
+    <url>/2018/06/30/%E5%88%9D%E6%8E%A2WebService/</url>
+    <content><![CDATA[<h1 id="什么是Web-Service"><a href="#什么是Web-Service" class="headerlink" title="什么是Web Service"></a>什么是Web Service</h1><blockquote>
+<p><code>Web Service</code>也叫<code>XML Web Service</code> <code>WebService</code>是一种可以接收从<code>Internet</code>或者<br> <code>Intranet</code>上的其它系统中传递过来的请求，轻量级的独立的通讯技术。是通过<code>SOAP</code>在<code>Web</code>上提供的软件服务，<br> 使用<code>WSDL</code>文件进行说明，并通过<code>UDDI</code>进行注册。<br> 简单来说就像是一个公开的接口，其他系统不管你是用什么语言来编写的都可以调用这个接口，并可以返回相应的数据给你。就像是现在很多的天气应用，他们肯定不会自己去搞一个气象局之类的部门去监测天气，大多都是直接调用一个天气接口，然后返回天气数据，相关应用就可以将这些信息展示给用户了。<br> 通常来说发布这类接口的应用都是用一两种语言来编写即可，但是调用这个接口应用可能会是各种语言来编写的，为了满足这样的需求<br> <code>webservice</code>出现了。</p>
+</blockquote>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><blockquote>
+<ul>
+<li><code>XML</code>：(<code>Extensible Markup Language</code>)扩展型可标记语言。面向短期的临时数据处理、面向万维网络，是<code>SOAP</code>的基础。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>SOAP</code>：(<code>Simple Object Access Protocol</code>)简单对象存取协议。是<code>XML Web Service</code><br>的通信协议。当用户通过<code>UDDI</code>找到你的<code>WSDL</code>描述文档后，他通过可以<code>SOAP</code>调用你建立的<code>Web</code>服务<br>中的一个或多个操作。<code>SOAP</code>是<code>XML</code>文档形式的调用方法的规范，它可以支持不同的底层接口，像<code>HTTP(S)</code>或者<code>SMTP</code>。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>WSDL</code>：(<code>Web Services Description Language</code>) <code>WSDL</code> 文件是一个 XML 文档，用于说明一组 <code>SOAP</code><br>消息以及如何交换这些消息。大多数情况下由软件自动生成和使用。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>UDDI</code> :(<code>Universal Description</code>, <code>Discovery</code>, <code>and</code> <code>Integration</code>) 是一个主要针对<code>Web</code>服务供应商和使用者的新项目。<br>在用户能够调用Web服务之前，必须确定这个服务内包含哪些商务方法，找到被调用的接口定义，还要在服务端来编制软件，<br><code>UDDI</code>是一种根据描述文档来引导系统查找相应服务的机制。<code>UDDI</code>利用<code>SOAP</code>消息机制（标准的<code>XML/HTTP</code>）来发布，编辑，<br>浏览以及查找注册信息。它采用XML格式来封装各种不同类型的数据，并且发送到注册中心或者由注册中心来返回需要的数据。</li>
+</ul>
+</blockquote>
+<h1 id="Web-Service实例"><a href="#Web-Service实例" class="headerlink" title="Web Service实例"></a>Web Service实例</h1><h2 id="Spring整合CXF开发服务端"><a href="#Spring整合CXF开发服务端" class="headerlink" title="Spring整合CXF开发服务端"></a>Spring整合CXF开发服务端</h2><blockquote>
+<p>加入Maven依赖</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--cxf--&gt;</span><br><span class="line">        &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.cxf&#x2F;cxf-rt-frontend-jaxws --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.cxf&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;cxf-rt-frontend-jaxws&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.cxf&#x2F;cxf-core --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.cxf&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;cxf-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;org.apache.cxf&#x2F;cxf-rt-transports-http --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.cxf&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;cxf-rt-transports-http&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;3.1.6&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>web.xml</code>中配置一个<code>CXF</code>的<code>servlet</code>,因为这是一个web项目,如果是简单项目可以省去配置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;CXFServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;org.apache.cxf.transport.servlet.CXFServlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;CXFServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;webservice&#x2F;*&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;servlet-mapping&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这样,项目部署后访问<code>webservice/*</code>这个地址就会进入<code>CXF</code>的<code>servlet</code>中。</p>
+<blockquote>
+<p>开发一个<code>webservice</code>业务接口，方法使用<code>@WebService</code>修饰。<br><img src="https://i.loli.net/2019/06/11/5cffce6023b5793719.jpg" alt="初探WebService.md---005WV0MDly1fst938mayjj30bq03n75f.jpg"><br>写一个这个方法的实现类，方法也需要使用<code>@WebService</code>修饰<br><img src="https://i.loli.net/2019/06/11/5cffce4c6398c16330.jpg" alt="初探WebService.md---005WV0MDly1fst98m7fc1j30fh053q59.jpg"><br>在<code>Spring配置文件整合</code>,头部添加命名路径</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xmlns:jaxws&#x3D;&quot;http:&#x2F;&#x2F;cxf.apache.org&#x2F;jaxws&quot;</span><br><span class="line">http:&#x2F;&#x2F;cxf.apache.org&#x2F;jaxws http:&#x2F;&#x2F;cxf.apache.org&#x2F;schemas&#x2F;jaxws.xsd&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;import resource&#x3D;&quot;classpath:META-INF&#x2F;cxf&#x2F;cxf.xml&quot;&#x2F;&gt;</span><br><span class="line">   &lt;import resource&#x3D;&quot;classpath:META-INF&#x2F;cxf&#x2F;cxf-servlet.xml&quot;&#x2F;&gt;</span><br><span class="line">   &lt;!-- 自动扫描webService --&gt;</span><br><span class="line">   &lt;context:component-scan base-package&#x3D;&quot;com.hsl.cxf&quot; &#x2F;&gt;</span><br><span class="line">   &lt;!-- 定义webservice的发布接口  --&gt;</span><br><span class="line">   &lt;jaxws:endpoint</span><br><span class="line">           implementor&#x3D;&quot;#helloWorld&quot;           &#x2F;&#x2F;注解名,相当于手动完成映射</span><br><span class="line">           address&#x3D;&quot;&#x2F;HelloWorld&quot;     &#x2F;&#x2F;我们需要访问的地址</span><br><span class="line">   &gt;&lt;&#x2F;jaxws:endpoint&gt;</span><br></pre></td></tr></table></figure>
+<p>运行项目,输入地址<a href="http://127.0.0.1:8080/webservice/HelloWorld?wsdl%E5%87%BA%E7%8E%B0%E5%A6%82%E4%B8%8B">http://127.0.0.1:8080/webservice/HelloWorld?wsdl出现如下</a><br><img src="https://i.loli.net/2019/06/11/5cffce29dc1f187382.jpg" alt="初探WebService.md---005WV0MDly1fst9v6zzx5j30k307nmx6.jpg"><br><code>webservice</code>接口发布成功</p>
+<h2 id="使用CXF开发Web-Service客户端"><a href="#使用CXF开发Web-Service客户端" class="headerlink" title="使用CXF开发Web Service客户端"></a>使用CXF开发Web Service客户端</h2><p>可参考以下博客:<a href="https://blog.csdn.net/yangwenxue_admin/article/details/51059125">传送门</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这就完成了<code>webservice</code>的入门案例的服务端,后续有时间或用的着会更新更多关于<code>webservice</code>的内容</p>
 ]]></content>
       <categories>
         <category>technology</category>
       </categories>
       <tags>
-        <tag>实用技能</tag>
-        <tag>方便高效</tag>
+        <tag>WebService</tag>
+        <tag>cxf</tag>
       </tags>
   </entry>
   <entry>
@@ -1164,6 +1146,24 @@ setMaxResults(int) 分页，每页显示个数 pageSize
       </categories>
       <tags>
         <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>发现开发技巧篇</title>
+    <url>/2018/07/16/%E5%8F%91%E7%8E%B0%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7%E7%AF%87/</url>
+    <content><![CDATA[<p><img src="https://i.loli.net/2019/06/12/5d011fd75bee774966.jpg"></p>
+<h1 id="基于Springboot开发"><a href="#基于Springboot开发" class="headerlink" title="基于Springboot开发"></a>基于Springboot开发</h1><h2 id="插入数据库时遇到的问题"><a href="#插入数据库时遇到的问题" class="headerlink" title="插入数据库时遇到的问题"></a>插入数据库时遇到的问题</h2><p>在调用<code>jpa</code>的<code>save</code>方法时,发现不能成功的插入数据.调用<code>JpaRepository</code>接口的<code>save</code>方法保存一个对象到数据库中的时候就会出错.<br><code>com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException</code><br>后来试了多次发现是主键自增策略引起的问题.改为如下后就解决了<br><img src="https://i.loli.net/2019/06/12/5d01207b1e0c797324.jpg"><br>原因是默认就是<code>auto</code>,不能由程序自己控制.具体原因如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hibernate 能够出色地自动生成主键。Hibernate&#x2F;EBJ 3 注释也可以为主键的自动生成提供丰富的支持，允许实现各种策略。</span><br><span class="line">其生成规则由@GeneratedValue设定的.这里的@id和@GeneratedValue都是JPA的标准用法, JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</span><br><span class="line">JPA提供的四种标准用法为TABLE,SEQUENCE,IDENTITY,AUTO.</span><br><span class="line">TABLE：使用一个特定的数据库表格来保存主键。</span><br><span class="line">SEQUENCE：根据底层数据库的序列来生成主键，条件是数据库支持序列。</span><br><span class="line">IDENTITY：主键由数据库自动生成（主要是自动增长型）</span><br><span class="line">AUTO：主键由程序控制。</span><br><span class="line">在指定主键时，如果不指定主键生成策略，默认为AUTO。</span><br><span class="line">@Id</span><br><span class="line">相当于</span><br><span class="line">@Id</span><br><span class="line">@GeneratedValue(strategy &#x3D; GenerationType.AUTO)</span><br><span class="line"></span><br><span class="line">identity:</span><br><span class="line">使用SQL Server 和 MySQL 的自增字段，这个方法不能放到 Oracle 中，Oracle 不支持自增字段，要设定sequence（MySQL 和 SQL Server 中很常用）。</span><br><span class="line">Oracle就要采用sequence了.</span><br><span class="line"></span><br><span class="line">同时,也可采用uuid,native等其它策略.(相关用法,上网查询)</span><br></pre></td></tr></table></figure>
+<p>即<code>auto</code>为当数据库中不存在这张表的时候可以用它建表的时候,制定自增的方式,存在的时候插入数据还用它就会出错了.</p>
+<p><code>identity</code>使用<code>MySQL</code>的自增字段.</p>
+<h2 id="开发过程中的实用技能"><a href="#开发过程中的实用技能" class="headerlink" title="开发过程中的实用技能"></a>开发过程中的实用技能</h2><p>在编写实体类的时候,每次都要写<code>get</code>和<code>set</code>或<code>tostring</code>方法,虽然可以快捷键生成,不过还是显得臃肿麻烦.<br>这个时候,就可以用到上篇日志中说到的<code>lombok</code>插件.<br>首先,<code>pom</code>文件中引入依赖.然后在实体类上面加上一个<code>@Data</code>注解就可以了,就是这么简单.<br><img src="https://i.loli.net/2019/06/12/5d0120d9d786e48428.jpg"><br><code>@DynamicUpdate</code>这个注解是动态更新数据库表中的时间属性.每次更改就会更新时间戳,不需要人为管理.<br><code>@Transactional</code>在测试方法上面添加这个注解,相当于回滚事务,数据库不发生更改.方便测试.<br><img src="https://i.loli.net/2019/06/12/5d01215a565dc96326.jpg"></p>
+]]></content>
+      <categories>
+        <category>technology</category>
+      </categories>
+      <tags>
+        <tag>实用技能</tag>
+        <tag>方便高效</tag>
       </tags>
   </entry>
   <entry>
